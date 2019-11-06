@@ -1,9 +1,12 @@
 const express = require('express')
 const server = express()
 const dbConnection = require('../database/DatabaseConnection')
+let dbClient = null;
 
 server.listen(3000, async () =>{
-    console.log("aplicação ligada na porta 3000")
-    var x = await dbConnection.connectDatabase();
-    console.log(x);
+    dbClient = await dbConnection.connectDatabase();
+
+    if(dbClient != null){
+        console.log("Aplicação e banco de dados iniciados com sucesso!")
+    }
 });
