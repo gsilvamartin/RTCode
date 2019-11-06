@@ -19,6 +19,7 @@
   "homepage": "https://github.com/gsilvamartin/FastMessage#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongodb": "^3.3.3",
     "socket.io": "^2.3.0"
   }
 }
