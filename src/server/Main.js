@@ -1,9 +1,10 @@
 const express = require('express')
 const server = express()
-const user = require('../database/repository/UserRepository')
+const user = require('../service/UserService')
 
 server.listen(3000, async () =>{
-    var users = await user.getAllUsers();
+    var users = await user.getAllUsers(null);
+    
     users.forEach(element => {
         console.log(element);        
     });

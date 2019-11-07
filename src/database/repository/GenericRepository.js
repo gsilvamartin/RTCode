@@ -1,9 +1,15 @@
 const database = require('../DatabaseConnection')
 
 class GenericRepository {
-    constructor(collection) {
+    /**
+     * Inicia o repositório
+     * 
+     * @author mestre elias
+     */
+    async init() {
         let databaseConnection = await database.getConnection();
         this.client = await databaseConnection.collection(collection);
+        return this;
     }
 
     /**
@@ -14,7 +20,11 @@ class GenericRepository {
      * @param {*} params chave primária 
      */
     async findOne(params) {
-        return this.client.findOne(params);
+        try {
+            return this.client.findOne(params);
+        } catch (ex) {
+            throw ex;
+        }
     }
 
     /**
@@ -25,7 +35,11 @@ class GenericRepository {
      * @param {*} params objeto contendo parametros para a busca
      */
     async findAll(params) {
-        return this.client.findOne(params);
+        try {
+            return this.client.findAll(params);
+        } catch (ex) {
+            throw ex;
+        }
     }
 
     /**
@@ -36,7 +50,11 @@ class GenericRepository {
      * @param {*} params objeto contendo parametros para a exclusão
      */
     async deleteOne(params) {
-        return this.client.deleteOne(params);
+        try {
+            return this.client.deleteOne(params);
+        } catch (ex) {
+            throw ex;
+        }
     }
 
     /**
@@ -47,7 +65,11 @@ class GenericRepository {
      * @param {*} params objeto contendo parametros para a exclusão
      */
     async deleteMany(params) {
-        return this.client.deleteMany(params);
+        try {
+            return this.client.deleteMany(params);
+        } catch (ex) {
+            throw ex;
+        }
     }
 
     /**
@@ -57,8 +79,12 @@ class GenericRepository {
      * @author Guilherme da Silva Martin 
      * @param {*} params parâmetros para a atualização
      */
-    async updateOne(params){
-        return this.client.updateOne(params);
+    async updateOne(params) {
+        try {
+            return this.client.updateOne(params);
+        } catch (ex) {
+            throw ex;
+        }
     }
 
     /**
@@ -67,8 +93,12 @@ class GenericRepository {
      * @author Guilherme da Silva Martin 
      * @param {*} params 
      */
-    async updateAll(params){
-        return this.client.updateMany(params);
+    async updateAll(params) {
+        try {
+            return this.client.updateMany(params);
+        } catch (ex) {
+            throw ex;
+        }
     }
 }
 
