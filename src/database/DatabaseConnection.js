@@ -11,4 +11,12 @@ async function connectDatabase(){
     }
 }
 
-module.exports = {connectDatabase}
+async function getConnection(){
+    if(dbClient.isConnected()){
+        return dbClient;
+    }else{
+        return await dbConnection.connectDatabase();
+    }
+}
+
+module.exports = {connectDatabase, getConnection}
