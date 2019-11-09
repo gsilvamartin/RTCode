@@ -21,5 +21,9 @@
     "express": "^4.17.1",
     "mongodb": "^3.3.3",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
