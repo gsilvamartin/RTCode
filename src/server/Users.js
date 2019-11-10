@@ -33,10 +33,23 @@ router.post('/users/', async (req, res) => {
  *
  * @author Guilherme da Silva Martin
  */
-router.delete('/users/', async (req, res) => {
-    let userService = await user.init();
-  
-    res.send(await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password));
-  });
+router.delete('/users/:id', async (req, res) => {
+  let userService = await user.init();
+
+  res.send(await userService.deleteUser(req.params.id));
+});
+
+/**
+ * Atualiza um usuário
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.put('/users/:id', async (req, res) => {
+  let userService = await user.init();
+
+  res.send(
+    await userService.updateUser(req.params.id, req.body.Name, req.body.Email, req.body.Password, req.body.Image)
+  );
+});
 
 module.exports = router;

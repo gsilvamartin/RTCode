@@ -53,7 +53,7 @@ module.exports = class UserService {
    */
   static async deleteUser(id) {
     try {
-      return await this.repository.deleteUser(id);
+      return await this.repository.deleteUser({ _id: id });
     } catch (ex) {
       throw ex;
     }
@@ -66,7 +66,19 @@ module.exports = class UserService {
    */
   static async updateUser(idSearch, nameUpdate, emailUpdate, passwordUpdate, imageUpdate) {
     try {
-      return await this.repository.updateUser(null);
+      const paramSearch = {
+        _id: idSearch
+      };
+
+      const paramUpdate = {
+        _id: idSearch,
+        Name: nameUpdate,
+        Email: emailUpdate,
+        Password: passwordUpdate,
+        Image: imageUpdate
+      };
+
+      return await this.repository.updateUser(paramSearch, paramUpdate);
     } catch (ex) {
       throw ex;
     }
