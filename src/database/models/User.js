@@ -1,10 +1,23 @@
-class User {
-  constructor(Email, Name, Image, Password) {
-    this.Email = Email;
-    this.Name = Name;
-    this.Image = Image;
-    this.Password = Password;
-  }
-}
+const mongoose = require('mongoose');
 
-module.exports = User;
+let userSchema = mongoose.Schema({
+    _id: {
+        $oid: {
+            type: 'ObjectId'
+        }
+    },
+    Email: {
+        type: 'String'
+    },
+    Name: {
+        type: 'String'
+    },
+    Image: {
+        type: 'String'
+    },
+    Password: {
+        type: 'String'
+    }
+});
+
+module.exports = mongoose.model('User', userSchema, 'User');

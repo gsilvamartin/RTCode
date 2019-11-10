@@ -1,25 +1,26 @@
-const GenericRepository = require('../database/repository/GenericRepository');
+const UserRepository = require('../database/repository/UserRepository');
 
-module.exports.default = class UserService {
+module.exports = class UserService {
   /**
    * Inicia o serviço
    *
    * @author Guilherme da Silva Martin
    */
   static async init() {
-    this.repository = await GenericRepository.default.init('User');
+    console.log('chegou aqui')
+    this.repository = await UserRepository.init();
 
     return this;
   }
 
   /**
-   * Retorna todos os usuários cadastrados no sistema.
+   * Retorna um usuário cadastrado no sistema por seu id.
    *
    * @author Guilherme da Silva Martin
    */
-  static async getAllUsers() {
+  static async getUserById(params) {
     try {
-      return this.repository.findAll(null);
+      return await this.repository.findUserById(params);
     } catch (ex) {
       throw ex;
     }
