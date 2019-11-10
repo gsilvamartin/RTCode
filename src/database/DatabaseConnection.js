@@ -5,7 +5,7 @@ const getConnection = async function() {
     try {
         return await mongoose.connect(uri, { useNewUrlParser: true });
     } catch (ex) {
-        console.log('banco ja aberto');
+        throw ex;
     }
 };
 
