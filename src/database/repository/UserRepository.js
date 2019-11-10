@@ -22,4 +22,13 @@ module.exports = class UserRepository {
     static async findUserById(params) {
         return await user.findById(new mongoose.Types.ObjectId(params));
     }
+
+    /**
+     * Insere um novo usuário
+     *
+     * @author Guilherme da Silva Martin
+     */
+    static async createNewUser(params) {
+        return await user.create(params);
+    }
 };
