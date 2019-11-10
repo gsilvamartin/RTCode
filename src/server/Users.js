@@ -12,9 +12,9 @@ router.use(bodyParser.urlencoded({ extended: true }));
  * @author Guilherme da Silva Martin
  */
 router.get('/users/:id', async (req, res) => {
-    let userService = await user.init();
+  let userService = await user.init();
 
-    res.send(await userService.getUserById(req.params.id));
+  res.send(await userService.getUserById(req.params.id));
 });
 
 /**
@@ -23,9 +23,20 @@ router.get('/users/:id', async (req, res) => {
  * @author Guilherme da Silva Martin
  */
 router.post('/users/', async (req, res) => {
-    let userService = await user.init();
+  let userService = await user.init();
 
-    res.send(await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password));
+  res.send(await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password));
 });
+
+/**
+ * Deleta um usuário por seu id
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.delete('/users/', async (req, res) => {
+    let userService = await user.init();
+  
+    res.send(await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password));
+  });
 
 module.exports = router;
