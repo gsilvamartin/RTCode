@@ -35,4 +35,4 @@ io.on('disconnect', (evt) => {
   console.log(`usuário desconectado ${evt}`);
 });
 
-socketServer.listen(3000);
+socketServer.listen(5000);

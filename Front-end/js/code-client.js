@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000');
+const socket = io('http://localhost:5000');
 const editor = document.getElementById('editor');
 
 /**
@@ -30,13 +30,6 @@ function joinRoom() {
 function init() {
     joinRoom();
 }
-
-editor.addEventListener('keyup', (evt) => {
-    const text = editor.value;
-    const room = getRoomName();
-
-    socket.send([room, text]);
-});
 
 socket.on('message', (data) => {
     editor.value = data;
