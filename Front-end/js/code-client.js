@@ -7,10 +7,10 @@ const editor = document.getElementById('editor');
  * @author Guilherme da Silva Martin
  */
 function getRoomName() {
-  let url = window.location.href;
-  let roomName = url.split('?').reverse()[0];
+    let url = window.location.href;
+    let roomName = url.split('?').reverse()[0];
 
-  return roomName;
+    return roomName;
 }
 
 /**
@@ -19,7 +19,7 @@ function getRoomName() {
  * @author Guilherme da Silva Martin
  */
 function joinRoom() {
-  socket.emit('join', getRoomName());
+    socket.emit('join', getRoomName());
 }
 
 /**
@@ -28,20 +28,20 @@ function joinRoom() {
  * @author Guilherme da Silva Martin
  */
 function init() {
-  joinRoom();
+    joinRoom();
 }
 
 editor.addEventListener('keyup', (evt) => {
-  const text = editor.value;
-  const room = getRoomName();
+    const text = editor.value;
+    const room = getRoomName();
 
-  socket.send([room, text]);
+    socket.send([room, text]);
 });
 
 socket.on('message', (data) => {
-  editor.value = data;
+    editor.value = data;
 });
 
 $(document).ready(() => {
-  init();
+    init();
 });
