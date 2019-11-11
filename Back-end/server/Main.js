@@ -16,8 +16,13 @@ server.use(users);
  * @author Guilherme da Silva Martin
  */
 io.on('connection', (socket) => {
+  socket.on('join', (room) => {
+    socket.leaveAll();
+    socket.join(room);
+  });
+
   socket.on('message', (evt) => {
-    socket.broadcast.emit('message', evt);
+    socket.to(evt[0]).emit('message', evt[1]);
   });
 });
 
@@ -27,7 +32,7 @@ io.on('connection', (socket) => {
  * @author Guilherme da Silva Martin
  */
 io.on('disconnect', (evt) => {
-  console.log('usuário desconectado ' + evt);
+  console.log(`usuário desconectado ${evt}`);
 });
 
 socketServer.listen(3000);
