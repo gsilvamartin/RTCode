@@ -31,6 +31,11 @@ function init() {
     joinRoom();
 }
 
+/**
+ * Handle que recebe mensagens novas
+ * 
+ * @author Guilherme da Silva Martin
+ */
 socket.on('message', (data) => {
     editor.value = data;
 });

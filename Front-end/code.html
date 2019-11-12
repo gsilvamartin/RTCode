@@ -10,6 +10,12 @@
 
 <!--IMPORTAÇÃO TEMAS CODEMIRROR-->
 <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/darcula.css" />
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/ambiance.css" />
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/base16-dark.css" />
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/base16-light.css" />
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/eclipse.css" />
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/monokai.css" />
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/moxer.css" />
 <!--FIM IMPORTAÇÃO TEMAS-->
 
 <header style="height: 50px;background-color: #313131;">
@@ -18,9 +24,15 @@
       <option>Python</option>
       <option>C#</option>
     </select>
-    <select class="btn btn-secondary" id="theme" style="position:relative;left: 80%;top: 14%;">
+    <select class="btn btn-secondary" id="theme" onchange="changeTheme()" style="position:relative;left: 80%;top: 14%;">
       <option value="darcula">Darcula</option>
-      <option value="light">Light</option>
+      <option value="default">Default</option>
+      <option value="ambiance">Ambiance</option>
+      <option value="base16-dark">Base16 - Dark</option>
+      <option value="base16-light">Base16 - Light</option>
+      <option value="eclipse">Eclipse</option>
+      <option value="monokai">Monokai</option>
+      <option value="moxer">Moxer</option>
     </select>
 </header>
 

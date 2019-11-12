@@ -135,7 +135,7 @@ module.exports = {
         "no-nested-ternary": 2,
         "no-new-object": 2,
         "no-spaced-func": 2,
-        "no-trailing-spaces": [2, { "skipBlankLines": true }],
+        // "no-trailing-spaces": [2, { "skipBlankLines": true }],
         "no-unneeded-ternary": 2,
         "object-curly-spacing": [2, "always"],
         // "one-var": [ 2, "always" ],

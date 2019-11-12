@@ -16,6 +16,13 @@ socket.on('message', (data) => {
 
 codeEditor.setSize('100%', '100%');
 
+/**
+ * Altera o tema do code-mirror
+ * 
+ * @author Guilherme da Silva Martin
+ */
 function changeTheme() {
     const theme = $('#theme').val();
+
+    codeEditor.setOption('theme', theme);
 }
