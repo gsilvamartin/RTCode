@@ -1,13 +1,14 @@
 ---
-nome: Solicitação de recurso
-sobre: Sugira uma ideia para este projeto
-titulo: ''
-etiquetas: ''
-cessionários: ''
+name: Solicitação de recurso
+about: Sugira uma ideia para este projeto
+title: ''
+label: ''
+assignees: ''
 
 ---
 
 **Sua solicitação de recurso está relacionada a um problema? Por favor descreva.**
+
 Uma descrição clara e concisa de qual é o problema.
 
 **Descreva a solução que você deseja.**
