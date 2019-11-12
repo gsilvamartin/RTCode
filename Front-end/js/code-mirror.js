@@ -1,6 +1,19 @@
 let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     lineNumbers: true,
-    theme: 'darcula'
+    theme: 'darcula',
+    autoCloseTags: true,
+    autoCloseBrackets: true,
+    extraKeys: {
+        'Ctrl-S': function(instance) {
+            indentAllLines();
+        },
+        'Ctrl-Alt-F': function(instance) {
+            indentAllLines();
+        },
+        'Ctrl-Space': function(instance) {
+            CodeMirror.showHint(instance);
+        }
+    }
 });
 
 codeEditor.on('keyup', (cm, event) => {
@@ -25,4 +38,15 @@ function changeTheme() {
     const theme = $('#theme').val();
 
     codeEditor.setOption('theme', theme);
+}
+
+/**
+ * Indenta todo o código
+ * 
+ * @author Guilherme da Silva Martin
+ */
+function indentAllLines() {
+    for (let i = 0; i < codeEditor.lineCount(); i++) {
+        codeEditor.indentLine(i);
+    }
 }
