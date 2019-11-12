@@ -1,0 +1,18 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    border-top: 1.019px solid #ffffff0a;
+}
+
+#small-title {
+    color: #a7a5a5;
+}
+
+#small-description {
+    color: white;
+    font-size: 20px;
+}

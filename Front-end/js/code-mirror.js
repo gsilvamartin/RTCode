@@ -10,9 +10,7 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
         'Ctrl-Alt-F': function(instance) {
             indentAllLines();
         },
-        'Ctrl-Space': function(instance) {
-            CodeMirror.showHint(instance);
-        }
+        'Ctrl-Space': 'autocomplete'
     }
 });
 
