@@ -1,8 +1,17 @@
 <html style="height: 100%;">
 <title>RTCode - share code in real time</title>
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/codemirror.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/darcula.css" />
+<!--IMPORTAÇÃO CSS BOOTSTRAP-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+<!--FIM IMPORTAÇÃO BOOTSTRAP-->
+
+<!--IMPORTAÇÃO CSS CODEMIRROR-->
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/codemirror.css" />
+<!--FIM IMPORTAÇÃO CODEMIRROR-->
+
+<!--IMPORTAÇÃO TEMAS CODEMIRROR-->
+<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/darcula.css" />
+<!--FIM IMPORTAÇÃO TEMAS-->
+
 <header style="height: 50px;background-color: #313131;">
     <select class="btn btn-secondary" id="language" style="position:relative;left: 93%;top: 14%;">
       <option>Javascript</option>
@@ -20,12 +29,21 @@
         <textarea id="editor" style="width: 100%;height: 100%;"></textarea>
     </div>
 </body>
+
+<!--IMPORTAÇÕES GERAIS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--FIM IMPORTAÇÕES GERAIS-->
+
+<!--IMPORTAÇÕES SOCKET-->
 <script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
-<script src="./js/import/codemirror/codemirror.js"></script>
 <script src="./js/code-client.js"></script>
+<!--FIM IMPORTAÇÕES SOCKET-->
+
+<!--IMPORTAÇÕES CODEMIRROR-->
+<script src="./js/import/codemirror/codemirror.js"></script>
 <script src="./js/import/codemirror/javascript.js"></script>
 <script src="./js/code-mirror.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--FIM IMPORTAÇÕES CODEMIRROR-->
 
 </html>
