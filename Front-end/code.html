@@ -1,100 +1,108 @@
 <html style="height: 100%;">
-<title>RTCode - share code in real time</title>
-<!--IMPORTACAO CSS GERAL-->
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-<!--FIM IMPORTACAO CSS-->
+  <title>RTCode - share code in real time</title>
+  <!--IMPORTACAO CSS GERAL-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+  <!--FIM IMPORTACAO CSS-->
 
-<!--IMPORTAÇÃO CSS BOOTSTRAP-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-<!--FIM IMPORTAÇÃO BOOTSTRAP-->
+  <!--IMPORTAÇÃO CSS BOOTSTRAP-->
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <!--FIM IMPORTAÇÃO BOOTSTRAP-->
 
-<!--IMPORTAÇÃO CSS CODEMIRROR-->
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/codemirror.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/show-hint.css" />
-<link rel="stylesheet" type="text/css" href="./css/code.css" />
-<!--FIM IMPORTAÇÃO CODEMIRROR-->
+  <!--IMPORTACAO MATERIALIZE-->
+  <link type="text/css" rel="stylesheet" href="css/import/materialize/materialize.min.css" media="screen,projection" />
+  <!--FIM IMPORTACAO MATERIALIZE-->
 
-<!--IMPORTAÇÃO TEMAS CODEMIRROR-->
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/darcula.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/ambiance.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/base16-dark.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/base16-light.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/eclipse.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/monokai.css" />
-<link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/moxer.css" />
-<!--FIM IMPORTAÇÃO TEMAS-->
+  <!--IMPORTAÇÃO CSS CODEMIRROR-->
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/codemirror.css" />
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/show-hint.css" />
+  <link rel="stylesheet" type="text/css" href="./css/code.css" />
+  <!--FIM IMPORTAÇÃO CODEMIRROR-->
 
-<div class="principal">
-    <header id="topHeader" class="header" style="height: 50px;background-color: #313131;">
-        <div class="d-flex flex-row-reverse">
-            <div class="col-md-12">
-                <button id="btn-share">Share</button>
-                <button id="btn-register">Register</button>
-                <button id="btn-login">Login</button>
-            </div>
-        </div>
-        <!-- <select class="btn btn-secondary" id="language" style="position:relative;left: 93%;top: 14%;">
-      <option>Javascript</option>
-      <option>Python</option>
-      <option>C#</option>
-    </select>
-    <select class="btn btn-secondary" id="theme" onchange="changeTheme()" style="position:relative;left: 80%;top: 14%;">
-      <option value="darcula">Darcula</option>
-      <option value="default">Default</option>
-      <option value="ambiance">Ambiance</option>
-      <option value="base16-dark">Base16 - Dark</option>
-      <option value="base16-light">Base16 - Light</option>
-      <option value="eclipse">Eclipse</option>
-      <option value="monokai">Monokai</option>
-      <option value="moxer">Moxer</option>
-    </select> -->
-    </header>
+  <!--IMPORTAÇÃO TEMAS CODEMIRROR-->
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/darcula.css" />
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/ambiance.css" />
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/base16-dark.css" />
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/base16-light.css" />
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/eclipse.css" />
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/monokai.css" />
+  <link rel="stylesheet" type="text/css" href="./css/import/codemirror/themes/moxer.css" />
+  <!--FIM IMPORTAÇÃO TEMAS-->
 
-    <body>
-        <div>
-            <textarea id="editor"></textarea>
-        </div>
+  <body>
+  <div class="principal">
+    <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo left">RTCode</a>
+        <ul id="nav-mobile" class="right">
+          <li><a class="waves-effect waves-light btn modal-trigger" href="#modal-register">Register</a></li>
+          <li><a class="waves-effect waves-light btn modal-trigger" href="#modal-login">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+    </div>
+
+    <div>
+      <textarea id="editor"></textarea>
+    </div>
+
     </body>
 
     <footer class="footer" id="footer">
-        <div class="row" style="margin-left: 1%;">
-            <div class="col-md-1">
-                <small id="small-title">language</small><br />
-                <small class="small-description" id="small-description">Javascript</small>
-            </div>
-
-            <div class="col-md-1">
-                <small id="small-title">lines</small><br />
-                <small class="small-description" id="total-lines">0</small>
-            </div>
-
-            <div class="col-md-1">
-                <small id="small-title">size</small><br />
-                <small class="small-description" id="total-size">0 B</small>
-            </div>
+      <div class="row" style="margin-left: 1%;">
+        <div class="col-md-1">
+          <small id="small-title">language</small><br />
+          <small class="small-description" id="small-description">Javascript</small>
         </div>
+
+        <div class="col-md-1">
+          <small id="small-title">lines</small><br />
+          <small class="small-description" id="total-lines">0</small>
+        </div>
+
+        <div class="col-md-1">
+          <small id="small-title">size</small><br />
+          <small class="small-description" id="total-size">0 B</small>
+        </div>
+      </div>
     </footer>
-</div>
-<!--IMPORTAÇÕES GERAIS-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="./js/code.js"></script>
-<!--FIM IMPORTAÇÕES GERAIS-->
 
-<!--IMPORTAÇÕES SOCKET-->
-<script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
-<script src="./js/code-client.js"></script>
-<!--FIM IMPORTAÇÕES SOCKET-->
+    <div id="modal-register" class="modal">
+      <div class="modal-content">
+        <h4>Registro</h4>
+        <p>Teste</p>
+      </div>
+    </div>
+  </div>
+  <!--IMPORTAÇÕES GERAIS-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./js/import/materialize/materialize.min.js"></script>
+  <script src="./js/code.js"></script>
+  <!--FIM IMPORTAÇÕES GERAIS-->
 
-<!--IMPORTAÇÕES CODEMIRROR-->
-<script src="./js/import/codemirror/codemirror.js"></script>
-<script src="./js/import/codemirror/javascript.js"></script>
-<script src="./js/import/codemirror/closebrackets.js"></script>
-<script src="./js/import/codemirror/show-hint.js"></script>
-<script src="./js/import/codemirror/css-hint.js"></script>
-<script src="./js/import/codemirror/javascript-hint.js"></script>
-<script src="./js/import/codemirror/anyword-hint.js"></script>
-<script src="./js/code-mirror.js"></script>
-<!--FIM IMPORTAÇÕES CODEMIRROR-->
+  <!--IMPORTAÇÕES SOCKET-->
+  <script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
+  <script src="./js/code-client.js"></script>
+  <!--FIM IMPORTAÇÕES SOCKET-->
 
+  <!--IMPORTAÇÕES CODEMIRROR-->
+  <script src="./js/import/codemirror/codemirror.js"></script>
+  <script src="./js/import/codemirror/javascript.js"></script>
+  <script src="./js/import/codemirror/closebrackets.js"></script>
+  <script src="./js/import/codemirror/show-hint.js"></script>
+  <script src="./js/import/codemirror/css-hint.js"></script>
+  <script src="./js/import/codemirror/javascript-hint.js"></script>
+  <script src="./js/import/codemirror/anyword-hint.js"></script>
+  <script src="./js/code-mirror.js"></script>
+  <!--FIM IMPORTAÇÕES CODEMIRROR-->
 </html>

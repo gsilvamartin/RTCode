@@ -1,3 +1,7 @@
+body{
+    overflow: hidden;
+}
+
 .CodeMirror-scroll {
     overflow: hidden;
 }
@@ -93,4 +97,9 @@
 .principal {
     width: 100%;
     height: 100%;
+}
+
+.nav-wrapper{
+    border-bottom: 1.019px solid #ffffff0a;
+    background-color: #2b2b2b;
 }

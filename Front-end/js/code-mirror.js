@@ -3,6 +3,7 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     theme: 'darcula',
     autoCloseTags: true,
     autoCloseBrackets: true,
+    scrollbarStyle: 'null',
     extraKeys: {
         'Ctrl-S': function(instance) {
             indentAllLines();
