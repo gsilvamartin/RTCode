@@ -1,4 +1,4 @@
-body{
+body {
     overflow: hidden;
 }
 
@@ -99,7 +99,7 @@ body{
     height: 100%;
 }
 
-.nav-wrapper{
+.nav-wrapper {
     border-bottom: 1.019px solid #ffffff0a;
     background-color: #2b2b2b;
 }
