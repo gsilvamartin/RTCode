@@ -52,3 +52,13 @@ function indentAllLines() {
         codeEditor.indentLine(i);
     }
 }
+
+/**
+ * Muda a linguagem utilizada no code
+ * 
+ * @author Guilherme da Silva Martin
+ * @param {*} mode 
+ */
+function changeCodeMirrorMode(mode) {
+    codeEditor.setOption('mode', mode);
+}
