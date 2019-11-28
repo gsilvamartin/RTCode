@@ -39,9 +39,12 @@ function getSelectedLanguage() {
  * @param {*} language 
  */
 function setLanguage(language) {
-    selectedLanguage = language;
-    changeCodeMirrorMode(language.toLowerCase());
-    $('#code-language').text(language);
+    let selectedText = $(language).find('option:selected').text();
+    let selectedValue = $(language).find('option:selected').val();
+
+    selectedLanguage = selectedText;
+    changeCodeMirrorMode(selectedValue);
+    $('#code-language').text(selectedText);
 }
 
 /**

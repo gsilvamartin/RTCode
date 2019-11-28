@@ -132,7 +132,7 @@
     <form class="col s12">
         <h3 style="text-align: center;">Options</h3>
         <div class="input-field col s12" style="margin-top: 5%;">
-            <select onchange="setLanguage(this.value)">
+            <select onchange="setLanguage(this)">
                 <option value="Generic" disabled selected>Select your language</option>
                 <option value="javascript">Javascript</option>
                 <option value="python">Python</option>
@@ -143,6 +143,21 @@
                 <option value="text/x-objectivec">Objective-C</option>
                 <option value="text/x-scala">Scala</option>
             </select>
+            <label for="search">Language</label>
+        </div>
+
+        <div class="input-field col s12" style="margin-top: 5%;">
+            <select onchange="setTheme(this)">
+                    <option value="Generic" disabled selected>Select your theme</option>
+                    <option value="javascript">Javascript</option>
+                    <option value="python">Python</option>
+                    <option value="text/x-java">Java</option>
+                    <option value="text/x-csrc">C</option>
+                    <option value="text/x-csharp">C#</option>
+                    <option value="text/x-c++src">C++</option>
+                    <option value="text/x-objectivec">Objective-C</option>
+                    <option value="text/x-scala">Scala</option>
+                </select>
             <label for="search">Language</label>
         </div>
     </form>
