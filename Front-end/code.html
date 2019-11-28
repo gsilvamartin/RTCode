@@ -35,6 +35,7 @@
                 <div class="nav-wrapper">
                     <a id="titulo-header">RTCode</a>
                     <ul id="nav-mobile" class="right">
+                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c;" href="#modal-options">Options</a></li>
                         <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c;" href="#modal-register">Register</a></li>
                         <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c;" href="#modal-login">Login</a></li>
                     </ul>
@@ -53,7 +54,7 @@
         <div class="col s2"></div>
         <div class="col s2">
             <small id="small-title">language</small><br />
-            <small class="small-description" id="small-description">Javascript</small>
+            <small class="small-description" id="code-language">Javascript</small>
         </div>
         <div class="col s2">
             <small id="small-title">lines</small><br />
@@ -108,14 +109,14 @@
             <h3 style="text-align: center;">Login</h3>
             <div class="row" style="margin-top: 5%;">
                 <div class="input-field col s12">
-                    <input id="email" type="text" class="validate">
-                    <label for="email">Email</label>
+                    <input id="email_login" type="text" class="validate">
+                    <label for="email_login">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Password</label>
+                    <input id="password_login" type="password" class="validate">
+                    <label for="password_login">Password</label>
                 </div>
             </div>
             <div class="row">
@@ -125,6 +126,21 @@
             </div>
         </form>
     </div>
+</div>
+
+<div id="modal-options" class="modal">
+    <form class="col s12">
+        <h3 style="text-align: center;">Options</h3>
+        <div class="input-field col s12" style="margin-top: 5%;">
+            <select onchange="setLanguage(this.value)">
+                <option value="Generic" disabled selected>Select your language</option>
+                <option value="Javascript">Javascript</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+            </select>
+            <label for="search">Language</label>
+        </div>
+    </form>
 </div>
 </div>
 <!--IMPORTAÇÕES GERAIS-->

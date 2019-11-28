@@ -18,9 +18,9 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
 codeEditor.on('keyup', (cm, event) => {
     const text = codeEditor.getValue();
     const room = getRoomName();
-    
+
     $('#total-lines').text(getTotalLines());
-    $('#total-size').text(getFileSize() + " B");
+    $('#total-size').text(getFileSize() + ' B');
 
     socket.send([room, text]);
 });
