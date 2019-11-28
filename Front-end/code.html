@@ -10,6 +10,7 @@
 
 <!--IMPORTACAO MATERIALIZE-->
 <link type="text/css" rel="stylesheet" href="css/import/materialize/materialize.min.css" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--FIM IMPORTACAO MATERIALIZE-->
 
 <!--IMPORTAÇÃO CSS CODEMIRROR-->
@@ -35,9 +36,10 @@
                 <div class="nav-wrapper">
                     <a id="titulo-header">RTCode</a>
                     <ul id="nav-mobile" class="right">
-                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c;" href="#modal-options">Options</a></li>
-                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c;" href="#modal-register">Register</a></li>
-                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c;" href="#modal-login">Login</a></li>
+                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;"><i class="material-icons">sync</i></a> </li>
+                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;" href="#modal-options">Options</a></li>
+                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;" href="#modal-register">Register</a></li>
+                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;" href="#modal-login">Login</a></li>
                     </ul>
                 </div>
             </nav>
@@ -149,14 +151,13 @@
         <div class="input-field col s12" style="margin-top: 5%;">
             <select onchange="setTheme(this)">
                     <option value="Generic" disabled selected>Select your theme</option>
-                    <option value="javascript">Javascript</option>
-                    <option value="python">Python</option>
-                    <option value="text/x-java">Java</option>
-                    <option value="text/x-csrc">C</option>
-                    <option value="text/x-csharp">C#</option>
-                    <option value="text/x-c++src">C++</option>
-                    <option value="text/x-objectivec">Objective-C</option>
-                    <option value="text/x-scala">Scala</option>
+                    <option value="ambiance">Ambiance</option>
+                    <option value="base-16-dark">Base-16 Dark</option>
+                    <option value="base-16-light">Base-16 Light</option>
+                    <option value="darcula">Darcula</option>
+                    <option value="eclipse">Eclipse</option>
+                    <option value="monokai">Monokai</option>
+                    <option value="moxer">Moxer</option>
                 </select>
             <label for="search">Language</label>
         </div>
