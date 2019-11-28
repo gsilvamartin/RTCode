@@ -40,6 +40,7 @@ function getSelectedLanguage() {
  */
 function setLanguage(language) {
     selectedLanguage = language;
+    changeCodeMirrorMode(language.toLowerCase());
     $('#code-language').text(language);
 }
 
