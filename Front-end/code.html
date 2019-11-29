@@ -34,7 +34,7 @@
         <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
-                    <a id="titulo-header">RTCode</a>
+                    <img src="img/rt-code-logo.png" class="left" style="width: 140px;height: 35px;">
                     <ul id="nav-mobile" class="right">
                         <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;"><i class="material-icons">sync</i></a> </li>
                         <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;" href="#modal-options">Options</a></li>
@@ -149,7 +149,7 @@
         </div>
 
         <div class="input-field col s12" style="margin-top: 5%;">
-            <select onchange="setTheme(this)">
+            <select onchange="changeTheme(this.value)">
                     <option value="Generic" disabled selected>Select your theme</option>
                     <option value="ambiance">Ambiance</option>
                     <option value="base-16-dark">Base-16 Dark</option>

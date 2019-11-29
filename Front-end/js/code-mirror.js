@@ -36,9 +36,7 @@ codeEditor.setSize('100%', '100%');
  * 
  * @author Guilherme da Silva Martin
  */
-function changeTheme() {
-    const theme = $('#theme').val();
-
+function changeTheme(theme) {
     codeEditor.setOption('theme', theme);
 }
 
