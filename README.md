@@ -1,4 +1,6 @@
-# RT Code
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/42881020/69838576-e81b7600-1232-11ea-8806-56992f5f9afe.png" width="250">
+</p>
 
 RTCode (RealTime Code) é uma aplicação desenvolvida utilizando Javascript e HTML para compartilhar código em tempo real com múltiplos usuários conectados.
 
