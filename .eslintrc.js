@@ -160,7 +160,6 @@ module.exports = {
         "no-var": 2,
         "prefer-arrow-callback": 1,
         "prefer-spread": 1,
-        "prefer-template": 1,
         "require-yield": 2
     }
 }

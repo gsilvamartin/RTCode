@@ -1,3 +1,8 @@
+/**
+ * Configuração editor code-mirror
+ * 
+ * @author Guilherme da Silva Martin
+ */
 let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     lineNumbers: true,
     theme: 'darcula',
@@ -15,6 +20,12 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     }
 });
 
+/**
+ * Atualiza o número de linhas digitadas e total do tamanho do arquivo
+ * quando o usuário pressiona qualquer tecla do teclado.
+ * 
+ * @author Guilherme da Silva Martin
+ */
 codeEditor.on('keyup', (cm, event) => {
     const text = codeEditor.getValue();
     const room = getRoomName();
@@ -25,11 +36,14 @@ codeEditor.on('keyup', (cm, event) => {
     socket.send([room, text]);
 });
 
+/**
+ * Atualiza o editor quando o socket envia um novo código atualizado.
+ * 
+ * @author Guilherme da Silva Martin
+ */
 socket.on('message', (data) => {
     codeEditor.setValue(data);
 });
-
-codeEditor.setSize('100%', '100%');
 
 /**
  * Altera o tema do code-mirror
@@ -60,3 +74,5 @@ function indentAllLines() {
 function changeCodeMirrorMode(mode) {
     codeEditor.setOption('mode', mode);
 }
+
+codeEditor.setSize('100%', '100%');
