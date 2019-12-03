@@ -18,7 +18,11 @@ cd RTCode
 npm install
 ```
 
-3. Abra o arquivo ```code.html``` presente na pasta Front-End.
+3. Execute o comando a seguir para iniciar a aplicação.
+
+```bash
+npm start
+```
 
 ## Contribuição
 O sistema está em processo de desenvolvimento e possui erros e melhorias a serem implementadas, portanto pull requests são bem vindos.
