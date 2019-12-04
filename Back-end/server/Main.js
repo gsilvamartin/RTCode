@@ -9,7 +9,7 @@ const io = require('socket.io')(socketServer);
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-server.use(express.static(path.resolve('../../Front-end/')));
+server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
 server.use(users);
 
 /**
@@ -18,7 +18,7 @@ server.use(users);
  * @author Guilherme da Silva Martin
  */
 server.get('/code/', (req, res) => {
-    res.sendFile(path.resolve('../../Front-end/code.html'));
+    res.sendFile(path.resolve(__dirname + '/../../Front-end/code.html'));
 });
 
 /**
