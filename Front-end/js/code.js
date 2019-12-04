@@ -54,5 +54,6 @@ function setLanguage(language) {
  */
 $(document).ready(() => {
     $('.modal').modal();
+    
     $('select').formSelect();
 });
