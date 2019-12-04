@@ -10,6 +10,7 @@ const io = require('socket.io')(socketServer);
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
+server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
 server.use(users);
 
 /**
