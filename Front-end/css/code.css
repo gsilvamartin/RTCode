@@ -6,6 +6,11 @@ body {
     overflow: hidden;
 }
 
+.btn-code-navbar {
+    background-color: #4c4c4c; 
+    margin-left: 0px;
+}
+
 .footer {
     position: fixed;
     left: 0;
