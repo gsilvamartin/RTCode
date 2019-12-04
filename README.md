@@ -24,6 +24,8 @@ npm install
 npm start
 ```
 
+4. Abrir o navegador no endereço http://localhost:5000/code/
+
 ## Contribuição
 O sistema está em processo de desenvolvimento e possui erros e melhorias a serem implementadas, portanto pull requests são bem vindos.
 
