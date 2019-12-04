@@ -52,7 +52,7 @@ module.exports = {
 
         "accessor-pairs": 2,
         "block-scoped-var": 2,
-        "curly": 2,
+        // "curly": 2,
         "default-case": 2,
         "dot-location": [2, "property"],
         "dot-notation": 2,
