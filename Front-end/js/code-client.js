@@ -40,6 +40,11 @@ socket.on('message', (data) => {
     editor.value = data;
 });
 
+/**
+ * Função executada assim que a página estiver totalmente carregada
+ * 
+ * @author Guilherme da Silva Martin
+ */
 $(document).ready(() => {
     init();
 });

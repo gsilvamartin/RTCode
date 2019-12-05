@@ -75,4 +75,4 @@ function changeCodeMirrorMode(mode) {
     codeEditor.setOption('mode', mode);
 }
 
-codeEditor.setSize('100%', '100%');
+codeEditor.setSize('66.66666%', '100%');
