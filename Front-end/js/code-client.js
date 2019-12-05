@@ -2,19 +2,19 @@ const socket = io('http://localhost:5000');
 const editor = document.getElementById('editor');
 
 /**
- * Retorna o nome da sala enviado por parâmetro
+ * Returns the name of the room sent by parameter
  *
  * @author Guilherme da Silva Martin
  */
 function getRoomName() {
     let url = window.location.href;
-    let roomName = url.split('?').reverse()[0];
+    let roomName = url.split('/').reverse()[0];
 
     return roomName;
 }
 
 /**
- * Conecta na sala desejada
+ * Connects to desired room
  *
  * @author Guilherme da Silva Martin
  */
@@ -23,7 +23,7 @@ function joinRoom() {
 }
 
 /**
- * Inicializa a página
+ * Initialize the page
  *
  * @author Guilherme da Silva Martin
  */
@@ -32,7 +32,7 @@ function init() {
 }
 
 /**
- * Handle que recebe mensagens novas
+ * Handle receiving new messages
  * 
  * @author Guilherme da Silva Martin
  */
@@ -41,7 +41,7 @@ socket.on('message', (data) => {
 });
 
 /**
- * Função executada assim que a página estiver totalmente carregada
+ * Function performed as soon as page is fully loaded
  * 
  * @author Guilherme da Silva Martin
  */
