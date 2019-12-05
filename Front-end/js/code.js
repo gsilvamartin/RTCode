@@ -1,7 +1,7 @@
 let selectedLanguage;
 
 /**
- * Retorna o tamanho do arquivo
+ * Returns file size.
  *
  * @author Guilherme da Silva Martin
  */
@@ -12,7 +12,7 @@ function getFileSize() {
 }
 
 /**
- * Retorna o total de linhas no editor
+ * Returns the total rows in the editor.
  *
  * @author Guilherme da Silva Martin
  */
@@ -24,7 +24,7 @@ function getTotalLines() {
 }
 
 /**
- * Retorna a linguagem que o code utiliza
+ * Returns the language code uses.
  * 
  * @author Guilherme da Silva Martin
  */
@@ -33,7 +33,7 @@ function getSelectedLanguage() {
 }
 
 /**
- * Seta a linguagem utilizada do code
+ * Sets the code language used.
  * 
  * @author Guilherme da Silva Martin
  * @param {*} language 
@@ -48,7 +48,7 @@ function setLanguage(language) {
 }
 
 /**
- * Executa assim que a página está pronta
+ * Runs as soon as the page is ready.
  * 
  * @author Guilherme da Silva Martin
  */

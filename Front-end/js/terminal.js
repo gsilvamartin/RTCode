@@ -11,6 +11,11 @@ function initTerminal() {
     term.write('$');
 }
 
+/**
+ * Runs as soon as the page is ready.
+ * 
+ * @author Guilherme da Silva Martin
+ */
 $(document).ready(() => {
     initTerminal();
 });
