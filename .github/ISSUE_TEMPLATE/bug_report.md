@@ -20,7 +20,7 @@ Etapas para reproduzir o comportamento:
 3. Rolar para baixo para '....'
 4. Ver erro
 
-**Expected behavior**
+**Comportamento esperado**
 
 Uma descrição clara e concisa do que você esperava que acontecesse.
 
