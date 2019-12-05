@@ -1,46 +1,33 @@
 ---
-name: Relatório de erro
-about: Crie um relatório para nos ajudar a melhorar
+name: "\U0001F41B Bug report"
+about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
-**Descreva o bug**
+Please check if your issue is not a duplicate by [searching existing issues](https://github.com/gsilvamartin/RTCode/issues)
 
-Uma descrição clara e concisa do que é o erro.
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-**Reproduzir**
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
 
-Etapas para reproduzir o comportamento:
-
-1. Vá para '...'
-2. Clique em '....'
-3. Rolar para baixo para '....'
-4. Ver erro
-
-**Comportamento esperado**
-
-Uma descrição clara e concisa do que você esperava que acontecesse.
+**Expected behavior**
+A clear and concise description of what you expected to happen.
 
 **Screenshots**
+If applicable, add screenshots to help explain your problem.
 
-Se aplicável, adicione capturas de tela para ajudar a explicar seu problema.
+**Environment (please complete the following information):**
+ - OS: [e.g. Windows, Ubuntu, macOS]
+ - RuneLite version: [e.g 1.4.6]
+ - Launcher version: [e.g 1.5.2]
 
-**Desktop (preencha as seguintes informações):**
-
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (preencha as seguintes informações):**
-
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Contexto adicional**
-
-Adicione qualquer outro contexto sobre o problema aqui
+**Additional context**
+Add any other context about the problem here.
