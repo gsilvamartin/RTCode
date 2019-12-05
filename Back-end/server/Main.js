@@ -14,7 +14,7 @@ server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
 server.use(users);
 
 /**
- * Redirencia o usuário para a página de codificação
+ * Redirect user to coding page.
  * 
  * @author Guilherme da Silva Martin
  */
@@ -23,7 +23,7 @@ server.get('/code/:codeid?', (req, res) => {
 });
 
 /**
- * Função executada quando há uma nova conexão no socket
+ * Function performed when there is a new socket connection.
  *
  * @author Guilherme da Silva Martin
  */
@@ -39,12 +39,12 @@ io.on('connection', (socket) => {
 });
 
 /**
- * Função executada quando o usuário se desconecta do socket
+ * Function performed when user disconnects from socket.
  *
  * @author Guilherme da Silva Martin
  */
 io.on('disconnect', (evt) => {
-    console.log(`usuário desconectado ${evt}`);
+    console.log(`User disconnected ${evt}`);
 });
 
 socketServer.listen(5000);

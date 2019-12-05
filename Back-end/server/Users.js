@@ -7,49 +7,49 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 /**
- * Retorna um usuário por seu id
+ * Returns a user by their id.
  *
  * @author Guilherme da Silva Martin
  */
-router.get('/users/:id', async (req, res) => {
-  let userService = await user.init();
+router.get('/users/:id', async(req, res) => {
+    let userService = await user.init();
 
-  res.send(await userService.getUserById(req.params.id));
+    res.send(await userService.getUserById(req.params.id));
 });
 
 /**
- * Insere um novo usuário
+ * Create a new user.
  *
  * @author Guilherme da Silva Martin
  */
-router.post('/users/', async (req, res) => {
-  let userService = await user.init();
+router.post('/users/', async(req, res) => {
+    let userService = await user.init();
 
-  res.send(await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password));
+    res.send(await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password));
 });
 
 /**
- * Deleta um usuário por seu id
+ * Delete a user by id.
  *
  * @author Guilherme da Silva Martin
  */
-router.delete('/users/:id', async (req, res) => {
-  let userService = await user.init();
+router.delete('/users/:id', async(req, res) => {
+    let userService = await user.init();
 
-  res.send(await userService.deleteUser(req.params.id));
+    res.send(await userService.deleteUser(req.params.id));
 });
 
 /**
- * Atualiza um usuário
+ * Update a user.
  *
  * @author Guilherme da Silva Martin
  */
-router.put('/users/:id', async (req, res) => {
-  let userService = await user.init();
+router.put('/users/:id', async(req, res) => {
+    let userService = await user.init();
 
-  res.send(
-    await userService.updateUser(req.params.id, req.body.Name, req.body.Email, req.body.Password, req.body.Image)
-  );
+    res.send(
+        await userService.updateUser(req.params.id, req.body.Name, req.body.Email, req.body.Password, req.body.Image)
+    );
 });
 
 module.exports = router;
