@@ -18,7 +18,7 @@ server.use(users);
  * 
  * @author Guilherme da Silva Martin
  */
-server.get('/code/', (req, res) => {
+server.get('/code/:codeid?', (req, res) => {
     res.sendFile(path.resolve(__dirname + '/../../Front-end/code.html'));
 });
 
