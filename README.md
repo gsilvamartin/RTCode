@@ -4,7 +4,7 @@
 
 <p align="center">RTCode (RealTime Code) is an application to share real time code with multiple connected users.</p>
 
-<div style="width: 50%;margin: 0 auto;"><image src="https://travis-ci.com/gsilvamartin/RTCode.svg?branch=master"></div>
+<p align="center"><a href=""><image src="https://travis-ci.com/gsilvamartin/RTCode.svg?branch=master" style="max-width:100%"></a></p>
 
 ## Installation
 
