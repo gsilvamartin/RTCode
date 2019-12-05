@@ -2,30 +2,30 @@
   <img src="https://user-images.githubusercontent.com/42881020/69838576-e81b7600-1232-11ea-8806-56992f5f9afe.png" width="250">
 </p>
 
-RTCode (RealTime Code) é uma aplicação desenvolvida utilizando Javascript e HTML para compartilhar código em tempo real com múltiplos usuários conectados.
+RTCode (RealTime Code) is an application developed using Javascript and HTML to share real time code with multiple connected users.
 
-## Instalação
+## Installation
 
-1. Faça um clone do projeto e navegue até a pasta raiz do projeto.
+1. Clone the project and navigate to the project root folder.
 
 ```bash
 cd RTCode
 ```
 
-2. Instale as dependências necessárias para a execução do projeto.
+2. Install the necessary dependencies for the project execution.
 
 ```bash
 npm install
 ```
 
-3. Execute o comando a seguir para iniciar a aplicação.
+3. Run the following command to start the application.
 
 ```bash
 npm start
 ```
 
-## Contribuição
-O sistema está em processo de desenvolvimento e possui erros e melhorias a serem implementadas, portanto pull requests são bem vindos.
+## Contribution
+The system is under development and has bugs and improvements to be implemented, so pull requests are welcome.
 
-Licença: 
+License: 
 [MIT](https://choosealicense.com/licenses/mit/)
