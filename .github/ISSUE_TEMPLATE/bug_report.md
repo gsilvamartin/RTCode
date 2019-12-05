@@ -34,4 +34,5 @@ If applicable, add screenshots to help explain your problem.
 - Navigator: [Google Chrome, Internet Explorer, Mozilla]
 
 **Additional context**
+
 Add any other context about the problem here.
