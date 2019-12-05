@@ -2,8 +2,19 @@ body {
     overflow: hidden;
 }
 
+.code-container{
+    height: 100%;
+}
+
 .terminal {
     height: 100%;
+}
+
+.img-logo {
+    width: 140px;
+    height: 35px; 
+    margin-left: 1%;
+    margin-top: 1%;
 }
 
 .xterm-viewport {

@@ -35,24 +35,20 @@
 <!--END TERMINAL IMPORT-->
 
 <body>
-    <div class="principal">
-        <div class="navbar-fixed" style="position: fixed;">
-            <nav>
-                <div class="nav-wrapper">
-                    <img src="/img/rt-code-logo.png" class="left" style="width: 140px;height: 35px; margin-left: 1%;margin-top: 1%;">
-                    <ul id="nav-mobile" class="right">
-                        <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar"><i class="material-icons">sync</i></a> </li>
-                        <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar" href="#modal-options">Options</a></li>
-                        <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar" href="#modal-register">Register</a></li>
-                        <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar" href="#modal-login">Login</a></li>
-                    </ul>
-                </div>
-            </nav>
+    <nav>
+        <div class="nav-wrapper">
+            <img src="/img/rt-code-logo.png" class="left img-logo">
+            <ul id="nav-mobile" class="right">
+                <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar"><i class="material-icons">sync</i></a> </li>
+                <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar" href="#modal-options">Options</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar" href="#modal-register">Register</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger btn-code-navbar" href="#modal-login">Login</a></li>
+            </ul>
         </div>
-        <div class="row" style="height: 100%;padding-top: 56px;">
-            <textarea id="editor" style="height: 100%;"></textarea>
-            <div id="terminal" style="width: 33.33333%;"></div>
-        </div>
+    </nav>
+    <div class="row code-container">
+        <textarea id="editor" style="height: 100%;"></textarea>
+        <div id="terminal" style="width: 33.33333%;"></div>
     </div>
 </body>
 
