@@ -7,7 +7,8 @@ const term = new Terminal();
  */
 function initTerminal() {
     term.open(document.getElementById('terminal'));
-    term.write('Olá, mundo!');
+    term.write('$ \r\n');
+    term.write('$');
 }
 
 $(document).ready(() => {

@@ -2,8 +2,13 @@ body {
     overflow: hidden;
 }
 
-.CodeMirror-scroll {
+.terminal{
+    height: 100%;
+}
+
+.xterm-viewport{
     overflow: hidden;
+    overflow-y: hidden !important;
 }
 
 .footer {
