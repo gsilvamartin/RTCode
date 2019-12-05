@@ -2,8 +2,13 @@ body {
     overflow: hidden;
 }
 
-.CodeMirror-scroll {
+.terminal {
+    height: 100%;
+}
+
+.xterm-viewport {
     overflow: hidden;
+    overflow-y: hidden !important;
 }
 
 .btn-code-navbar {
@@ -109,7 +114,7 @@ body {
     background-color: #2b2b2b;
 }
 
-#titulo-header {
+#title-header {
     font-size: 25px;
     margin-left: 1%;
 }

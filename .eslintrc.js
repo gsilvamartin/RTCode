@@ -31,7 +31,7 @@ module.exports = {
     },
     "rules": {
         "comma-dangle": [2, "never"],
-        "no-console": 1,
+        // "no-console": 1,
         "no-constant-condition": 2,
         "no-control-regex": 2,
         "no-debugger": 1,
@@ -52,7 +52,7 @@ module.exports = {
 
         "accessor-pairs": 2,
         "block-scoped-var": 2,
-        "curly": 2,
+        // "curly": 2,
         "default-case": 2,
         "dot-location": [2, "property"],
         "dot-notation": 2,
@@ -90,7 +90,7 @@ module.exports = {
         "no-useless-call": 2,
         "no-useless-concat": 2,
         "no-void": 2,
-        "no-warning-comments": 1,
+        // "no-warning-comments": 1,
         "no-with": 2,
         "radix": [2, "as-needed"],
         "vars-on-top": 2,

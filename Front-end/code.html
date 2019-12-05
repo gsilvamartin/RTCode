@@ -1,25 +1,26 @@
 <html style="height: 100%;">
 <title>RTCode - share code in real time</title>
-<!--IMPORTACAO CSS GERAL-->
+
+<!--GENERAL CSS IMPORT-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
-<!--FIM IMPORTACAO CSS-->
+<!--END GENERAL CSS IMPORT-->
 
-<!--IMPORTAÇÃO CSS BOOTSTRAP-->
+<!--BOOTSTRAP IMPORT-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-<!--FIM IMPORTAÇÃO BOOTSTRAP-->
+<!--END BOOTSTRAP IMPORT-->
 
-<!--IMPORTACAO MATERIALIZE-->
+<!--MATERIALIZE IMPORT-->
 <link type="text/css" rel="stylesheet" href="/css/import/materialize/materialize.min.css" media="screen,projection" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--FIM IMPORTACAO MATERIALIZE-->
+<!--END MATERIALIZE IMPORT-->
 
-<!--IMPORTAÇÃO CSS CODEMIRROR-->
+<!--CODE MIRROR CSS IMPORT-->
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/codemirror.css" />
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/show-hint.css" />
 <link rel="stylesheet" type="text/css" href="/css/code.css" />
-<!--FIM IMPORTAÇÃO CODEMIRROR-->
+<!--END CODEMIRROR CSS IMPORT-->
 
-<!--IMPORTAÇÃO TEMAS CODEMIRROR-->
+<!--CODEMIRROR THEMES IMPORT-->
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/darcula.css" />
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/ambiance.css" />
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/base16-dark.css" />
@@ -27,15 +28,15 @@
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/eclipse.css" />
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/monokai.css" />
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/moxer.css" />
-<!--FIM IMPORTAÇÃO TEMAS-->
+<!--END THEME IMPORT-->
 
-<!--IMPORTAÇÃO TERMINAL-->
+<!--TERMINAL IMPORT-->
 <link rel="stylesheet" href="/xterm/css/xterm.css" />
-<!--FIM IMPORTAÇÃO TERMINAL-->
+<!--END TERMINAL IMPORT-->
 
 <body>
     <div class="principal">
-        <div class="navbar-fixed">
+        <div class="navbar-fixed" style="position: fixed;">
             <nav>
                 <div class="nav-wrapper">
                     <img src="img/rt-code-logo.png" class="left" style="width: 140px;height: 35px; margin-left: 1%;margin-top: 1%;">
@@ -48,15 +49,9 @@
                 </div>
             </nav>
         </div>
-        <div>
-            <div class="row">
-                <textarea id="editor" class="col s9"></textarea>
-            </div>
-        </div>
-        <div>
-            <div class="row">
-                <div id="terminal" class="col s4"></div>
-            </div>
+        <div class="row" style="height: 100%;padding-top: 56px;">
+            <textarea id="editor" style="height: 100%;"></textarea>
+            <div id="terminal" style="width: 33.33333%;"></div>
         </div>
     </div>
 </body>
@@ -154,20 +149,20 @@
         </div>
     </form>
 </div>
+</div>
 
-<!--IMPORTAÇÕES GERAIS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="/js/import/materialize/materialize.min.js"></script>
 <script src="/js/code.js"></script>
-<!--FIM IMPORTAÇÕES GERAIS-->
+<!--END GENERAL IMPORT-->
 
-<!--IMPORTAÇÕES SOCKET-->
+<!--SOCKET IMPORT-->
 <script src="/socket.io-client/dist/socket.io.js"></script>
 <script src="/js/code-client.js"></script>
-<!--FIM IMPORTAÇÕES SOCKET-->
+<!--END SOCKET IMPORT-->
 
-<!--IMPORTAÇÕES CODEMIRROR-->
+<!--CODEMIRROR IMPORT-->
 <script src="/js/import/codemirror/codemirror.js"></script>
 <script src="/js/import/codemirror/languages/javascript.js"></script>
 <script src="/js/import/codemirror/languages/python.js"></script>
@@ -178,11 +173,11 @@
 <script src="/js/import/codemirror/javascript-hint.js"></script>
 <script src="/js/import/codemirror/anyword-hint.js"></script>
 <script src="/js/code-mirror.js"></script>
-<!--FIM IMPORTAÇÕES CODEMIRROR-->
+<!--END CODEMIRROR IMPORT-->
 
-<!--IMPORTAÇÃO TERMINAL-->
+<!--TERMINAL IMPORT-->
 <script src="/xterm/lib/xterm.js"></script>
 <script src="/js/terminal.js"></script>
-<!--FIM IMPORTAÇÃO TERMINAL-->
+<!--END TERMINAL IMPORT-->
 
 </html>

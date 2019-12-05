@@ -1,5 +1,5 @@
 /**
- * Configuração editor code-mirror
+ * Code-mirror editor configuration.
  * 
  * @author Guilherme da Silva Martin
  */
@@ -21,8 +21,8 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
 });
 
 /**
- * Atualiza o número de linhas digitadas e total do tamanho do arquivo
- * quando o usuário pressiona qualquer tecla do teclado.
+ * Updates number of lines typed and total file size
+ * when the user presses any key on the keyboard.
  * 
  * @author Guilherme da Silva Martin
  */
@@ -37,7 +37,7 @@ codeEditor.on('keyup', (cm, event) => {
 });
 
 /**
- * Atualiza o editor quando o socket envia um novo código atualizado.
+ * Update editor when socket sends new updated code.
  * 
  * @author Guilherme da Silva Martin
  */
@@ -46,7 +46,7 @@ socket.on('message', (data) => {
 });
 
 /**
- * Altera o tema do code-mirror
+ * Change the code mirror theme.
  * 
  * @author Guilherme da Silva Martin
  */
@@ -55,7 +55,7 @@ function changeTheme(theme) {
 }
 
 /**
- * Indenta todo o código
+ * Indent all code.
  * 
  * @author Guilherme da Silva Martin
  */
@@ -66,7 +66,7 @@ function indentAllLines() {
 }
 
 /**
- * Muda a linguagem utilizada no code
+ * Changes the language used in code.
  * 
  * @author Guilherme da Silva Martin
  * @param {*} mode 
@@ -75,4 +75,9 @@ function changeCodeMirrorMode(mode) {
     codeEditor.setOption('mode', mode);
 }
 
-codeEditor.setSize('100%', '100%');
+/**
+ * Set code editor height and width.
+ * 
+ * @author Guilherme da Silva Martin
+ */
+codeEditor.setSize('66.66666%', '100%');
