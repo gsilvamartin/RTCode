@@ -7,7 +7,6 @@ const term = new Terminal();
  */
 function initTerminal() {
     term.open(document.getElementById('terminal'));
-    term.write('$ \r\n');
     term.write('$');
 }
 

@@ -35,23 +35,21 @@
 <!--END TERMINAL IMPORT-->
 
 <body>
-    <div class="principal">
-        <div class="navbar-fixed" style="position: fixed;">
-            <nav>
-                <div class="nav-wrapper">
-                    <img src="img/rt-code-logo.png" class="left" style="width: 140px;height: 35px; margin-left: 1%;margin-top: 1%;">
-                    <ul id="nav-mobile" class="right">
-                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;"><i class="material-icons">sync</i></a> </li>
-                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;" href="#modal-register">Register</a></li>
-                        <li><a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; margin-left: 0px;" href="#modal-login">Login</a></li>
-                    </ul>
-                </div>
-            </nav>
+    <nav>
+        <div class="nav-wrapper">
+            <img src="/img/rt-code-logo.png" class="left img-logo">
+            <ul id="nav-mobile" class="right">
+                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar"><i class="material-icons">sync</i></a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-options">Options</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-register">Register</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-login">Login</a></li>
+            </ul>
         </div>
-        <div class="row" style="height: 100%;padding-top: 56px;">
-            <textarea id="editor" style="height: 100%;"></textarea>
-            <div id="terminal" style="width: 33.33333%;"></div>
-        </div>
+    </nav>
+    <div class="row code-container">
+        <textarea id="editor" style="height: 100%;"></textarea>
+        <div id="terminal" style="width: 33.33333%;"></div>
+    </div>
 </body>
 
 <div id="modal-register" class="modal">
@@ -82,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="col s6">
-                    <a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; text-align: center;" href="#modal-register">Register</a>
+                    <a class="waves-effect waves-light btn modal-trigger btn-modal" href="#modal-register">Register</a>
                 </div>
             </div>
         </form>
@@ -105,9 +103,13 @@
                     <label for="password_login">Password</label>
                 </div>
             </div>
+            <label style='float: right;'>
+                <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
+            </label>
             <div class="row">
                 <div class="col s12">
-                    <a class="waves-effect waves-light btn modal-trigger" style="background-color: #4c4c4c; text-align: center;" href="#modal-register">Register</a>
+                    <a class="waves-effect waves-light btn modal-trigger btn-modal" href="#">Login</a>
+                    <a class="waves-effect waves-light btn modal-trigger btn-modal" href="#modal-register">Register</a>
                 </div>
             </div>
         </form>
@@ -143,10 +145,9 @@
                     <option value="monokai">Monokai</option>
                     <option value="moxer">Moxer</option>
                 </select>
-            <label for="search">Language</label>
+            <label for="search">Theme</label>
         </div>
     </form>
-</div>
 </div>
 
 <!--GENERAL IMPORT-->

@@ -2,13 +2,34 @@ body {
     overflow: hidden;
 }
 
+.code-container{
+    height: 100%;
+}
+
 .terminal {
     height: 100%;
+}
+
+.img-logo {
+    width: 140px;
+    height: 35px; 
+    margin-left: 1%;
+    margin-top: 1%;
 }
 
 .xterm-viewport {
     overflow: hidden;
     overflow-y: hidden !important;
+}
+
+.btn-navbar {
+    background-color: #4c4c4c; 
+    margin-left: 0px;
+}
+
+.btn-modal {
+    background-color: #4c4c4c;
+    text-align: center;
 }
 
 .footer {
@@ -31,72 +52,6 @@ body {
 .small-description {
     color: white;
     font-size: 20px;
-}
-
-#btn-login {
-    transition: all .5s ease;
-    color: #fff;
-    border: 1px solid white;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1;
-    font-size: 17px;
-    background-color: transparent;
-    padding: 10px;
-    outline: none;
-    border-radius: 4px;
-    margin-top: 1%;
-    cursor: pointer;
-}
-
-#btn-login:hover {
-    color: #001F3F;
-    background-color: #fff;
-}
-
-#btn-register {
-    transition: all .5s ease;
-    color: #fff;
-    border: 1px solid white;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1;
-    font-size: 17px;
-    background-color: transparent;
-    padding: 10px;
-    outline: none;
-    border-radius: 4px;
-    margin-top: 1%;
-    cursor: pointer;
-}
-
-#btn-register:hover {
-    color: #001F3F;
-    background-color: #fff;
-}
-
-#btn-share {
-    transition: all .5s ease;
-    color: #fff;
-    border: 1px solid white;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1;
-    font-size: 17px;
-    background-color: transparent;
-    padding: 10px;
-    outline: none;
-    border-radius: 4px;
-    margin-top: 1%;
-    cursor: pointer;
-}
-
-#btn-share:hover {
-    color: #001F3F;
-    background-color: #fff;
 }
 
 .principal {
