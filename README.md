@@ -2,7 +2,9 @@
   <img src="https://user-images.githubusercontent.com/42881020/69838576-e81b7600-1232-11ea-8806-56992f5f9afe.png" width="250">
 </p>
 
-RTCode (RealTime Code) is an application developed using Javascript and HTML to share real time code with multiple connected users.
+<p align="center">RTCode (RealTime Code) is an application to share real time code with multiple connected users.</p>
+
+<div style="text-align:center"><image src="https://travis-ci.com/gsilvamartin/RTCode.svg?branch=master"></div>
 
 ## Installation
 
