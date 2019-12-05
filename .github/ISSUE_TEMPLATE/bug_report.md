@@ -25,9 +25,9 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment (please complete the following information):**
- - OS: [e.g. Windows, Ubuntu, macOS]
- - RuneLite version: [e.g 1.4.6]
- - Launcher version: [e.g 1.5.2]
+
+- OS: [e.g. Windows, Ubuntu, macOS]
+- Navigator: [Google Chrome, Internet Explorer, Mozilla]
 
 **Additional context**
 Add any other context about the problem here.
