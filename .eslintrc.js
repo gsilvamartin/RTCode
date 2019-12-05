@@ -90,7 +90,7 @@ module.exports = {
         "no-useless-call": 2,
         "no-useless-concat": 2,
         "no-void": 2,
-        "no-warning-comments": 1,
+        // "no-warning-comments": 1,
         "no-with": 2,
         "radix": [2, "as-needed"],
         "vars-on-top": 2,

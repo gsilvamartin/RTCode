@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
  * @author Guilherme da Silva Martin
  */
 io.on('disconnect', (evt) => {
-    console.log(`User disconnected ${evt}`);
+    // TODO: HANDLE USER DISCONNECTED
 });
 
 socketServer.listen(5000);
