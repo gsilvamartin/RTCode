@@ -25,7 +25,7 @@ npm install
 ```bash
 npm start
 ```
-4. Abrir o navegador no endereço http://localhost:5000/code/
+4. Open browser in http://localhost:5000/code/
 
 ## Contribution
 The system is under development and has bugs and improvements to be implemented, so pull requests are welcome.
