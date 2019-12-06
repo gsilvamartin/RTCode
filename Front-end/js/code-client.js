@@ -1,4 +1,5 @@
 const socket = io('http://localhost:5000');
+const socketTerminal = io('http://localhost:5001');
 const editor = document.getElementById('editor');
 
 /**

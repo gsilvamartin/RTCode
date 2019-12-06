@@ -1,11 +1,14 @@
+const fs = require('fs')
 const express = require('express');
-const http = require('http');
 const path = require('path');
 const server = express();
-const socketServer = http.createServer(server);
 const users = require('./Users');
+const SSHClient = require('ssh2').Client;
 const bodyParser = require('body-parser');
-const io = require('socket.io')(socketServer);
+const serverSocket = server.listen(5000);
+const serverSocketTerminal = server.listen(5001);
+const socketCode = require('socket.io').listen(serverSocket);
+const socketTerminal = require('socket.io').listen(serverSocketTerminal);
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -27,24 +30,55 @@ server.get('/code/:codeid?', (req, res) => {
  *
  * @author Guilherme da Silva Martin
  */
-io.on('connection', (socket) => {
-    socket.on('join', (room) => {
-        socket.leaveAll();
-        socket.join(room);
+socketCode.on('connection', (socket) => {
+    socketCode.on('join', (room) => {
+        socketCode.leaveAll();
+        socketCode.join(room);
     });
 
-    socket.on('message', (evt) => {
-        socket.to(evt[0]).emit('message', evt[1]);
+    socketCode.on('message', (evt) => {
+        socketCode.to(evt[0]).emit('message', evt[1]);
     });
 });
 
 /**
- * Function performed when user disconnects from socket.
- *
+ * Handle terminal SSH connection.
+ * 
  * @author Guilherme da Silva Martin
  */
-io.on('disconnect', (evt) => {
-    // TODO: HANDLE USER DISCONNECTED
-});
-
-socketServer.listen(5000);
+socketTerminal.on('connection', (socket) => {
+    const conn = new SSHClient();
+  
+    conn
+      .on('ready', () => {
+        socket.emit('data', '\r\n*** Connection Success ***\r\n');
+  
+        conn.shell((err, stream) => {
+          if (err) return socket.emit('data', '\r\n*** SSH SHELL ERROR: ' + err.message + ' ***\r\n');
+          socket.on('data', (data) => {
+            stream.write(data);
+          });
+          stream
+            .on('data', (d) => {
+              socket.emit('data', d.toString('binary'));
+            })
+            .on('close', () => {
+              conn.end();
+            });
+        });
+      })
+      .on('close', () => {
+        socket.emit('data', '\r\n*** Server Connection Closed ***\r\n');
+      })
+      .on('error', (err) => {
+          console.log(err);
+        socket.emit('data', '\r\n*** Server Connection Error: ' + err.message + ' ***\r\n');
+      })
+      .connect({
+        host: 'localhost',
+        port: 22,
+        username: 'DESKTOP-S8KEJL1',
+        tryKeyboard: true,
+        readyTimeout: 60000
+    });
+  });
