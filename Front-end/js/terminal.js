@@ -23,16 +23,14 @@ function initTerminal() {
 term.onKey((data) => {
     if (data.domEvent.keyCode === 38 || data.domEvent.keyCode === 40) return;
 
-
     if (data.domEvent.key === 'Enter') {
         inputLine = '';
         writeNewTerminalLine();
-    } else {
-        if (isArrowKeyCode(data.domEvent.keyCode)) {
-            lineCursor += 1;
-            inputLine += data.key;
+    } else if (isArrowKeyCode(data.domEvent.keyCode)) {
+        if (getCursorPosition().cursorX > 3) {
+            incrementOrDecrementArrowCursor(data.domEvent.keyCode);
         }
-
+    } else {
         term.write(data.key);
     }
 });
@@ -45,6 +43,34 @@ term.onKey((data) => {
 function writeNewTerminalLine() {
     term.write('\r\n');
     term.write('~$ ');
+}
+
+/**
+ * Increments or decrements the cursor taking as parameter
+ * the arrow that is entered.
+ * 
+ * @author Guilherme da Silva Martin
+ */
+function incrementOrDecrementArrowCursor(cursorKeyCode) {
+    switch (cursorKeyCode) {
+        case 37:
+            lineCursor -= 1;
+            break;
+        case 39:
+            lineCursor += 1;
+            break;
+        default:
+            break;
+    }
+}
+
+/**
+ * 
+ * 
+ * @author Guilherme da Silva Martin
+ */
+function getCursorPosition() {
+    return { cursorX: term.buffer.cursorX, cursorY: term.buffer.cursorY };
 }
 
 /**
