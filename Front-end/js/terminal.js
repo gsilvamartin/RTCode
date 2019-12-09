@@ -27,9 +27,7 @@ term.onKey((data) => {
         inputLine = '';
         writeNewTerminalLine();
     } else if (isArrowKeyCode(data.domEvent.keyCode)) {
-        if (getCursorPosition().cursorX > 3) {
-            incrementOrDecrementArrowCursor(data.domEvent.keyCode);
-        }
+        incrementOrDecrementArrowCursor(data);
     } else {
         term.write(data.key);
     }
@@ -51,13 +49,17 @@ function writeNewTerminalLine() {
  * 
  * @author Guilherme da Silva Martin
  */
-function incrementOrDecrementArrowCursor(cursorKeyCode) {
-    switch (cursorKeyCode) {
+function incrementOrDecrementArrowCursor(data) {
+    switch (data.domEvent.keyCode) {
         case 37:
-            lineCursor -= 1;
+            if (getCursorPosition().cursorX > 3) {
+                lineCursor -= 1;
+                term.write(data.key);
+            }
             break;
         case 39:
             lineCursor += 1;
+            term.write(data.key);
             break;
         default:
             break;
