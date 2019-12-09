@@ -139,7 +139,7 @@ module.exports = {
         "no-unneeded-ternary": 2,
         "object-curly-spacing": [2, "always"],
         // "one-var": [ 2, "always" ],
-        "operator-linebreak": [2, "none"],
+        // "operator-linebreak": [2, "none"],
         // "quote-props": [ 2, "always" ],
         "quotes": [2, "single", "avoid-escape"],
         "semi": [2, "always"],
