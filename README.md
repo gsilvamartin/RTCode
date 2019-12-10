@@ -12,7 +12,7 @@
   * Environment Settings.
   * Diverging programming SDK Versions.
   * Code version divergence.
-  * Difficulty in collaboration between users.
+  * Difficulty in code collaboration between users.
 
 ## Installation
 
