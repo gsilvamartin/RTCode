@@ -139,4 +139,4 @@ let ansiEscapes = {
   }
 };
 
-export default ansiEscapes;
+export { ansiEscapes };
