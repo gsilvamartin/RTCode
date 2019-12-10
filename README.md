@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/42881020/69838576-e81b7600-1232-11ea-8806-56992f5f9afe.png" width="250">
+  <img src="https://user-images.githubusercontent.com/42881020/70568759-4cb1cb80-1b77-11ea-8366-629121931752.png" width="350">
 </p>
 
 <p align="center"><a href="https://travis-ci.com/gsilvamartin/rtcode"><image src="https://travis-ci.com/gsilvamartin/RTCode.svg?branch=master" style="max-width:100%"></a> <a href="https://github.com/gsilvamartin/RTCode/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/gsilvamartin/RTCode"></a> <a href="https://github.com/gsilvamartin/RTCode/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/gsilvamartin/RTCode"></a> <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/gsilvamartin/rtcode"></p>
