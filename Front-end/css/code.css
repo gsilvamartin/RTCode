@@ -11,10 +11,13 @@ body {
 }
 
 .img-logo {
-    width: 140px;
-    height: 35px; 
+    width: 130px;
+    height: 30px; 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     margin-left: 1%;
-    margin-top: 1%;
 }
 
 .xterm-viewport {
