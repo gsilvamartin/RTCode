@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const server = express();
 const users = require('./Users');
-const SSHClient = require('ssh2').Client;
 const bodyParser = require('body-parser');
 const serverSocket = server.listen(5000);
 const serverSocketTerminal = server.listen(5001);
