@@ -632,8 +632,8 @@ var LocalEchoController = (function(t) {
                 i < n;
                 ++i
               )
-                term.write('[E');
-              term.write('\r[K');
+                this.term.write('[E');
+              this.term.write('\r[K');
               for (i = 1; i < r; ++i) term.write('[F[K');
             }
           },
@@ -648,8 +648,8 @@ var LocalEchoController = (function(t) {
                 i = c(r, e, this._termSize.cols),
                 s = i.col,
                 o = n - i.row - 1;
-              term.write('\r');
-              for (var u = 0; u < o; ++u) term.write('[F');
+              this.term.write('\r');
+              for (var u = 0; u < o; ++u) this.term.write('[F');
               for (u = 0; u < s; ++u) this.term.write('[C');
               this._input = t;
             }
@@ -680,10 +680,10 @@ var LocalEchoController = (function(t) {
                 s = c(r, this.applyPromptOffset(this._input, t), this._termSize.cols),
                 o = s.col,
                 u = s.row;
-              if (u > i) for (var a = i; a < u; ++a) term.write('[B');
-              else for (var l = u; l < i; ++l) term.write('[A');
-              if (o > n) for (var f = n; f < o; ++f) term.write('[C');
-              else for (var p = o; p < n; ++p) term.write('[D');
+              if (u > i) for (var a = i; a < u; ++a) this.term.write('[B');
+              else for (var l = u; l < i; ++l) this.term.write('[A');
+              if (o > n) for (var f = n; f < o; ++f) this.term.write('[C');
+              else for (var p = o; p < n; ++p) this.term.write('[D');
               this._cursor = t;
             }
           },

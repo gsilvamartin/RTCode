@@ -24,7 +24,10 @@ function initTerminal() {
 function handleUserInput() {
   localEcho
     .read('~$ ')
-    .then((input) => console.log(`User entered: ${input}`))
+    .then((input) => {
+      console.log('User input: ' + input);
+      handleUserInput();
+    })
     .catch((error) => console.log(`Error reading: ${error}`));
 }
 
