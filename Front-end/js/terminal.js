@@ -9,13 +9,22 @@ const term = new Terminal();
  * @author Guilherme da Silva Martin
  */
 function initTerminal() {
-  joinRoom();
-  term.open(document.getElementById('terminal'));
-  localEcho = new LocalEchoController(term);
+    joinRoom();
+    term.open(document.getElementById('terminal'));
+    localEcho = new LocalEchoController(term);
 
-  term.write('Welcome to RTCode \r\n');
-  term.write('\r\n');
+    term.write('Welcome to RTCode \r\n');
+    term.write('\r\n');
 }
+
+/**
+ * Handle terminal keyups
+ * 
+ * @author Guilherme da Silva Martin
+ */
+$('#terminal').on('keyup', (e) => {
+    socket.emit('term-keyup', [getRoomName(), e.key]);
+});
 
 /**
  * Returns the name of the room sent by parameter
@@ -23,10 +32,10 @@ function initTerminal() {
  * @author Guilherme da Silva Martin
  */
 function getRoomName() {
-  let url = window.location.href;
-  let roomName = url.split('/').reverse()[0];
+    let url = window.location.href;
+    let roomName = url.split('/').reverse()[0];
 
-  return roomName;
+    return roomName;
 }
 
 /**
@@ -35,8 +44,17 @@ function getRoomName() {
  * @author Guilherme da Silva Martin
  */
 socket.on('term-data', (data) => {
-  localEcho.println(data);
-  handleUserInput();
+    localEcho.println(data);
+    handleUserInput();
+});
+
+/**
+ * Handle receiving terminal key input
+ * 
+ * @author Guilherme da Silva Martin
+ */
+socket.on('keyup-data', (data) => {
+    localEcho.print(data);
 });
 
 /**
@@ -45,7 +63,7 @@ socket.on('term-data', (data) => {
  * @author Guilherme da Silva Martin
  */
 function joinRoom() {
-  socket.emit('join-terminal', getRoomName());
+    socket.emit('join-terminal', getRoomName());
 }
 
 /**
@@ -54,12 +72,12 @@ function joinRoom() {
  * @author Guilherme da Silva Martin
  */
 function handleUserInput() {
-  localEcho
-    .read('~$ ')
-    .then((input) => {
-      socket.emit('cmd', [getRoomName(), input]);
-    })
-    .catch((error) => console.log(`Error reading: ${error}`));
+    localEcho
+        .read('~$ ')
+        .then((input) => {
+            socket.emit('cmd', [getRoomName(), input]);
+        })
+        .catch((error) => console.log(`Error reading: ${error}`));
 }
 
 /**
@@ -68,6 +86,6 @@ function handleUserInput() {
  * @author Guilherme da Silva Martin
  */
 $(document).ready(() => {
-  initTerminal();
-  handleUserInput();
+    initTerminal();
+    handleUserInput();
 });
