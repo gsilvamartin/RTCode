@@ -9,11 +9,42 @@ const term = new Terminal();
  * @author Guilherme da Silva Martin
  */
 function initTerminal() {
+  joinRoom();
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
 
   term.write('Welcome to RTCode \r\n');
   term.write('\r\n');
+}
+
+/**
+ * Returns the name of the room sent by parameter
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getRoomName() {
+  let url = window.location.href;
+  let roomName = url.split('/').reverse()[0];
+
+  return roomName;
+}
+
+/**
+ * Handle receiving new terminal data
+ *
+ * @author Guilherme da Silva Martin
+ */
+socket.on('term-data', (data) => {
+  localEcho.println(data);
+});
+
+/**
+ * Connects to desired room
+ *
+ * @author Guilherme da Silva Martin
+ */
+function joinRoom() {
+  socket.emit('join-terminal', getRoomName());
 }
 
 /**
@@ -25,7 +56,8 @@ function handleUserInput() {
   localEcho
     .read('~$ ')
     .then((input) => {
-      console.log('User input: ' + input);
+      socket.emit('cmd', [getRoomName(), input]);
+      
       handleUserInput();
     })
     .catch((error) => console.log(`Error reading: ${error}`));

@@ -1,13 +1,14 @@
 const fs = require('fs');
+const open = require('open');
+const http = require('http');
 const express = require('express');
-const path = require('path');
 const server = express();
+const codeServer = http.createServer(server);
+const path = require('path');
 const users = require('./Users');
 const bodyParser = require('body-parser');
-const serverSocket = server.listen(5000);
-const serverSocketTerminal = server.listen(5001);
-const socketCode = require('socket.io').listen(serverSocket);
-const socketTerminal = require('socket.io').listen(serverSocketTerminal);
+const socketCode = require('socket.io')(codeServer);
+const compilerService = require('../service/CompilerService');
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -17,11 +18,11 @@ server.use(users);
 
 /**
  * Redirect user to coding page.
- * 
+ *
  * @author Guilherme da Silva Martin
  */
 server.get('/code/:codeid?', (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/../../Front-end/code.html'));
+  res.sendFile(path.resolve(__dirname + '/../../Front-end/code.html'));
 });
 
 /**
@@ -30,12 +31,39 @@ server.get('/code/:codeid?', (req, res) => {
  * @author Guilherme da Silva Martin
  */
 socketCode.on('connection', (socket) => {
-    socketCode.on('join', (room) => {
-        socketCode.leaveAll();
-        socketCode.join(room);
-    });
+  socket.on('join-code', (room) => {
+    socket.leaveAll();
+    socket.join(room);
+  });
 
-    socketCode.on('message', (evt) => {
-        socketCode.to(evt[0]).emit('message', evt[1]);
-    });
+  socket.on('message', (evt) => {
+    socket.to(evt[0]).emit('message', evt[1]);
+  });
+});
+
+/**
+ * Handle terminal commands
+ *
+ * @author Guilherme da Silva Martin
+ */
+socketCode.on('connection', async (socket) => {
+  socket.on('join-terminal', (room) => {
+    socket.leaveAll();
+    socket.join(room);
+  });
+
+  socket.on('cmd', async (cmd) => {
+    let cmdReturn = await compilerService.executeCommand(cmd[1]);
+
+    socketCode.sockets.to(cmd[0]).emit('term-data', cmdReturn);
+  });
+});
+
+/**
+ * Server port listener
+ *
+ * @author Guilherme da Silva Martin
+ */
+codeServer.listen(5000, () => {
+  open('http://localhost:5000/code/');
 });

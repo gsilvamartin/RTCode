@@ -24,6 +24,7 @@
         "local-echo": "github:wavesoft/local-echo",
         "mongodb": "^3.3.3",
         "mongoose": "^5.7.9",
+        "open": "^7.0.0",
         "socket.io": "^2.3.0",
         "socket.io-client": "^2.3.0",
         "ssh2": "^0.8.7",
