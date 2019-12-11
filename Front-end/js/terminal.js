@@ -22,9 +22,7 @@ function initTerminal() {
  * 
  * @author Guilherme da Silva Martin
  */
-$('#terminal').on('keyup', (e) => {
-    socket.emit('term-keyup', [getRoomName(), e.key]);
-});
+$('#terminal').on('keyup', (e) => {});
 
 /**
  * Returns the name of the room sent by parameter
@@ -44,7 +42,7 @@ function getRoomName() {
  * @author Guilherme da Silva Martin
  */
 socket.on('term-data', (data) => {
-    localEcho.println(data);
+    localEcho.println('\n' + data);
     handleUserInput();
 });
 
@@ -53,8 +51,8 @@ socket.on('term-data', (data) => {
  * 
  * @author Guilherme da Silva Martin
  */
-socket.on('keyup-data', (data) => {
-    localEcho.print(data);
+socket.on('term-enter-data', (data) => {
+    localEcho.print(data + '\n\r');
 });
 
 /**
@@ -76,6 +74,7 @@ function handleUserInput() {
         .read('~$ ')
         .then((input) => {
             socket.emit('cmd', [getRoomName(), input]);
+            socket.emit('term-enter', [getRoomName(), input]);
         })
         .catch((error) => console.log(`Error reading: ${error}`));
 }

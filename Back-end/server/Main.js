@@ -52,8 +52,8 @@ socketCode.on('connection', async(socket) => {
         socket.join(room);
     });
 
-    socket.on('term-keyup', async(key) => {
-        socket.broadcast.to(key[0]).emit('keyup-data', key[1]);
+    socket.on('term-enter', async(key) => {
+        socket.broadcast.to(key[0]).emit('term-enter-data', key[1]);
     });
 
     socket.on('cmd', async(cmd) => {
