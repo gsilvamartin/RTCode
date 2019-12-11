@@ -41,13 +41,7 @@ npm install
 npm start
 ```
 
-4. Run the following command to create a new SQLite Database file.
-
-```bash
-npm config-db
-```
-
-5. Open browser in 
+4. Open browser in 
 
 ```bash
 http://localhost:5000/code/
