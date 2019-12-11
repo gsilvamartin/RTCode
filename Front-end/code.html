@@ -11,7 +11,7 @@
 
 <!--MATERIALIZE IMPORT-->
 <link type="text/css" rel="stylesheet" href="/css/import/materialize/materialize.min.css" media="screen,projection" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <!--END MATERIALIZE IMPORT-->
 
 <!--CODE MIRROR CSS IMPORT-->
@@ -37,9 +37,11 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <img src="/img/rt-code-logo.png" class="left img-logo">
+            <img src="/img/rt-code-logo.png" class="left img-logo" />
             <ul id="nav-mobile" class="right">
-                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar"><i class="material-icons">sync</i></a></li>
+                <li>
+                    <a class="waves-effect waves-light btn modal-trigger btn-navbar"><i class="material-icons">sync</i></a>
+                </li>
                 <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-options">Options</a></li>
                 <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-register">Register</a></li>
                 <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-login">Login</a></li>
@@ -58,23 +60,23 @@
             <h3 style="text-align: center;">Register</h3>
             <div class="row" style="margin-top: 5%;">
                 <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate">
+                    <input id="first_name" type="text" class="validate" />
                     <label for="first_name">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
+                    <input id="last_name" type="text" class="validate" />
                     <label for="last_name">Last Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
+                    <input id="password" type="password" class="validate" />
                     <label for="password">Password</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" class="validate" />
                     <label for="email">Email</label>
                 </div>
             </div>
@@ -93,19 +95,19 @@
             <h3 style="text-align: center;">Login</h3>
             <div class="row" style="margin-top: 5%;">
                 <div class="input-field col s12">
-                    <input id="email_login" type="text" class="validate">
+                    <input id="email_login" type="text" class="validate" />
                     <label for="email_login">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password_login" type="password" class="validate">
+                    <input id="password_login" type="password" class="validate" />
                     <label for="password_login">Password</label>
                 </div>
             </div>
-            <label style='float: right;'>
-                <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
-            </label>
+            <label style="float: right;">
+          <a class="pink-text" href="#!"><b>Forgot Password?</b></a>
+        </label>
             <div class="row">
                 <div class="col s12">
                     <a class="waves-effect waves-light btn modal-trigger btn-modal" href="#">Login</a>
@@ -121,30 +123,30 @@
         <h3 style="text-align: center;">Options</h3>
         <div class="input-field col s12" style="margin-top: 5%;">
             <select onchange="setLanguage(this)">
-                <option value="Generic" disabled selected>Select your language</option>
-                <option value="javascript">Javascript</option>
-                <option value="python">Python</option>
-                <option value="text/x-java">Java</option>
-                <option value="text/x-csrc">C</option>
-                <option value="text/x-csharp">C#</option>
-                <option value="text/x-c++src">C++</option>
-                <option value="text/x-objectivec">Objective-C</option>
-                <option value="text/x-scala">Scala</option>
-            </select>
+          <option value="Generic" disabled selected>Select your language</option>
+          <option value="javascript">Javascript</option>
+          <option value="python">Python</option>
+          <option value="text/x-java">Java</option>
+          <option value="text/x-csrc">C</option>
+          <option value="text/x-csharp">C#</option>
+          <option value="text/x-c++src">C++</option>
+          <option value="text/x-objectivec">Objective-C</option>
+          <option value="text/x-scala">Scala</option>
+        </select>
             <label for="search">Language</label>
         </div>
 
         <div class="input-field col s12" style="margin-top: 5%;">
             <select onchange="changeTheme(this.value)">
-                    <option value="Generic" disabled selected>Select your theme</option>
-                    <option value="ambiance">Ambiance</option>
-                    <option value="base-16-dark">Base-16 Dark</option>
-                    <option value="base-16-light">Base-16 Light</option>
-                    <option value="darcula">Darcula</option>
-                    <option value="eclipse">Eclipse</option>
-                    <option value="monokai">Monokai</option>
-                    <option value="moxer">Moxer</option>
-                </select>
+          <option value="Generic" disabled selected>Select your theme</option>
+          <option value="ambiance">Ambiance</option>
+          <option value="base-16-dark">Base-16 Dark</option>
+          <option value="base-16-light">Base-16 Light</option>
+          <option value="darcula">Darcula</option>
+          <option value="eclipse">Eclipse</option>
+          <option value="monokai">Monokai</option>
+          <option value="moxer">Moxer</option>
+        </select>
             <label for="search">Theme</label>
         </div>
     </form>
