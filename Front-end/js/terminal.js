@@ -36,6 +36,7 @@ function getRoomName() {
  */
 socket.on('term-data', (data) => {
   localEcho.println(data);
+  handleUserInput();
 });
 
 /**
@@ -57,8 +58,6 @@ function handleUserInput() {
     .read('~$ ')
     .then((input) => {
       socket.emit('cmd', [getRoomName(), input]);
-      
-      handleUserInput();
     })
     .catch((error) => console.log(`Error reading: ${error}`));
 }

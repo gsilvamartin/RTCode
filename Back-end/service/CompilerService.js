@@ -14,7 +14,7 @@ module.exports = class CompilerService {
 
       return cmdReturn.stdout !== undefined && cmdReturn.stdout !== null ? cmdReturn.stdout : cmdReturn.stderr;
     } catch (ex) {
-      return ex.Message;
+      return ex.stderr;
     }
   }
 };
