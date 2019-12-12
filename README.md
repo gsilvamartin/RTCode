@@ -21,7 +21,22 @@
   * Code version divergence.
   * Difficulty in code collaboration between users.
 
-## Installation
+## Features 💡
+
+  * Program in several languages.
+  * Great diversity of themes.
+  * Share code in real time with your friends.
+  * Fully functional terminal to execute your code.
+  
+## Built with 🔧
+
+  * Javascript - for scripts
+  * [NodeJS](https://nodejs.org/en/) - for backend coding
+  * [CodeMirror](https://github.com/codemirror/CodeMirror) - code text editor
+  * [xTermJS](https://github.com/xtermjs/xterm.js/) - javascript terminal
+  * [Socket.IO](https://github.com/socketio/socket.io) - for real time communication
+
+## Installation 🖥
 
 1. Clone the project and navigate to the project root folder.
 
@@ -47,7 +62,7 @@ npm start
 http://localhost:5000/code/
 ```
 
-## Contribution
+## Contribution 🥰
 The system is under development and has bugs and improvements to be implemented, so pull requests are welcome.
 
 License: 
