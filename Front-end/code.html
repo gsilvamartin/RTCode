@@ -9,10 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 <!--END BOOTSTRAP IMPORT-->
 
-<!--MATERIALIZE IMPORT-->
-<link type="text/css" rel="stylesheet" href="/css/import/materialize/materialize.min.css" media="screen,projection" />
+<!--GOOGLE FONTS-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-<!--END MATERIALIZE IMPORT-->
+<!--END GOOGLE FONTS IMPORT-->
 
 <!--CODE MIRROR CSS IMPORT-->
 <link rel="stylesheet" type="text/css" href="/css/import/codemirror/codemirror.css" />
@@ -34,128 +33,31 @@
 <link rel="stylesheet" href="/xterm/css/xterm.css" />
 <!--END TERMINAL IMPORT-->
 
+<!--TOASTR IMPORT-->
+<link href="/toastr/build/toastr.min.css" rel="stylesheet" type="text/css" />
+<!--END TOASTR IMPORT-->
+
 <body>
-    <nav>
-        <div class="nav-wrapper">
-            <img src="/img/rt-code-logo.png" class="left img-logo" />
-            <ul id="nav-mobile" class="right">
-                <li>
-                    <a class="waves-effect waves-light btn modal-trigger btn-navbar"><i class="material-icons">sync</i></a>
-                </li>
-                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-options">Options</a></li>
-                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-register">Register</a></li>
-                <li><a class="waves-effect waves-light btn modal-trigger btn-navbar" href="#modal-login">Login</a></li>
-            </ul>
+    <div id="principal">
+        <nav class="navbar" id="rtcode-nav">
+            <a href="#" class="navbar-brand">
+                <img src="/img/rt-code-logo.png" height="30">
+            </a>
+        </nav>
+        <div class="container-fluid">
+            <div class="row" id="content-body">
+                <textarea id="editor" class="col-sm-8 nopadding" id="principal-box-elements"></textarea>
+                <div id="terminal" class="col-sm-4 nopadding" id="principal-box-elements"></div>
+            </div>
         </div>
-    </nav>
-    <div class="row code-container">
-        <textarea id="editor" style="height: 100%;"></textarea>
-        <div id="terminal" style="width: 33.33333%;"></div>
     </div>
 </body>
-
-<div id="modal-register" class="modal">
-    <div class="row">
-        <form class="col s12">
-            <h3 style="text-align: center;">Register</h3>
-            <div class="row" style="margin-top: 5%;">
-                <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate" />
-                    <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate" />
-                    <label for="last_name">Last Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="password" class="validate" />
-                    <label for="password">Password</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" type="email" class="validate" />
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s6">
-                    <a class="waves-effect waves-light btn modal-trigger btn-modal" href="#modal-register">Register</a>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div id="modal-login" class="modal">
-    <div class="row">
-        <form class="col s12">
-            <h3 style="text-align: center;">Login</h3>
-            <div class="row" style="margin-top: 5%;">
-                <div class="input-field col s12">
-                    <input id="email_login" type="text" class="validate" />
-                    <label for="email_login">Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password_login" type="password" class="validate" />
-                    <label for="password_login">Password</label>
-                </div>
-            </div>
-            <label style="float: right;">
-          <a class="pink-text" href="#!"><b>Forgot Password?</b></a>
-        </label>
-            <div class="row">
-                <div class="col s12">
-                    <a class="waves-effect waves-light btn modal-trigger btn-modal" href="#">Login</a>
-                    <a class="waves-effect waves-light btn modal-trigger btn-modal" href="#modal-register">Register</a>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div id="modal-options" class="modal">
-    <form class="col s12">
-        <h3 style="text-align: center;">Options</h3>
-        <div class="input-field col s12" style="margin-top: 5%;">
-            <select onchange="setLanguage(this)">
-          <option value="Generic" disabled selected>Select your language</option>
-          <option value="javascript">Javascript</option>
-          <option value="python">Python</option>
-          <option value="text/x-java">Java</option>
-          <option value="text/x-csrc">C</option>
-          <option value="text/x-csharp">C#</option>
-          <option value="text/x-c++src">C++</option>
-          <option value="text/x-objectivec">Objective-C</option>
-          <option value="text/x-scala">Scala</option>
-        </select>
-            <label for="search">Language</label>
-        </div>
-
-        <div class="input-field col s12" style="margin-top: 5%;">
-            <select onchange="changeTheme(this.value)">
-          <option value="Generic" disabled selected>Select your theme</option>
-          <option value="ambiance">Ambiance</option>
-          <option value="base-16-dark">Base-16 Dark</option>
-          <option value="base-16-light">Base-16 Light</option>
-          <option value="darcula">Darcula</option>
-          <option value="eclipse">Eclipse</option>
-          <option value="monokai">Monokai</option>
-          <option value="moxer">Moxer</option>
-        </select>
-            <label for="search">Theme</label>
-        </div>
-    </form>
-</div>
 
 <!--GENERAL IMPORT-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="/js/import/materialize/materialize.min.js"></script>
+<script src="/toastr/build/toastr.min.js"></script>
 <script src="/js/code.js"></script>
 <!--END GENERAL IMPORT-->
 
