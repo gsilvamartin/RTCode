@@ -6,6 +6,20 @@ body {
     overflow: hidden;
 }
 
+#sync-button {
+    width: 45px;
+    height: 38px;
+    margin-right: 7px;
+}
+
+#register-button {
+    margin-right: 7px;
+}
+
+#login-button {
+    margin-right: 7px;
+}
+
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
