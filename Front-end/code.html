@@ -38,14 +38,18 @@
 <!--END TOASTR IMPORT-->
 
 <body>
-    <nav class="navbar fixed-top" id="rtcode-nav">
-        <a href="#" class="navbar-brand">
-            <img src="/img/rt-code-logo.png" height="30">
-        </a>
-    </nav>
-    <div class="row" style="height: 100%;margin-top: 57;">
-        <textarea id="editor" style="height: 100%; width: 66.6666%;"></textarea>
-        <div id="terminal" style="width: 33.33333%;"></div>
+    <div id="principal">
+        <nav class="navbar" id="rtcode-nav">
+            <a href="#" class="navbar-brand">
+                <img src="/img/rt-code-logo.png" height="30">
+            </a>
+        </nav>
+        <div class="container-fluid">
+            <div class="row" id="content-body">
+                <textarea id="editor" class="col-sm-8 nopadding" id="principal-box-elements"></textarea>
+                <div id="terminal" class="col-sm-4 nopadding" id="principal-box-elements"></div>
+            </div>
+        </div>
     </div>
 </body>
 
