@@ -23,10 +23,16 @@
 
 ## Features 💡
 
+  * Code autocomplete
   * Program in several languages.
   * Great diversity of themes.
   * Share code in real time with your friends.
   * Fully functional terminal to execute your code.
+  
+    ⌨️ **Editor Keyboard Shortcuts**:
+
+       - Indent all lines <kbd>Ctrl</kbd> + <kbd>S</kbd>  or  <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>
+       - Code auto complete <kbd>Ctrl</kbd> + <kbd>Space</kbd>
   
 ## Built with 🔧
 
@@ -61,6 +67,8 @@ npm start
 ```bash
 http://localhost:5000/code/
 ```
+
+
 
 ## Contribution 🥰
 The system is under development and has bugs and improvements to be implemented, so pull requests are welcome.
