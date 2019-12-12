@@ -1,6 +1,6 @@
 {
     "name": "rt-code",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "RTCode (RealTime Code) is an application developed using Javascript and HTML to share real time code with multiple connected users.",
     "main": "index.js",
     "scripts": {
