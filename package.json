@@ -4,7 +4,7 @@
     "description": "RTCode (RealTime Code) is an application developed using Javascript and HTML to share real time code with multiple connected users.",
     "main": "index.js",
     "scripts": {
-        "test": "mocha",
+        "test": "node node_modules/mocha/bin/mocha ./Back-end/test/ --recursive",
         "start": "node ./Back-end/server/Main.js"
     },
     "repository": {

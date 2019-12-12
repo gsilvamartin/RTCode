@@ -86,7 +86,7 @@ module.exports = {
         "no-return-assign": 2,
         "no-self-compare": 2,
         "no-throw-literal": 2,
-        "no-unused-expressions": [2, { "allowShortCircuit": true }],
+        // "no-unused-expressions": [2, { "allowShortCircuit": true }],
         "no-useless-call": 2,
         "no-useless-concat": 2,
         "no-void": 2,
