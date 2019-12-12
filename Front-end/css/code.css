@@ -2,10 +2,6 @@ body {
     overflow: hidden;
 }
 
-.code-container{
-    height: 100%;
-}
-
 .terminal {
     height: 100%;
 }
@@ -62,7 +58,7 @@ body {
     height: 100%;
 }
 
-.nav-wrapper {
+#rtcode-nav {
     border-bottom: 1.019px solid #ffffff0a;
     background-color: #2b2b2b;
 }
