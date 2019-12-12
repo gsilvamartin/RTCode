@@ -37,7 +37,7 @@
       
 ## Built with 🔧
 
-  * Javascript - for scripts
+  * [Javascript](https://developer.mozilla.org/en/JavaScript) - for scripts
   * [NodeJS](https://nodejs.org/en/) - for backend coding
   * [CodeMirror](https://github.com/codemirror/CodeMirror) - code text editor
   * [xTermJS](https://github.com/xtermjs/xterm.js/) - javascript terminal
