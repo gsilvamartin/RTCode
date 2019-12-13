@@ -64,12 +64,107 @@ function setToastrOptions() {
 }
 
 /**
+ * Show register form.
+ *
+ * @author Creative Tim
+ */
+function showRegisterForm() {
+  $('.loginBox').fadeOut('fast', () => {
+    $('.registerBox').fadeIn('fast');
+    $('.login-footer').fadeOut('fast', () => {
+      $('.register-footer').fadeIn('fast');
+    });
+    $('.modal-title').html('Register with');
+  });
+  $('.error')
+    .removeClass('alert alert-danger')
+    .html('');
+}
+
+/**
+ * Show login form.
+ *
+ * @author Creative Tim
+ */
+function showLoginForm() {
+  $('#loginModal .registerBox').fadeOut('fast', () => {
+    $('.loginBox').fadeIn('fast');
+    $('.register-footer').fadeOut('fast', () => {
+      $('.login-footer').fadeIn('fast');
+    });
+
+    $('.modal-title').html('Login with');
+  });
+  $('.error')
+    .removeClass('alert alert-danger')
+    .html('');
+}
+
+/**
+ * Show login modal.
+ *
+ * @author Creative Tim
+ */
+function openLoginModal() {
+  showLoginForm();
+  setTimeout(() => {
+    $('#loginModal').modal('show');
+  }, 230);
+}
+
+/**
+ * Show register modal.
+ *
+ * @author Creative Tim
+ */
+function openRegisterModal() {
+  showRegisterForm();
+  setTimeout(() => {
+    $('#loginModal').modal('show');
+  }, 230);
+}
+
+/**
+ * Login user.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function login() {
+  /*   Remove this comments when moving to server
+  $.post( "/login", function( data ) {
+          if(data == 1){
+              window.location.replace("/home");            
+          } else {
+               shakeModal(); 
+          }
+      });
+  */
+
+  /*   Simulate error message from the server   */
+  shakeModal();
+}
+
+/**
+ * Shake modal effect
+ *
+ * @author Creative Tim
+ */
+function shakeModal() {
+  $('#loginModal .modal-dialog').addClass('shake');
+  $('.error')
+    .addClass('alert alert-danger')
+    .html('Invalid email/password combination');
+  $('input[type="password"]').val('');
+  setTimeout(() => {
+    $('#loginModal .modal-dialog').removeClass('shake');
+  }, 1000);
+}
+
+/**
  * Runs as soon as the page is ready.
  *
  * @author Guilherme da Silva Martin
  */
 $(document).ready(() => {
   setToastrOptions();
-  $('.modal').modal();
-  $('select').formSelect();
 });
