@@ -211,6 +211,20 @@ body {
     text-align: center;
 }
 
+.avatar{
+    background-color: white;
+}
+
+.avatar-circle{
+    width: 46;
+    background-color: #EEEEEE;
+    color: #FFFFFF;
+    border-radius: 100px;
+    display: inline-block;
+    margin: 0 17px;
+    padding: 15px;
+}
+
 .login .social .circle{
     width: 46;
     background-color: #EEEEEE;
