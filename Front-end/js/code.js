@@ -161,6 +161,15 @@ function shakeModal() {
 }
 
 /**
+ * Open the options modal.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function openOptionsModal() {
+  $('#optionsModal').modal('show');
+}
+
+/**
  * Runs as soon as the page is ready.
  *
  * @author Guilherme da Silva Martin

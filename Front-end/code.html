@@ -58,6 +58,7 @@
         </a>
         <div class="btn-nav">
           <button type="button" class="btn btn-dark" id="sync-button"><i class="fas fa-sync"></i></button>
+          <button type="button" class="btn btn-dark" id="options-button" onclick="openOptionsModal()">Options</button>
           <button type="button" class="btn btn-dark" id="register-button" onclick="openRegisterModal()">
             Register
           </button>
@@ -157,6 +158,50 @@
                 <span>Already have an account?</span>
                 <a href="javascript: showLoginForm();">Login</a>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade options" id="optionsModal">
+        <div class="modal-dialog options animated">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="box">
+                <div class="content">
+                  <div class="form">
+                    <form method="" action="" accept-charset="UTF-8">
+                      <div class="form-group">
+                        <label for="editor-theme">Editor theme</label>
+                        <select class="form-control" id="editor-theme" onchange="changeTheme(this.value)">
+                          <option value="darcula">Darcula</option>
+                          <option value="base16-dark">Base 16 Dark</option>
+                          <option value="base16-light">Base 16 Light</option>
+                          <option value="eclipse">Eclipse</option>
+                          <option value="monokai">Monokai</option>
+                          <option value="moxer">Moxer</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="code-language">Code language</label>
+                        <select class="form-control" id="code-language">
+                          <option>Javascript</option>
+                          <option>Python</option>
+                          <option>Java</option>
+                          <option>NodeJS</option>
+                          <option>C</option>
+                          <option>C++</option>
+                          <option>C#</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-default btn-login" type="button" value="save" onclick="login()" />
             </div>
           </div>
         </div>
