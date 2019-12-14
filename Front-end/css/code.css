@@ -178,6 +178,10 @@ body {
   z-index: 100;
 }
 
+.jstree-hovered {
+  background-color: #cccccc38 !important;
+}
+
 @-webkit-keyframes shake {
   0%,
   100% {
