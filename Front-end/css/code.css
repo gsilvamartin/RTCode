@@ -43,7 +43,18 @@ body {
 }
 
 #content-body {
-  height: calc(100% - 57px);
+  height: calc(75% - 57px);
+  border-bottom: 1.019px solid #ffffff0a;
+  background-color: #2b2b2b;
+}
+
+#content-footer {
+  height: 100%;
+  background-color: #2b2b2b;
+}
+
+.console {
+  margin: 5 0 0 10;
 }
 
 .img-logo {
