@@ -80,4 +80,4 @@ function changeCodeMirrorMode(mode) {
  *
  * @author Guilherme da Silva Martin
  */
-codeEditor.setSize('80%', '95%');
+codeEditor.setSize('100%', '95%');
