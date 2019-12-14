@@ -67,9 +67,16 @@
       </nav>
       <div class="container-fluid">
         <div class="row" id="content-body">
-          <textarea id="editor" class="col-sm-8 nopadding" id="principal-box-elements"></textarea>
-          <div id="terminal" class="col-sm-4 nopadding" id="principal-box-elements"></div>
+          <div class="col-sm-2 nopadding lateral-menu" id="lateral-menu" style="background-color: white;"></div>
+          <div class="col-sm-10 nopadding">
+            <textarea id="editor" class="col-sm-12 nopadding" id="principal-box-elements"></textarea>
+            <div class="col-sm-12 nopadding" id="output-box">
+              <div class="console"><b style="color: white;">Code result: </b><br /></div>
+            </div>
+          </div>
         </div>
+
+        <div class="row" id="content-footer"></div>
       </div>
 
       <div class="modal fade login" id="loginModal">
@@ -241,10 +248,4 @@
   <!--LOCAL ECHO IMPORT-->
   <script type="module" src="/js/import/ansi-escapes/index.js"></script>
   <!--END LOCAL ECHO IMPORT-->
-
-  <!--TERMINAL IMPORT-->
-  <script src="/xterm/lib/xterm.js"></script>
-  <script src="/local-echo/dist/local-echo.js"></script>
-  <script type="module" src="/js/terminal.js"></script>
-  <!--END TERMINAL IMPORT-->
 </html>
