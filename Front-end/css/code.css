@@ -108,6 +108,14 @@ body {
   border-left: 1.019px solid #ffffff0a;
 }
 
+.jstree-container-ul {
+  color: white;
+}
+
+.jstree-default .jstree-clicked {
+  background: #528ac8bf !important;
+}
+
 #rtcode-nav {
   border-bottom: 1.019px solid #ffffff0a;
   background-color: #2b2b2b;
