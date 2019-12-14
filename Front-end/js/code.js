@@ -58,8 +58,7 @@ function setLanguage(language) {
  */
 function setToastrOptions() {
   toastr.options = {
-    progressBar: true,
-    timeOut: 0
+    progressBar: true
   };
 }
 
@@ -176,9 +175,10 @@ function openOptionsModal() {
  */
 function saveFile($node) {
   let fileName = $('#file-name').val();
+  let fileNameSplit = fileName.split('.');
 
-  if (fileName.split('.').length > 1) {
-    $node = tree.create_node($node, { text: fileName, type: 'file', icon: 'glyphicon glyphicon-file' });
+  if (fileNameSplit.length > 1) {
+    $node = tree.create_node($node, { text: fileName, type: 'file', icon: getFileIcon(fileNameSplit[1]) });
     tree.deselect_all();
     tree.select_node($node);
 
@@ -196,11 +196,11 @@ function saveFile($node) {
 function getFileIcon(pattern) {
   switch (pattern) {
     case 'js':
-      break;
-    case 'python':
-      break;
-    case 'java':
-      break;
+      return 'fab fa-js-square';
+    case 'py':
+      return 'fab fa-python';
+    case 'html':
+      return 'fab fa-html5';
     default:
       break;
   }

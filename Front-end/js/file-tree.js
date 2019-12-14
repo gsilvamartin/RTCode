@@ -12,17 +12,7 @@ $(document).ready(() => {
   $('#file-tree').jstree({
     core: {
       check_callback: true,
-      data: [
-        'rt-code-example',
-        {
-          text: 'Raiz 2',
-          state: {
-            opened: true,
-            selected: true
-          },
-          children: [{ text: 'Child 1' }, 'Child 2']
-        }
-      ]
+      data: ['rt-code-example']
     },
     plugins: ['contextmenu'],
     contextmenu: {
@@ -51,6 +41,7 @@ $(document).ready(() => {
                   $node = tree.create_node($node, { text: 'New Folder', type: 'default' });
                   tree.deselect_all();
                   tree.select_node($node);
+                  tree.edit($node);
                 }
               }
             }
