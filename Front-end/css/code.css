@@ -169,6 +169,15 @@ body {
   background-color: #2b2b2b !important;
 }
 
+#file-tree {
+  margin-left: 15;
+  margin-top: 10;
+}
+
+.vakata-context {
+  z-index: 100;
+}
+
 @-webkit-keyframes shake {
   0%,
   100% {

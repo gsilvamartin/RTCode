@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 /**
  * Execute when page is ready.
  *
@@ -6,10 +8,11 @@
 $(document).ready(() => {
   $('#file-tree').jstree({
     core: {
+      check_callback: true,
       data: [
-        'Simple root node',
+        'rt-code-example',
         {
-          text: 'Root node 2',
+          text: 'Raiz 2',
           state: {
             opened: true,
             selected: true
@@ -17,6 +20,7 @@ $(document).ready(() => {
           children: [{ text: 'Child 1' }, 'Child 2']
         }
       ]
-    }
+    },
+    plugins: ['contextmenu']
   });
 });
