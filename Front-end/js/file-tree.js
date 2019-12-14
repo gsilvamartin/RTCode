@@ -1,5 +1,8 @@
 /* eslint-disable camelcase */
 
+let tree;
+let currentTreeNode;
+
 /**
  * Execute when page is ready.
  *
@@ -24,8 +27,6 @@ $(document).ready(() => {
     plugins: ['contextmenu'],
     contextmenu: {
       items: function($node) {
-        let tree = $('#file-tree').jstree(true);
-
         return {
           Create: {
             separator_before: false,
@@ -38,9 +39,8 @@ $(document).ready(() => {
                 seperator_after: false,
                 label: 'File',
                 action: function(obj) {
-                  $node = tree.create_node($node, { text: 'New File', type: 'file', icon: 'glyphicon glyphicon-file' });
-                  tree.deselect_all();
-                  tree.select_node($node);
+                  currentTreeNode = $node;
+                  $('#newFileModal').modal('show');
                 }
               },
               Folder: {
@@ -75,4 +75,13 @@ $(document).ready(() => {
       }
     }
   });
+});
+
+/**
+ * Execute when page is ready.
+ *
+ * @author Guilherme da Silva Martin
+ */
+$(document).ready(() => {
+  tree = $('#file-tree').jstree(true);
 });

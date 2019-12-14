@@ -170,6 +170,43 @@ function openOptionsModal() {
 }
 
 /**
+ * Save file into the system.
+ *
+ * @param {*} params node tree params
+ */
+function saveFile($node) {
+  let fileName = $('#file-name').val();
+
+  if (fileName.split('.').length > 1) {
+    $node = tree.create_node($node, { text: fileName, type: 'file', icon: 'glyphicon glyphicon-file' });
+    tree.deselect_all();
+    tree.select_node($node);
+
+    $('#newFileModal').modal('hide');
+  } else {
+    toastr.error('Your file name needs to include file pattern, ex: .js, .py', 'Error');
+  }
+}
+
+/**
+ * Return the file icon of language.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getFileIcon(pattern) {
+  switch (pattern) {
+    case 'js':
+      break;
+    case 'python':
+      break;
+    case 'java':
+      break;
+    default:
+      break;
+  }
+}
+
+/**
  * Runs as soon as the page is ready.
  *
  * @author Guilherme da Silva Martin
