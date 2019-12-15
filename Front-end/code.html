@@ -87,7 +87,7 @@
         <div class="row" id="content-footer"></div>
       </div>
 
-      <div class="modal fade login" id="loginModal">
+      <div class="modal fade login" id="registerModal">
         <div class="modal-dialog login animated">
           <div class="modal-content">
             <div class="modal-header">
@@ -155,7 +155,13 @@
                         placeholder="Repeat Password"
                         name="password_confirmation"
                       />
-                      <input class="btn btn-default btn-register" type="button" value="Create account" name="commit" />
+                      <input
+                        class="btn btn-default btn-register"
+                        type="button"
+                        value="Create account"
+                        onclick="registerNewUser()"
+                        name="commit"
+                      />
                     </form>
                   </div>
                 </div>

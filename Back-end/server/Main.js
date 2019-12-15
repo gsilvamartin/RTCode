@@ -5,6 +5,7 @@ const express = require('express');
 const server = express();
 const codeServer = http.createServer(server);
 const path = require('path');
+const users = require('./User');
 const bodyParser = require('body-parser');
 const socketCode = require('socket.io')(codeServer);
 const compilerService = require('../service/CompilerService');
@@ -13,6 +14,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
 server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
+server.use(users);
 
 /**
  * Redirect user to coding page.

@@ -1,5 +1,5 @@
 const GenericRepository = require('../database/repository/GenericRepository');
-const UserModel = require('../database/models/User');
+const UserModel = require('../database/model/User');
 
 module.exports = class UserService {
   /**
@@ -31,13 +31,13 @@ module.exports = class UserService {
    *
    * @author Guilherme da Silva Martin
    */
-  static async createNewUser(email, name, image, password) {
+  static async createNewUser(email, nickName, image, password) {
     try {
       const user = new UserModel({
+        Nickname: nickName,
         Email: email,
-        Name: name,
-        Image: image,
-        Password: password
+        Password: password,
+        Image: image
       });
 
       return await this.repository.create(UserModel, user);
@@ -72,7 +72,7 @@ module.exports = class UserService {
 
       const paramUpdate = {
         _id: idSearch,
-        Name: nameUpdate,
+        Nickname: nameUpdate,
         Email: emailUpdate,
         Password: passwordUpdate,
         Image: imageUpdate

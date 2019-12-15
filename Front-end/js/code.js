@@ -1,4 +1,5 @@
 let selectedLanguage;
+const baseURL = 'http://localhost:5000';
 
 /**
  * Returns file size.
@@ -102,25 +103,21 @@ function showLoginForm() {
 /**
  * Show login modal.
  *
- * @author Creative Tim
+ * @author Guilherme da Silva Martin
  */
 function openLoginModal() {
   showLoginForm();
-  setTimeout(() => {
-    $('#loginModal').modal('show');
-  }, 230);
+  $('#loginModal').modal('show');
 }
 
 /**
  * Show register modal.
  *
- * @author Creative Tim
+ * @author Guilherme da Silva Martin
  */
 function openRegisterModal() {
   showRegisterForm();
-  setTimeout(() => {
-    $('#loginModal').modal('show');
-  }, 230);
+  $('#registerModal').modal('show');
 }
 
 /**
@@ -204,6 +201,33 @@ function getFileIcon(pattern) {
     default:
       break;
   }
+}
+
+/**
+ * Register a new user.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function registerNewUser() {
+  $.ajax({
+    url: baseURL + '/users/',
+    contentType: 'application/json',
+    type: 'POST',
+    data: JSON.stringify({
+      Name: $('#nicknameRegister').val(),
+      Email: $('#emailRegister').val(),
+      Password: $('#passwordRegister').val(),
+      Image: ''
+    })
+  })
+    .done(() => {
+      $('#registerModal').modal('hide');
+      toastr.success('Success to create user!');
+    })
+    .fail(() => {
+      $('#registerModal').modal('hide');
+      toastr.error('Error to create user!');
+    });
 }
 
 /**
