@@ -64,49 +64,12 @@ function setToastrOptions() {
 }
 
 /**
- * Show register form.
- *
- * @author Creative Tim
- */
-function showRegisterForm() {
-  $('.loginBox').fadeOut('fast', () => {
-    $('.registerBox').fadeIn('fast');
-    $('.login-footer').fadeOut('fast', () => {
-      $('.register-footer').fadeIn('fast');
-    });
-    $('.modal-title').html('Register with');
-  });
-  $('.error')
-    .removeClass('alert alert-danger')
-    .html('');
-}
-
-/**
- * Show login form.
- *
- * @author Creative Tim
- */
-function showLoginForm() {
-  $('#loginModal .registerBox').fadeOut('fast', () => {
-    $('.loginBox').fadeIn('fast');
-    $('.register-footer').fadeOut('fast', () => {
-      $('.login-footer').fadeIn('fast');
-    });
-
-    $('.modal-title').html('Login with');
-  });
-  $('.error')
-    .removeClass('alert alert-danger')
-    .html('');
-}
-
-/**
  * Show login modal.
  *
  * @author Guilherme da Silva Martin
  */
 function openLoginModal() {
-  showLoginForm();
+  $('#registerModal').modal('hide');
   $('#loginModal').modal('show');
 }
 
@@ -116,7 +79,7 @@ function openLoginModal() {
  * @author Guilherme da Silva Martin
  */
 function openRegisterModal() {
-  showRegisterForm();
+  $('#loginModal').modal('hide');
   $('#registerModal').modal('show');
 }
 
