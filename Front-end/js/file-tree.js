@@ -32,17 +32,6 @@ $(document).ready(() => {
                   currentTreeNode = $node;
                   $('#newFileModal').modal('show');
                 }
-              },
-              Folder: {
-                seperator_before: false,
-                seperator_after: false,
-                label: 'Folder',
-                action: function(obj) {
-                  $node = tree.create_node($node, { text: 'New Folder', type: 'default' });
-                  tree.deselect_all();
-                  tree.select_node($node);
-                  tree.edit($node);
-                }
               }
             }
           },
