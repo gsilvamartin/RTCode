@@ -32,6 +32,17 @@ module.exports = class GenericRepository {
   }
 
   /**
+   * Get count of registers based on received parameter.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} model
+   * @param {*} params
+   */
+  static async count(model, params) {
+    return await model.countDocuments(params);
+  }
+
+  /**
    * Delete data by id.
    *
    * @author Guilherme da Silva Martin
