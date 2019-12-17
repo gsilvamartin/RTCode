@@ -1,43 +1,44 @@
 {
-    "name": "rt-code",
-    "version": "1.0.1",
-    "description": "RTCode (RealTime Code) is an application developed using Javascript and HTML to share real time code with multiple connected users.",
-    "main": "index.js",
-    "scripts": {
-        "test": "node node_modules/mocha/bin/mocha ./Back-end/test/ --recursive --exit",
-        "start": "node ./Back-end/server/Main.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gsilvamartin/FastMessage.git"
-    },
-    "author": "Guilherme Martin",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/gsilvamartin/RTCode/issues"
-    },
-    "homepage": "https://github.com/gsilvamartin/RTCode#readme",
-    "dependencies": {
-        "ansi-escapes": "^4.3.0",
-        "body-parser": "^1.19.0",
-        "chai": "^4.2.0",
-        "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "local-echo": "github:wavesoft/local-echo",
-        "mocha": "^6.2.2",
-        "mongodb": "^3.3.3",
-        "mongoose": "^5.7.9",
-        "open": "^7.0.0",
-        "socket.io": "^2.3.0",
-        "socket.io-client": "^2.3.0",
-        "ssh2": "^0.8.7",
-        "toastr": "^2.1.4",
-        "xterm": "^4.3.0",
-        "xterm-addon-attach": "^0.4.0",
-        "xterm-addon-fit": "^0.3.0"
-    },
-    "devDependencies": {
-        "eslint": "^6.6.0",
-        "eslint-config-google": "^0.14.0"
-    }
+  "name": "rt-code",
+  "version": "1.0.1",
+  "description": "RTCode (RealTime Code) is an application developed using Javascript and HTML to share real time code with multiple connected users.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha ./Back-end/test/ --recursive --exit",
+    "start": "node ./Back-end/controller/Main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gsilvamartin/FastMessage.git"
+  },
+  "author": "Guilherme Martin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gsilvamartin/RTCode/issues"
+  },
+  "homepage": "https://github.com/gsilvamartin/RTCode#readme",
+  "dependencies": {
+    "ansi-escapes": "^4.3.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "local-echo": "github:wavesoft/local-echo",
+    "mocha": "^6.2.2",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.9",
+    "open": "^7.0.0",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "ssh2": "^0.8.7",
+    "toastr": "^2.1.4",
+    "xterm": "^4.3.0",
+    "xterm-addon-attach": "^0.4.0",
+    "xterm-addon-fit": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0"
+  }
 }

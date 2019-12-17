@@ -6,6 +6,12 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
+router.post('/users/login', async (req, res) => {
+  let userService = await user.init();
+
+  
+});
+
 /**
  * Returns a user by their id.
  *
