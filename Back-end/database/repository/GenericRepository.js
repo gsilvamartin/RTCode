@@ -14,6 +14,15 @@ module.exports = class GenericRepository {
   }
 
   /**
+   * Find a register
+   *
+   * @author Guilherme da Silva Martin
+   */
+  static async find(model, params) {
+    return await model.find(params);
+  }
+
+  /**
    * Search data by id.
    *
    * @author Guilherme da Silva Martin

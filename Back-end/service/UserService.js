@@ -14,6 +14,24 @@ module.exports = class UserService {
   }
 
   /**
+   * Login a user.
+   *
+   * @author Guilherme da Silva Martin
+   */
+  static async login(email, password) {
+    try {
+      let loginParams = {
+        Email: email,
+        Password: password
+      };
+
+      return await this.repository.find(UserModel, loginParams);
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Returns a user registered in the system by his id.
    *
    * @author Guilherme da Silva Martin
