@@ -1,7 +1,7 @@
 module.exports = class ErrorResponse {
-  constructor(statusCode, message, stackTrace) {
+  constructor(statusCode, message, stack) {
     this.statusCode = statusCode;
     this.message = message;
-    this.stackTrace = stackTrace;
+    this.stack = stack;
   }
 };

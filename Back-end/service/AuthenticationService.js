@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
+const UtilClass = require('../util/Util');
 const UserModel = require('../database/model/User');
+const ErrorResponse = require('../model/response/ErrorResponse');
 const GenericRepository = require('../database/repository/GenericRepository');
 
 module.exports = class AuthenticationService {
@@ -10,6 +12,7 @@ module.exports = class AuthenticationService {
    */
   static async init() {
     this.repository = await GenericRepository.init();
+    this.util = UtilClass.init();
 
     return this;
   }
@@ -24,6 +27,12 @@ module.exports = class AuthenticationService {
   static async authenticateUser(email, password) {
     try {
       let userData = await this.login(email, password);
+
+      if (!this.util.isNullOrEmpty(userData)) {
+        console.log(userData);
+      } else {
+        throw new ErrorResponse(400, 'User not found', null);
+      }
     } catch (ex) {
       throw ex;
     }

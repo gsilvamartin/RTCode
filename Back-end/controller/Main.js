@@ -9,7 +9,6 @@ const users = require('./User');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const socketCode = require('socket.io')(codeServer);
-const compilerService = require('../service/CompilerService');
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -49,28 +48,6 @@ socketCode.on('connection', (socket) => {
 
   socket.on('message', (evt) => {
     socket.to(evt[0]).emit('message', evt[1]);
-  });
-});
-
-/**
- * Handle terminal commands
- *
- * @author Guilherme da Silva Martin
- */
-socketCode.on('connection', async (socket) => {
-  socket.on('join-terminal', (room) => {
-    socket.leaveAll();
-    socket.join(room);
-  });
-
-  socket.on('term-enter', async (key) => {
-    socket.broadcast.to(key[0]).emit('term-enter-data', key[1]);
-  });
-
-  socket.on('cmd', async (cmd) => {
-    let cmdReturn = await compilerService.executeCommand(cmd[1]);
-
-    socketCode.sockets.to(cmd[0]).emit('term-data', cmdReturn);
   });
 });
 
