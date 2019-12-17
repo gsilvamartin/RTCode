@@ -36,7 +36,7 @@ router.get(
     let userService = await user.init();
     let userResponse = await userService.getUserById(req.params.id);
 
-    res.send(new SuccessResponse(200, 'Success to return user.', userResponse));
+    res.status(200).json(new SuccessResponse(200, 'Success to return user.', userResponse));
   })
 );
 
@@ -51,7 +51,7 @@ router.post(
     let userService = await user.init();
     let newUser = await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password);
 
-    res.send(new SuccessResponse(201, 'Success to create user.', newUser));
+    res.status(200).json(new SuccessResponse(201, 'Success to create user.', newUser));
   })
 );
 
@@ -67,7 +67,7 @@ router.delete(
     let userService = await user.init();
     let deletedUser = await userService.deleteUser(req.params.id);
 
-    res.send(new SuccessResponse(200, 'Success to delete user.', deletedUser));
+    res.status(200).json(new SuccessResponse(200, 'Success to delete user.', deletedUser));
   })
 );
 
@@ -89,7 +89,7 @@ router.put(
       req.body.Image
     );
 
-    res.send(new SuccessResponse(200, 'Success to update user.', updatedUser));
+    res.status(200).json(new SuccessResponse(200, 'Success to update user.', updatedUser));
   })
 );
 

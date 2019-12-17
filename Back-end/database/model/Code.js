@@ -6,6 +6,11 @@ let codeSchema = mongoose.Schema({
   },
   IsActive: {
     type: 'Boolean'
+  },
+  UserId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
   }
 });
 
