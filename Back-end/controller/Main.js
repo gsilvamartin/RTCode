@@ -6,15 +6,31 @@ const server = express();
 const codeServer = http.createServer(server);
 const path = require('path');
 const users = require('./User');
+const UtilClass = require('../util/Util');
+const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const socketCode = require('socket.io')(codeServer);
-const compilerService = require('../service/CompilerService');
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
 server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
 server.use(users);
+
+/**
+ * Error handler
+ *
+ * @author Guilherme da Silva Martin
+ */
+server.use((err, req, res, next) => {
+  if (!UtilClass.isNullOrEmpty(err.statusCode)) {
+    res.status(err.statusCode).json(new ErrorResponse(err.statusCode, err.message, err.stack));
+  } else {
+    res.status(500).json(new ErrorResponse(500, err.message, null));
+  }
+
+  next();
+});
 
 /**
  * Redirect user to coding page.
@@ -38,28 +54,6 @@ socketCode.on('connection', (socket) => {
 
   socket.on('message', (evt) => {
     socket.to(evt[0]).emit('message', evt[1]);
-  });
-});
-
-/**
- * Handle terminal commands
- *
- * @author Guilherme da Silva Martin
- */
-socketCode.on('connection', async (socket) => {
-  socket.on('join-terminal', (room) => {
-    socket.leaveAll();
-    socket.join(room);
-  });
-
-  socket.on('term-enter', async (key) => {
-    socket.broadcast.to(key[0]).emit('term-enter-data', key[1]);
-  });
-
-  socket.on('cmd', async (cmd) => {
-    let cmdReturn = await compilerService.executeCommand(cmd[1]);
-
-    socketCode.sockets.to(cmd[0]).emit('term-data', cmdReturn);
   });
 });
 
