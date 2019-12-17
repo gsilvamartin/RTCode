@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../service/UserService');
+const authentication = require('../service/AuthenticationService');
 const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
+/**
+ * Login a user by email and password
+ *
+ * @author Guilherme da Silva Martin
+ */
 router.post('/users/login', async (req, res) => {
-  let userService = await user.init();
+  let authenticationService = await authentication.init();
 
-  
+  res.send(authenticationService.authenticateUser(req.body.Email, req.body.Password));
 });
 
 /**
