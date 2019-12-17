@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../service/UserService');
+const SuccessResponse = require('../model/response/SuccessResponse');
 const authentication = require('../service/AuthenticationService');
 const asyncMiddleware = require('../util/AsyncMiddleware');
 const bodyParser = require('body-parser');
@@ -17,8 +18,9 @@ router.post(
   '/users/login',
   asyncMiddleware(async (req, res, next) => {
     let authenticationService = await authentication.init();
+    let token = await authenticationService.authenticateUser(req.body.Email, req.body.Password);
 
-    res.send(await authenticationService.authenticateUser(req.body.Email, req.body.Password));
+    res.status(200).json(new SuccessResponse(200, 'Success to generate token!', { token: token }));
   })
 );
 

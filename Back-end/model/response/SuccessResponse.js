@@ -1,5 +1,5 @@
 module.exports = class SuccessResponse {
-  constructor(statusCode, data, message) {
+  constructor(statusCode, message, data) {
     this.statusCode = statusCode;
     this.message = message;
     this.data = data;
