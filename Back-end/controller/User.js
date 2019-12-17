@@ -31,6 +31,7 @@ router.post(
  */
 router.get(
   '/users/:id',
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     let userService = await user.init();
 

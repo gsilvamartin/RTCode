@@ -6,6 +6,7 @@ const server = express();
 const codeServer = http.createServer(server);
 const path = require('path');
 const users = require('./User');
+const UtilClass = require('../util/Util');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const socketCode = require('socket.io')(codeServer);
@@ -22,7 +23,12 @@ server.use(users);
  * @author Guilherme da Silva Martin
  */
 server.use((err, req, res, next) => {
-  res.status(err.statusCode).json(new ErrorResponse(err.statusCode, err.message, err.stack));
+  if (!UtilClass.isNullOrEmpty(err.statusCode)) {
+    res.status(err.statusCode).json(new ErrorResponse(err.statusCode, err.message, err.stack));
+  } else {
+    res.status(500).json(new ErrorResponse(500, err.message, null));
+  }
+
   next();
 });
 

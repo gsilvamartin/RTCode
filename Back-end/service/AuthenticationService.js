@@ -19,6 +19,33 @@ module.exports = class AuthenticationService {
   }
 
   /**
+   * Verify JWT Token
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  static verifyJWT(req, res, next) {
+    try {
+      let token = req.headers.authentication;
+
+      if (!token) throw new ErrorResponse(401, 'No token provided.', null);
+
+      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) throw new ErrorResponse(500, 'Failed to authenticate token.', null);
+
+        req.userId = decoded.id;
+
+        next();
+      });
+    } catch (ex) {
+      console.log(ex);
+      throw ex;
+    }
+  }
+
+  /**
    * Authenticate a user
    *
    * @author Guilherme da Silva Martin
