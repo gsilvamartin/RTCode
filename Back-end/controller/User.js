@@ -34,8 +34,9 @@ router.get(
   authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     let userService = await user.init();
+    let userResponse = await userService.getUserById(req.params.id);
 
-    res.send(await userService.getUserById(req.params.id));
+    res.send(new SuccessResponse(200, 'Success to return user.', userResponse));
   })
 );
 
@@ -48,8 +49,9 @@ router.post(
   '/users/',
   asyncMiddleware(async (req, res) => {
     let userService = await user.init();
+    let newUser = await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password);
 
-    res.send(await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password));
+    res.send(new SuccessResponse(201, 'Success to create user.', newUser));
   })
 );
 
@@ -60,10 +62,12 @@ router.post(
  */
 router.delete(
   '/users/:id',
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     let userService = await user.init();
+    let deletedUser = await userService.deleteUser(req.params.id);
 
-    res.send(await userService.deleteUser(req.params.id));
+    res.send(new SuccessResponse(200, 'Success to delete user.', deletedUser));
   })
 );
 
@@ -74,12 +78,18 @@ router.delete(
  */
 router.put(
   '/users/:id',
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     let userService = await user.init();
-
-    res.send(
-      await userService.updateUser(req.params.id, req.body.Name, req.body.Email, req.body.Password, req.body.Image)
+    let updatedUser = await userService.updateUser(
+      req.params.id,
+      req.body.Name,
+      req.body.Email,
+      req.body.Password,
+      req.body.Image
     );
+
+    res.send(new SuccessResponse(200, 'Success to update user.', updatedUser));
   })
 );
 
