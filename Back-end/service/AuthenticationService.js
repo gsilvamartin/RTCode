@@ -11,8 +11,8 @@ module.exports = class AuthenticationService {
    * @author Guilherme da Silva Martin
    */
   static async init() {
-    this.repository = await GenericRepository.init();
     this.util = UtilClass.init();
+    this.repository = await GenericRepository.init();
 
     return this;
   }
