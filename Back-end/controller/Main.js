@@ -6,6 +6,7 @@ const server = express();
 const codeServer = http.createServer(server);
 const path = require('path');
 const users = require('./User');
+const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const socketCode = require('socket.io')(codeServer);
 const compilerService = require('../service/CompilerService');
@@ -15,6 +16,16 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
 server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
 server.use(users);
+
+/**
+ * Error handler
+ *
+ * @author Guilherme da Silva Martin
+ */
+server.use((err, req, res, next) => {
+  res.status(err.statusCode).json(new ErrorResponse(err.statusCode, err.message, err.stack));
+  next();
+});
 
 /**
  * Redirect user to coding page.
