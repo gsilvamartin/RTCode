@@ -6,6 +6,7 @@ const server = express();
 const codeServer = http.createServer(server);
 const path = require('path');
 const users = require('./User');
+const code = require('./Code');
 const UtilClass = require('../util/Util');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
@@ -16,6 +17,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
 server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
 server.use(users);
+server.use(code);
 
 /**
  * Error handler
