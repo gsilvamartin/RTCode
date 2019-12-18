@@ -62,6 +62,23 @@ module.exports = class CodeService {
   }
 
   /**
+   * Create a new code file.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} userId
+   */
+  static async createNewCodeFile(codeName, fileName, userId) {
+    try {
+      if (await this.verifyUserCodePermission(codeName, userId)) {
+        const fileService = await FileService.init();
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Verify if user has permission to access code.
    *
    * @author Guilherme da Silva Martin
