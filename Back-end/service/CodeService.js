@@ -72,6 +72,8 @@ module.exports = class CodeService {
     try {
       if (await this.verifyUserCodePermission(codeName, userId)) {
         const fileService = await FileService.init();
+
+        return await fileService.createNewCodeFile(codeName, fileName);
       }
     } catch (ex) {
       throw ex;
@@ -107,12 +109,20 @@ module.exports = class CodeService {
    */
   static async deleteCode(codeName, userId) {
     try {
+      const fileService = await FileService.init();
       const code = {
         CodeName: codeName,
         UserId: new mongoose.Types.ObjectId(userId)
       };
 
-      return await this.repository.delete(CodeModel, code);
+      const deleteDB = await this.repository.delete(CodeModel, code);
+      const deleteFS = await fileService.deleteCodeFolder(codeName);
+
+      if (deleteDB && deleteFS) {
+        return true;
+      } else {
+        throw new ErrorResponse(500, 'Error to delete code folder.', null);
+      }
     } catch (ex) {
       throw ex;
     }

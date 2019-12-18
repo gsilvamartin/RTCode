@@ -68,4 +68,25 @@ module.exports = class FileService {
       throw ex;
     }
   }
+
+  /**
+   * Delete a code folder.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} fileName
+   */
+  static async deleteCodeFolder(codeName) {
+    try {
+      const fullPath = process.env.CODE_LOCATION + codeName;
+
+      if (fs.existsSync(fullPath)) {
+        fs.rmdirSync(fullPath);
+      } else {
+        throw new ErrorResponse(401, 'Folder not found.', null);
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
 };
