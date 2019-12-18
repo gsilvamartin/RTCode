@@ -58,10 +58,43 @@ $(document).ready(() => {
 });
 
 /**
+ * Get files of the code.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getCodeFiles() {
+  $.ajax({
+    url: baseURL + '/code/tree/' + getRoomName(),
+    contentType: 'application/json',
+    type: 'GET'
+  })
+    .done((data) => {})
+    .fail(() => {
+      toastr.error('Error to load code files.');
+    });
+}
+
+/**
+ * Build tree JSON based on content files.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function buildTreeJson(codeName, files) {
+  tree = [];
+
+  tree.push({text: codeName, state: {opened: true}});
+
+  files.forEach(element => {
+    tree.push({element : })
+  });
+}
+
+/**
  * Execute when page is ready.
  *
  * @author Guilherme da Silva Martin
  */
 $(document).ready(() => {
+  getCodeFiles();
   tree = $('#file-tree').jstree(true);
 });

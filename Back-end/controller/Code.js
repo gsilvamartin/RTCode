@@ -52,7 +52,11 @@ router.get(
     const service = await codeService.init();
     const codeFiles = await service.getCodeFileTree(req.params.id, req.userId);
 
-    res.status(200).json(new SuccessResponse(200, 'Success to get folder content.', codeFiles));
+    res
+      .status(200)
+      .json(
+        new SuccessResponse(200, 'Success to get folder content.', { CodeName: req.params.id, CodeFiles: codeFiles })
+      );
   })
 );
 

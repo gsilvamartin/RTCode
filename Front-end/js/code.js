@@ -89,18 +89,22 @@ function openRegisterModal() {
  * @author Guilherme da Silva Martin
  */
 function login() {
-  /*   Remove this comments when moving to server
-  $.post( "/login", function( data ) {
-          if(data == 1){
-              window.location.replace("/home");            
-          } else {
-               shakeModal(); 
-          }
-      });
-  */
-
-  /*   Simulate error message from the server   */
-  shakeModal();
+  $.ajax({
+    url: baseURL + '/users/login/',
+    contentType: 'application/json',
+    type: 'POST',
+    data: JSON.stringify({
+      Email: $('#emailLogin').val(),
+      Password: $('#passwordLogin').val()
+    })
+  })
+    .done((result) => {
+      $('#loginModal').modal('hide');
+      toastr.success('Success to login!');
+    })
+    .fail(() => {
+      shakeModal();
+    });
 }
 
 /**

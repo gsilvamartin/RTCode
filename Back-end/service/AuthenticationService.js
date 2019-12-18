@@ -28,7 +28,7 @@ module.exports = class AuthenticationService {
    */
   static verifyJWT(req, res, next) {
     try {
-      let token = req.headers.authentication;
+      let token = req.cookies.access_token;
 
       if (!token) throw new ErrorResponse(401, 'No token provided.', null);
 
@@ -60,7 +60,7 @@ module.exports = class AuthenticationService {
         const token = await jwt.sign(
           { id: userData[0]._id, nickname: userData[0].Nickname, email: userData[0].Email },
           process.env.JWT_SECRET,
-          { expiresIn: 60 * 24 }
+          { expiresIn: '1d' }
         );
 
         return token;

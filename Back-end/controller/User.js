@@ -18,10 +18,12 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.post(
   '/users/login',
   asyncMiddleware(async (req, res, next) => {
-    let authenticationService = await authentication.init();
-    let token = await authenticationService.authenticateUser(req.body.Email, req.body.Password);
+    const authenticationService = await authentication.init();
+    const token = await authenticationService.authenticateUser(req.body.Email, req.body.Password);
 
-    res.status(200).json(new SuccessResponse(200, 'Success to generate token!', { token: token }));
+    res.cookie('access_token', token, { expires: new Date(Date.now() + 8 * 3600000), httpOnly: true });
+    res.status(200).json(new SuccessResponse(200, 'Login success!', null));
+    next();
   })
 );
 
@@ -34,8 +36,8 @@ router.get(
   '/users/:id',
   authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
-    let userService = await user.init();
-    let userResponse = await userService.getUserById(req.params.id);
+    const userService = await user.init();
+    const userResponse = await userService.getUserById(req.params.id);
 
     res.status(200).json(new SuccessResponse(200, 'Success to return user.', userResponse));
   })
@@ -49,8 +51,8 @@ router.get(
 router.post(
   '/users/',
   asyncMiddleware(async (req, res) => {
-    let userService = await user.init();
-    let newUser = await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password);
+    const userService = await user.init();
+    const newUser = await userService.createNewUser(req.body.Email, req.body.Name, req.body.Image, req.body.Password);
 
     res.status(200).json(new SuccessResponse(201, 'Success to create user.', newUser));
   })
@@ -65,8 +67,8 @@ router.delete(
   '/users/:id',
   authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
-    let userService = await user.init();
-    let deletedUser = await userService.deleteUser(req.params.id);
+    const userService = await user.init();
+    const deletedUser = await userService.deleteUser(req.params.id);
 
     res.status(200).json(new SuccessResponse(200, 'Success to delete user.', deletedUser));
   })
@@ -81,8 +83,8 @@ router.put(
   '/users/:id',
   authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
-    let userService = await user.init();
-    let updatedUser = await userService.updateUser(
+    const userService = await user.init();
+    const updatedUser = await userService.updateUser(
       req.params.id,
       req.body.Name,
       req.body.Email,
