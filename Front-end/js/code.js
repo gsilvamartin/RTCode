@@ -139,17 +139,35 @@ function openOptionsModal() {
  */
 function saveFile($node) {
   let fileName = $('#file-name').val();
+
+  $.ajax({
+    url: baseURL + '/code/' + fileName,
+    contentType: 'application/json',
+    type: 'POST'
+  })
+    .done(() => {
+      insertNewFileTree($node, fileName);
+    })
+    .fail((err) => {
+      $('#newFileModal').modal('hide');
+      toastr.error(err.responseJSON.message, 'Error to create file!');
+    });
+}
+
+/**
+ * Insert a new file on tree.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function insertNewFileTree($node, fileName) {
   let fileNameSplit = fileName.split('.');
 
-  if (fileNameSplit.length > 1) {
-    $node = tree.create_node($node, { text: fileName, type: 'file', icon: getFileIcon(fileNameSplit[1]) });
-    tree.deselect_all();
-    tree.select_node($node);
+  $node = tree.jstree().create_node($node, { text: fileName, type: 'file', icon: getFileIcon(fileNameSplit[1]) });
+  tree.jstree().deselect_all();
+  tree.jstree().select_node($node);
+  toastr.success('Success to create file!');
 
-    $('#newFileModal').modal('hide');
-  } else {
-    toastr.error('Your file name needs to include file pattern, ex: .js, .py', 'Error');
-  }
+  $('#newFileModal').modal('hide');
 }
 
 /**

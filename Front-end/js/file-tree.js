@@ -52,7 +52,7 @@ function buildTreeJson(codeName, files) {
  * @author Guilherme da Silva Martin
  */
 function buildTree(treeJson) {
-  $('#file-tree').jstree({
+  tree = $('#file-tree').jstree({
     core: {
       check_callback: true,
       data: treeJson
@@ -107,5 +107,4 @@ function buildTree(treeJson) {
  */
 $(document).ready(() => {
   getCodeFiles();
-  tree = $('#file-tree').jstree(true);
 });
