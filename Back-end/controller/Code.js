@@ -52,7 +52,23 @@ router.get(
     const service = await codeService.init();
     const codeFiles = await service.getCodeFileTree(req.params.id, req.userId);
 
-    res.status(200).json(new SuccessResponse(200, 'Success to get folder content!', codeFiles));
+    res.status(200).json(new SuccessResponse(200, 'Success to get folder content.', codeFiles));
+  })
+);
+
+/**
+ * Delete a code folder by name.
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.delete(
+  '/code/:id',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const service = await codeService.init();
+    const deletedCode = await service.deleteCode(req.params.id, req.userId);
+
+    res.status(200).json(new SuccessResponse(200, 'Success to delete code folder.', deletedCode));
   })
 );
 
