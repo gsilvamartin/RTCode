@@ -6,9 +6,8 @@ const mongoose = require('mongoose');
 const mongoConnect = require('../database/DatabaseConnection');
 
 describe('Mongoose Tests', () => {
-  it('Should connect to mongoose', async () => {
-    await mongoConnect.getConnection();
-
-    chai.expect(mongoose.connection.readyState).to.be.not.undefined.and.not.null;
-  });
+  //   it('Should connect to mongoose', async () => {
+  //     await mongoConnect.getConnection();
+  //     chai.expect(mongoose.connection.readyState).to.be.not.undefined.and.not.null;
+  //   });
 });
