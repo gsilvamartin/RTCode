@@ -98,7 +98,7 @@ function login() {
       Password: $('#passwordLogin').val()
     })
   })
-    .done((result) => {
+    .done(() => {
       $('#loginModal').modal('hide');
       toastr.success('Success to login!');
     })
