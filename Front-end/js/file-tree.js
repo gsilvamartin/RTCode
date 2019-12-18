@@ -83,7 +83,7 @@ function buildTree(treeJson) {
             separator_after: false,
             label: 'Rename',
             action: function(obj) {
-              tree.edit($node);
+              tree.jstree().edit($node);
             }
           },
           Remove: {
@@ -91,7 +91,7 @@ function buildTree(treeJson) {
             separator_after: false,
             label: 'Remove',
             action: function(obj) {
-              tree.delete_node($node);
+              tree.jstree().delete_node($node);
             }
           }
         };
