@@ -70,6 +70,28 @@ module.exports = class FileService {
   }
 
   /**
+   * Update code file name.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} fileName
+   */
+  static async updateCodeFileName(codeName, oldFileName, newFileName) {
+    try {
+      const fullPathOld = process.env.CODE_LOCATION + codeName + '/' + oldFileName;
+      const fullPathNew = process.env.CODE_LOCATION + codeName + '/' + newFileName;
+
+      if (fs.existsSync(fullPathOld)) {
+        fs.renameSync(fullPathOld, fullPathNew);
+      } else {
+        throw new ErrorResponse(401, 'File not found.', null);
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Delete a code folder.
    *
    * @author Guilherme da Silva Martin

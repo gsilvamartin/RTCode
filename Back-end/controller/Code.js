@@ -57,6 +57,27 @@ router.delete(
 );
 
 /**
+ * Rename code file by name.
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.put(
+  '/code/file/:id',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const service = await codeService.init();
+    const updatedFile = await service.updateCodeFileName(
+      req.params.id,
+      req.body.OldFileName,
+      req.body.NewFileName,
+      req.userId
+    );
+
+    res.status(200).json(new SuccessResponse(200, 'Success to update file name!', updatedFile));
+  })
+);
+
+/**
  * Delete a code by name.
  *
  * @author Guilherme da Silva Martin

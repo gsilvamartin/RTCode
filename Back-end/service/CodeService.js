@@ -101,6 +101,26 @@ module.exports = class CodeService {
   }
 
   /**
+   * Update a file name.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} codeFile
+   * @param {*} userId
+   */
+  static async updateCodeFileName(codeName, oldCodeFile, newCodeFile, userId) {
+    try {
+      if (await this.verifyUserCodePermission(codeName, userId)) {
+        const fileService = await FileService.init();
+
+        return await fileService.updateCodeFileName(codeName, oldCodeFile, newCodeFile);
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Verify if user has permission to access code.
    *
    * @author Guilherme da Silva Martin
