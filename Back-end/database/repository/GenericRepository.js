@@ -61,7 +61,16 @@ module.exports = class GenericRepository {
   }
 
   /**
-   * Update a user.
+   * Delete data.
+   *
+   * @author Guilherme da Silva Martin
+   */
+  static async delete(model, params) {
+    return await model.deleteOne(params);
+  }
+
+  /**
+   * Update a register.
    *
    * @author Guilherme da Silva Martin
    * @param {*} paramsSearch

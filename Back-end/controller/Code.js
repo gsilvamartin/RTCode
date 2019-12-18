@@ -24,4 +24,15 @@ router.post(
   })
 );
 
+router.delete(
+  '/code/:id',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const service = await codeService.init();
+    const deletedCode = await service.deleteCode(req.params.id, req.userId);
+
+    res.status(200).json(new SuccessResponse(200, 'Success to delete code!', deletedCode));
+  })
+);
+
 module.exports = router;
