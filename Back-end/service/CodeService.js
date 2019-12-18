@@ -81,6 +81,26 @@ module.exports = class CodeService {
   }
 
   /**
+   * Delete a code file by name.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} codeFile
+   * @param {*} userId
+   */
+  static async deleteCodeFile(codeName, codeFile, userId) {
+    try {
+      if (await this.verifyUserCodePermission(codeName, userId)) {
+        const fileService = await FileService.init();
+
+        return await fileService.deleteCodeFile(codeName, codeFile);
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Verify if user has permission to access code.
    *
    * @author Guilherme da Silva Martin

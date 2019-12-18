@@ -158,6 +158,13 @@ function saveFile($node) {
 }
 
 /**
+ * Delete code file.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function deleteFile(fileName) {}
+
+/**
  * Insert a new file on tree.
  *
  * @author Guilherme da Silva Martin
