@@ -4,15 +4,58 @@ let tree;
 let currentTreeNode;
 
 /**
- * Execute when page is ready.
+ * Get files of the code.
  *
  * @author Guilherme da Silva Martin
  */
-$(document).ready(() => {
-  $('#file-tree').jstree({
+function getCodeFiles() {
+  $.ajax({
+    url: baseURL + '/code/tree/' + getRoomName(),
+    contentType: 'application/json',
+    type: 'GET'
+  })
+    .done((result) => {
+      const jsonTree = buildTreeJson(result.data.CodeName, result.data.CodeFiles);
+
+      buildTree(jsonTree);
+    })
+    .fail(() => {
+      toastr.error('Error to load code files.');
+    });
+}
+
+/**
+ * Build tree JSON based on content files.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function buildTreeJson(codeName, files) {
+  let jsonTree = [];
+  let childrenElements = [];
+
+  files.forEach((element) => {
+    let elementPattern = element.split('.');
+
+    if (elementPattern.length > 1) {
+      childrenElements.push({ text: element, type: 'file', icon: getFileIcon(elementPattern[1]) });
+    }
+  });
+
+  jsonTree.push({ text: codeName, state: { opened: true }, children: childrenElements });
+
+  return jsonTree;
+}
+
+/**
+ * Build tree.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function buildTree(treeJson) {
+  tree = $('#file-tree').jstree({
     core: {
       check_callback: true,
-      data: ['rt-code-example']
+      data: treeJson
     },
     plugins: ['contextmenu'],
     contextmenu: {
@@ -55,7 +98,7 @@ $(document).ready(() => {
       }
     }
   });
-});
+}
 
 /**
  * Execute when page is ready.
@@ -63,5 +106,5 @@ $(document).ready(() => {
  * @author Guilherme da Silva Martin
  */
 $(document).ready(() => {
-  tree = $('#file-tree').jstree(true);
+  getCodeFiles();
 });

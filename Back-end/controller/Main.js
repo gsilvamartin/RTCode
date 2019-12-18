@@ -10,8 +10,10 @@ const code = require('./Code');
 const UtilClass = require('../util/Util');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const socketCode = require('socket.io')(codeServer);
 
+server.use(cookieParser());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));

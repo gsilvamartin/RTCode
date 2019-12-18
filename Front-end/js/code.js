@@ -89,18 +89,22 @@ function openRegisterModal() {
  * @author Guilherme da Silva Martin
  */
 function login() {
-  /*   Remove this comments when moving to server
-  $.post( "/login", function( data ) {
-          if(data == 1){
-              window.location.replace("/home");            
-          } else {
-               shakeModal(); 
-          }
-      });
-  */
-
-  /*   Simulate error message from the server   */
-  shakeModal();
+  $.ajax({
+    url: baseURL + '/users/login/',
+    contentType: 'application/json',
+    type: 'POST',
+    data: JSON.stringify({
+      Email: $('#emailLogin').val(),
+      Password: $('#passwordLogin').val()
+    })
+  })
+    .done(() => {
+      $('#loginModal').modal('hide');
+      toastr.success('Success to login!');
+    })
+    .fail(() => {
+      shakeModal();
+    });
 }
 
 /**
@@ -135,17 +139,38 @@ function openOptionsModal() {
  */
 function saveFile($node) {
   let fileName = $('#file-name').val();
+
+  $.ajax({
+    url: baseURL + '/code/file/' + getRoomName(),
+    contentType: 'application/json',
+    type: 'POST',
+    data: JSON.stringify({
+      FileName: fileName
+    })
+  })
+    .done(() => {
+      insertNewFileTree($node, fileName);
+    })
+    .fail((err) => {
+      $('#newFileModal').modal('hide');
+      toastr.error(err.responseJSON.message, 'Error to create file!');
+    });
+}
+
+/**
+ * Insert a new file on tree.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function insertNewFileTree($node, fileName) {
   let fileNameSplit = fileName.split('.');
 
-  if (fileNameSplit.length > 1) {
-    $node = tree.create_node($node, { text: fileName, type: 'file', icon: getFileIcon(fileNameSplit[1]) });
-    tree.deselect_all();
-    tree.select_node($node);
+  $node = tree.jstree().create_node($node, { text: fileName, type: 'file', icon: getFileIcon(fileNameSplit[1]) });
+  tree.jstree().deselect_all();
+  tree.jstree().select_node($node);
+  toastr.success('Success to create file!');
 
-    $('#newFileModal').modal('hide');
-  } else {
-    toastr.error('Your file name needs to include file pattern, ex: .js, .py', 'Error');
-  }
+  $('#newFileModal').modal('hide');
 }
 
 /**
