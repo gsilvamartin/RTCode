@@ -141,9 +141,12 @@ function saveFile($node) {
   let fileName = $('#file-name').val();
 
   $.ajax({
-    url: baseURL + '/code/' + fileName,
+    url: baseURL + '/code/file/' + getRoomName(),
     contentType: 'application/json',
-    type: 'POST'
+    type: 'POST',
+    data: JSON.stringify({
+      FileName: fileName
+    })
   })
     .done(() => {
       insertNewFileTree($node, fileName);

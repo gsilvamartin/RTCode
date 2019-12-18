@@ -25,6 +25,22 @@ router.post(
 );
 
 /**
+ * Create a new code file.
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.post(
+  '/code/file/:id',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const service = await codeService.init();
+    const newCode = await service.createNewCodeFile(req.params.id, req.body.FileName, req.userId);
+
+    res.status(201).json(new SuccessResponse(200, 'Success to create code file!', newCode));
+  })
+);
+
+/**
  * Delete a code by name.
  *
  * @author Guilherme da Silva Martin
