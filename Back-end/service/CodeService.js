@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const FileService = require('../service/FileService');
 const CodeModel = require('../database/model/Code');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const GenericRepository = require('../database/repository/GenericRepository');
@@ -35,6 +36,46 @@ module.exports = class CodeService {
       } else {
         throw new ErrorResponse(401, 'Code already exists', null);
       }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
+   * Get file tree of specific code.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} userId
+   */
+  static async getCodeFileTree(codeName, userId) {
+    try {
+      if (await this.verifyUserCodePermission(codeName, userId)) {
+        const fileService = await FileService.init();
+        const files = await fileService.listContentOfCodeFolder(codeName);
+
+        return files;
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
+   * Verify if user has permission to access code.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} userId
+   */
+  static async verifyUserCodePermission(codeName, userId) {
+    try {
+      const code = {
+        CodeName: codeName,
+        UserId: new mongoose.Types.ObjectId(userId)
+      };
+
+      return !!((await this.repository.count(CodeModel, code)) > 0);
     } catch (ex) {
       throw ex;
     }

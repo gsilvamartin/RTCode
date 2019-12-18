@@ -5,6 +5,7 @@ const SuccessResponse = require('../model/response/SuccessResponse');
 const authentication = require('../service/AuthenticationService');
 const asyncMiddleware = require('../util/AsyncMiddleware');
 const bodyParser = require('body-parser');
+const fs = require('../service/FileService');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
