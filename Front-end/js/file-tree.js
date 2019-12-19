@@ -2,6 +2,30 @@
 
 let tree;
 let currentTreeNode;
+const treeId = $('#file-tree');
+
+/**
+ * Init file tree.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function initTree() {
+  getCodeFiles();
+  handleNodeTreeSelect();
+}
+
+/**
+ * Handle tree node select.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function handleNodeTreeSelect() {
+  treeId.on('select_node.jstree', (evt, data) => {
+    if (data.node.parent !== '#') {
+      getFileContent(data.node.text);
+    }
+  });
+}
 
 /**
  * Get files of the code.
@@ -91,7 +115,7 @@ function buildTree(treeJson) {
             separator_after: false,
             label: 'Remove',
             action: function(obj) {
-              tree.jstree().delete_node($node);
+              deleteFile($node);
             }
           }
         };
@@ -106,5 +130,5 @@ function buildTree(treeJson) {
  * @author Guilherme da Silva Martin
  */
 $(document).ready(() => {
-  getCodeFiles();
+  initTree();
 });

@@ -158,6 +158,50 @@ function saveFile($node) {
 }
 
 /**
+ * Delete file from code.
+ *
+ * @param {*} params node tree params
+ */
+function deleteFile($node) {
+  let fileName = $node.text;
+
+  $.ajax({
+    url: baseURL + '/code/file/' + getRoomName(),
+    contentType: 'application/json',
+    type: 'DELETE',
+    data: JSON.stringify({
+      FileName: fileName
+    })
+  })
+    .done(() => {
+      tree.jstree().delete_node($node);
+      toastr.success('Success to delete file!');
+    })
+    .fail((err) => {
+      toastr.error(err.responseJSON.message, 'Error to delete file!');
+    });
+}
+
+/**
+ * Get code file content.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getFileContent(fileName) {
+  $.ajax({
+    url: baseURL + '/code/file/' + getRoomName() + '/' + fileName,
+    contentType: 'application/json',
+    type: 'GET'
+  })
+    .done((result) => {
+      codeEditor.setValue(result.data.fileContent);
+    })
+    .fail((err) => {
+      toastr.error(err.responseJSON.message, 'Error to get file content!');
+    });
+}
+
+/**
  * Insert a new file on tree.
  *
  * @author Guilherme da Silva Martin

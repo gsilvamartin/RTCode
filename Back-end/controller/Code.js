@@ -9,6 +9,22 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 /**
+ * Get code file content.
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.get(
+  '/code/file/:id/:file',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const service = await codeService.init();
+    const file = await service.getFileContent(req.params.id, req.params.file, req.userId);
+
+    res.status(200).json(new SuccessResponse(200, 'Success to get file content', { fileContent: file }));
+  })
+);
+
+/**
  * Create a new code.
  *
  * @author Guilherme da Silva Martin

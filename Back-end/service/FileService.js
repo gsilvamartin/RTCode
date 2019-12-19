@@ -12,6 +12,29 @@ module.exports = class FileService {
   }
 
   /**
+   * Return the content of a file.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} fileName
+   */
+  static async getFileContent(codeName, fileName) {
+    try {
+      const fullPath = process.env.CODE_LOCATION + codeName + '/' + fileName;
+
+      if (fs.existsSync(fullPath)) {
+        const file = fs.readFileSync(fullPath, 'utf8');
+
+        return file;
+      } else {
+        throw new ErrorResponse('Your file could not be found.');
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * List content of code folder.
    *
    * @author Guilherme da Silva Martin

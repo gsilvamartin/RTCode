@@ -62,6 +62,27 @@ module.exports = class CodeService {
   }
 
   /**
+   * Return the content of a file.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} fileName
+   * @param {*} userId
+   */
+  static async getFileContent(codeName, fileName, userId) {
+    try {
+      if (await this.verifyUserCodePermission(codeName, userId)) {
+        const fileService = await FileService.init();
+        const file = await fileService.getFileContent(codeName, fileName);
+
+        return file;
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Create a new code file.
    *
    * @author Guilherme da Silva Martin
