@@ -27,6 +27,17 @@ server.use(users);
 server.use(code);
 
 /**
+ * CORS Control
+ *
+ * @author Guilherme da Silva Martin
+ */
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://rtcode.me');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+/**
  * Error handler
  *
  * @author Guilherme da Silva Martin
