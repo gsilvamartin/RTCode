@@ -1,4 +1,5 @@
-const IS_DEVELOP = false;
+let baseURL;
+let IS_DEVELOP = false;
 
 if (IS_DEVELOP) {
   baseURL = 'http://localhost:5000';
