@@ -1,5 +1,5 @@
 let selectedLanguage;
-const baseURL = 'http://0.0.0.0:5000';
+const baseURL = 'https://0.0.0.0:5000';
 
 /**
  * Returns file size.
