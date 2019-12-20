@@ -24,9 +24,6 @@ const cookieParser = require('cookie-parser');
  * @author Guilherme da Silva Martin
  */
 if (process.env.IS_DEVELOP === 'false') {
-  console.log(process.env.SSL_CHAIN);
-  console.log(process.env.SSL_KEY);
-  console.log(process.env.SSL_CERT);
   const chain = fs.readFileSync(process.env.SSL_CHAIN, 'utf8');
   const privateKey = fs.readFileSync(process.env.SSL_KEY, 'utf8');
   const certificate = fs.readFileSync(process.env.SSL_CERT, 'utf8');
