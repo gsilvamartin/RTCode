@@ -23,7 +23,7 @@ const cookieParser = require('cookie-parser');
  *
  * @author Guilherme da Silva Martin
  */
-if (!process.env.IS_DEVELOP) {
+if (process.env.IS_DEVELOP === 'false') {
   console.log(process.env.SSL_CHAIN);
   console.log(process.env.SSL_KEY);
   console.log(process.env.SSL_CERT);
