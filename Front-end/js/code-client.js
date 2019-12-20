@@ -1,4 +1,4 @@
-const socket = io('http://0.0.0.0:5000');
+const socket = io(baseURL);
 const editor = document.getElementById('editor');
 
 /**

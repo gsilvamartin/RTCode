@@ -1,9 +1,8 @@
+require('dotenv').config();
 const fs = require('fs');
-const open = require('open');
 const http = require('http');
 const express = require('express');
 const server = express();
-const codeServer = http.createServer(server);
 const path = require('path');
 const users = require('./User');
 const code = require('./Code');
@@ -11,8 +10,14 @@ const UtilClass = require('../util/Util');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const codeServer = http.createServer(server);
 const socketCode = require('socket.io')(codeServer);
 
+/**
+ * Express middlewares
+ *
+ * @author Guilherme da Silva Martin
+ */
 server.use(cookieParser());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -20,6 +25,17 @@ server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
 server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
 server.use(users);
 server.use(code);
+
+/**
+ * CORS Control
+ *
+ * @author Guilherme da Silva Martin
+ */
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://rtcode.me');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 /**
  * Error handler
@@ -66,4 +82,4 @@ socketCode.on('connection', (socket) => {
  *
  * @author Guilherme da Silva Martin
  */
-codeServer.listen(5000, '0.0.0.0');
+codeServer.listen(5000);
