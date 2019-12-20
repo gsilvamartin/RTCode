@@ -94,4 +94,4 @@ socketCode.on('connection', (socket) => {
  *
  * @author Guilherme da Silva Martin
  */
-codeServer.listen(5000, 'https://127.0.0.1');
+codeServer.listen(5000, '127.0.0.1');
