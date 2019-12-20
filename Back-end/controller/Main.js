@@ -23,12 +23,15 @@ const cookieParser = require('cookie-parser');
  * @author Guilherme da Silva Martin
  */
 if (process.env.IS_DEVELOP === 'false') {
-  const chain = fs.readFileSync(process.env.SSL_CHAIN, 'utf8');
-  const privateKey = fs.readFileSync(process.env.SSL_KEY, 'utf8');
-  const certificate = fs.readFileSync(process.env.SSL_CERT, 'utf8');
-  const credentials = { key: privateKey, cert: certificate, ca: chain };
+  // const chain = fs.readFileSync(process.env.SSL_CHAIN, 'utf8');
+  // const privateKey = fs.readFileSync(process.env.SSL_KEY, 'utf8');
+  // const certificate = fs.readFileSync(process.env.SSL_CERT, 'utf8');
+  // const credentials = { key: privateKey, cert: certificate, ca: chain };
 
-  codeServer = https.createServer(credentials, server);
+  // codeServer = https.createServer(credentials, server);
+  // socketCode = socketio(codeServer);
+
+  codeServer = http.createServer(server);
   socketCode = socketio(codeServer);
 } else {
   codeServer = http.createServer(server);
