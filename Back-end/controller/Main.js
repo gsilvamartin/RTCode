@@ -1,5 +1,7 @@
 let codeServer;
 let socketCode;
+
+require('dotenv').config();
 const fs = require('fs');
 const open = require('open');
 const http = require('http');
@@ -9,7 +11,6 @@ const server = express();
 const path = require('path');
 const users = require('./User');
 const code = require('./Code');
-const dotenv = require('dotenv').config();
 const socketio = require('socket.io');
 const UtilClass = require('../util/Util');
 const ErrorResponse = require('../model/response/ErrorResponse');
@@ -23,6 +24,9 @@ const cookieParser = require('cookie-parser');
  * @author Guilherme da Silva Martin
  */
 if (!process.env.IS_DEVELOP) {
+  console.log(process.env.SSL_CHAIN);
+  console.log(process.env.SSL_KEY);
+  console.log(process.env.SSL_CERT);
   const chain = fs.readFileSync(process.env.SSL_CHAIN, 'utf8');
   const privateKey = fs.readFileSync(process.env.SSL_KEY, 'utf8');
   const certificate = fs.readFileSync(process.env.SSL_CERT, 'utf8');
