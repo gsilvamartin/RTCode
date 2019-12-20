@@ -95,4 +95,4 @@ socketCode.on('connection', (socket) => {
  *
  * @author Guilherme da Silva Martin
  */
-codeServer.listen(5000, '0.0.0.0');
+codeServer.listen(5000, 'localhost');
