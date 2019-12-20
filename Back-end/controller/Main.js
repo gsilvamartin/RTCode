@@ -1,43 +1,17 @@
-let codeServer;
-let socketCode;
-
 require('dotenv').config();
 const fs = require('fs');
 const http = require('http');
-const https = require('https');
 const express = require('express');
 const server = express();
 const path = require('path');
 const users = require('./User');
 const code = require('./Code');
-const socketio = require('socket.io');
 const UtilClass = require('../util/Util');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
-/**
- * Starts the server, if the development flag is set to false,
- * the program looks for the ssl key to include in the https server.
- *
- * @author Guilherme da Silva Martin
- */
-if (process.env.IS_DEVELOP === 'false') {
-  // const chain = fs.readFileSync(process.env.SSL_CHAIN, 'utf8');
-  // const privateKey = fs.readFileSync(process.env.SSL_KEY, 'utf8');
-  // const certificate = fs.readFileSync(process.env.SSL_CERT, 'utf8');
-  // const credentials = { key: privateKey, cert: certificate, ca: chain };
-
-  // codeServer = https.createServer(credentials, server);
-  // socketCode = socketio(codeServer);
-
-  codeServer = http.createServer(server);
-  socketCode = socketio(codeServer);
-} else {
-  codeServer = http.createServer(server);
-
-  socketCode = socketio(codeServer);
-}
+const codeServer = http.createServer(server);
+const socketCode = require('socket.io')(codeServer);
 
 /**
  * Express middlewares
