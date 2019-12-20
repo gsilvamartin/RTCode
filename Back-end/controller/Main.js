@@ -67,5 +67,5 @@ socketCode.on('connection', (socket) => {
  * @author Guilherme da Silva Martin
  */
 codeServer.listen(5000, () => {
-  open('http://localhost:5000/code/');
+  open('http://0.0.0.0:5000/code/');
 });
