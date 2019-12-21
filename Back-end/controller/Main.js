@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../../.env'});
+require('dotenv').config({ path: '../../.env' });
 const fs = require('fs');
 const http = require('http');
 const express = require('express');
@@ -14,7 +14,7 @@ const codeServer = http.createServer(server);
 const socketCode = require('socket.io')(codeServer);
 
 /**
- * Express middlewares
+ * Express middleware
  *
  * @author Guilherme da Silva Martin
  */
