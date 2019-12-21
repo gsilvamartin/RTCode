@@ -78,7 +78,7 @@ socketCode.on('connection', (socket) => {
 });
 
 /**
- * Server port listener
+ * Server port listener.
  *
  * @author Guilherme da Silva Martin
  */
