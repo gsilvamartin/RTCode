@@ -22,9 +22,19 @@ function initTree() {
 function handleNodeTreeSelect() {
   treeId.on('select_node.jstree', (evt, data) => {
     if (data.node.parent !== '#') {
+      joinCodeRoom(data.node.text);
       getFileContent(data.node.text);
     }
   });
+}
+
+/**
+ * Return the selected node
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getSelectedNode() {
+  return treeId.jstree().get_selected(true)[0].text;
 }
 
 /**

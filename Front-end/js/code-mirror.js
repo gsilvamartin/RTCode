@@ -28,7 +28,7 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
  */
 codeEditor.on('keyup', (cm, event) => {
   const text = codeEditor.getValue();
-  const room = getRoomName();
+  const room = getRoomName() + '#' + getSelectedNode();
 
   $('#total-lines').text(getTotalLines());
   $('#total-size').text(getFileSize() + ' B');
@@ -41,7 +41,7 @@ codeEditor.on('keyup', (cm, event) => {
  *
  * @author Guilherme da Silva Martin
  */
-socket.on('message', (data) => {
+socket.on('code-change', (data) => {
   codeEditor.setValue(data);
 });
 
