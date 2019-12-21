@@ -39,7 +39,6 @@ module.exports = class AuthenticationService {
         next();
       });
     } catch (ex) {
-      console.log(ex);
       throw ex;
     }
   }

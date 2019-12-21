@@ -33,7 +33,7 @@ codeEditor.on('keyup', (cm, event) => {
   $('#total-lines').text(getTotalLines());
   $('#total-size').text(getFileSize() + ' B');
 
-  socket.send([room, text]);
+  socket.emit('code-change', [room, text]);
 });
 
 /**

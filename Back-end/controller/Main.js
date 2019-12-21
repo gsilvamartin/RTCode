@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../../.env' });
+require('dotenv').config();
 const fs = require('fs');
 const http = require('http');
 const express = require('express');
@@ -72,8 +72,8 @@ socketCode.on('connection', (socket) => {
     socket.join(room);
   });
 
-  socket.on('message', (evt) => {
-    socket.to(evt[0]).emit('message', evt[1]);
+  socket.on('code-change', (evt) => {
+    socket.to(evt[0]).emit('code-change', evt[1]);
   });
 });
 

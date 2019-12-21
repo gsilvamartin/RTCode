@@ -1,5 +1,5 @@
 let selectedLanguage;
-const baseURL = 'https://rtcode.me';
+const baseURL = 'http://localhost:5000';
 
 /**
  * Returns file size.

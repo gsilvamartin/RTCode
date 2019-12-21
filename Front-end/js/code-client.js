@@ -36,7 +36,7 @@ function joinRoom() {
  *
  * @author Guilherme da Silva Martin
  */
-socket.on('message', (data) => {
+socket.on('code-change', (data) => {
   editor.value = data;
 });
 
