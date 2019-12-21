@@ -6,9 +6,7 @@ const editor = document.getElementById('editor');
  *
  * @author Guilherme da Silva Martin
  */
-function init() {
-  joinRoom();
-}
+function init() {}
 
 /**
  * Returns the name of the room sent by parameter
@@ -23,12 +21,12 @@ function getRoomName() {
 }
 
 /**
- * Connects to desired room
+ * Connects to desired code room
  *
  * @author Guilherme da Silva Martin
  */
-function joinRoom() {
-  socket.emit('join-code', getRoomName());
+function joinCodeRoom(fileName) {
+  socket.emit('join-code', getRoomName() + '#' + fileName);
 }
 
 /**
