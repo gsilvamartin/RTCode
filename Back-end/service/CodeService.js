@@ -83,6 +83,25 @@ module.exports = class CodeService {
   }
 
   /**
+   * Update code file content.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} fileName
+   * @param {*} fileContent
+   */
+  static async updateCodeFileContent(codeName, fileName, fileContent) {
+    try {
+      const fileService = await FileService.init();
+      const file = await fileService.updateCocodedeFileContent(codeName, fileName, fileContent);
+
+      return file;
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Create a new code file.
    *
    * @author Guilherme da Silva Martin

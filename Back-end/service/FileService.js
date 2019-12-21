@@ -1,4 +1,5 @@
 const fs = require('fs');
+const ErrorResponse = require('../model/response/ErrorResponse');
 
 module.exports = class FileService {
   /**
@@ -61,7 +62,7 @@ module.exports = class FileService {
       const fullPath = process.env.CODE_LOCATION + codeName + '/' + fileName;
 
       if (!fs.existsSync(fullPath)) {
-        fs.writeFileSync(fullPath, '');
+        return fs.writeFileSync(fullPath, '');
       } else {
         throw new ErrorResponse(401, 'File already exists.', null);
       }
@@ -82,7 +83,7 @@ module.exports = class FileService {
       const fullPath = process.env.CODE_LOCATION + codeName + '/' + fileName;
 
       if (fs.existsSync(fullPath)) {
-        fs.unlinkSync(fullPath, '');
+        return fs.unlinkSync(fullPath, '');
       } else {
         throw new ErrorResponse(401, 'File not found.', null);
       }
@@ -104,7 +105,29 @@ module.exports = class FileService {
       const fullPathNew = process.env.CODE_LOCATION + codeName + '/' + newFileName;
 
       if (fs.existsSync(fullPathOld)) {
-        fs.renameSync(fullPathOld, fullPathNew);
+        return fs.renameSync(fullPathOld, fullPathNew);
+      } else {
+        throw new ErrorResponse(401, 'File not found.', null);
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
+   * Update code file content.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} fileName
+   * @param {*} fileContent
+   */
+  static async updateCodeFileContent(codeName, fileName, fileContent) {
+    try {
+      const fullPath = process.env.CODE_LOCATION + codeName + '/' + fileName;
+
+      if (fs.existsSync(fullPath)) {
+        return fs.writeFileSync(fullPath, fileContent);
       } else {
         throw new ErrorResponse(401, 'File not found.', null);
       }
@@ -125,7 +148,7 @@ module.exports = class FileService {
       const fullPath = process.env.CODE_LOCATION + codeName;
 
       if (fs.existsSync(fullPath)) {
-        fs.rmdirSync(fullPath);
+        return fs.rmdirSync(fullPath);
       } else {
         throw new ErrorResponse(401, 'Folder not found.', null);
       }

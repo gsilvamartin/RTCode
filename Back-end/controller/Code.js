@@ -78,7 +78,7 @@ router.delete(
  * @author Guilherme da Silva Martin
  */
 router.put(
-  '/code/file/:id',
+  '/code/file/rename/:id',
   authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
@@ -90,6 +90,22 @@ router.put(
     );
 
     res.status(200).json(new SuccessResponse(200, 'Success to update file name!', updatedFile));
+  })
+);
+
+/**
+ * Update code file content.
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.put(
+  '/code/file/:id',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const service = await codeService.init();
+    const updatedFile = await service.updateCodeFileContent(req.params.id, req.body.FileName, req.body.FileContent);
+
+    res.status(200).json(new SuccessResponse(200, 'Success to update file content!', updatedFile));
   })
 );
 

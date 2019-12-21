@@ -183,6 +183,30 @@ function deleteFile($node) {
 }
 
 /**
+ * Update code file content.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function updateCodeFileContent() {
+  $.ajax({
+    url: baseURL + '/code/file/' + getRoomName(),
+    contentType: 'application/json',
+    type: 'PUT',
+    data: JSON.stringify({
+      FileName: getSelectedNode(),
+      FileContent: getEditorText()
+    })
+  })
+    .done((result) => {
+      toastr.clear();
+      toastr.success('Success to save file');
+    })
+    .fail((err) => {
+      toastr.error(err.responseJSON.message, 'Error to get file content!');
+    });
+}
+
+/**
  * Get code file content.
  *
  * @author Guilherme da Silva Martin

@@ -34,7 +34,9 @@ function handleNodeTreeSelect() {
  * @author Guilherme da Silva Martin
  */
 function getSelectedNode() {
-  return treeId.jstree().get_selected(true)[0].text;
+  const selectedNode = treeId.jstree().get_selected(true)[0];
+
+  if (selectedNode !== undefined && selectedNode !== null) return selectedNode.text;
 }
 
 /**

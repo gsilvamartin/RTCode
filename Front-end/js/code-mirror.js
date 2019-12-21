@@ -11,6 +11,7 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   scrollbarStyle: 'null',
   extraKeys: {
     'Ctrl-S': function(instance) {
+      updateCodeFileContent();
       indentAllLines();
     },
     'Ctrl-Alt-F': function(instance) {
@@ -52,6 +53,15 @@ socket.on('code-change', (data) => {
  */
 function changeTheme(theme) {
   codeEditor.setOption('theme', theme);
+}
+
+/**
+ * Returns the text of editor
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getEditorText() {
+  return codeEditor.getValue();
 }
 
 /**
