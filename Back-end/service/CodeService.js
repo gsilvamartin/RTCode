@@ -93,7 +93,7 @@ module.exports = class CodeService {
   static async updateCodeFileContent(codeName, fileName, fileContent) {
     try {
       const fileService = await FileService.init();
-      const file = await fileService.updateCocodedeFileContent(codeName, fileName, fileContent);
+      const file = await fileService.updateCodeFileContent(codeName, fileName, fileContent);
 
       return file;
     } catch (ex) {

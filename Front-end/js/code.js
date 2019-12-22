@@ -2,6 +2,13 @@ let selectedLanguage;
 const baseURL = 'http://localhost:5000';
 
 /**
+ * Verify if user is logged in.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function verifyUserLogin() {}
+
+/**
  * Returns file size.
  *
  * @author Guilherme da Silva Martin
@@ -202,7 +209,7 @@ function updateCodeFileContent() {
       toastr.success('Success to save file');
     })
     .fail((err) => {
-      toastr.error(err.responseJSON.message, 'Error to get file content!');
+      toastr.error(err.responseJSON.message, 'Error to update file content!');
     });
 }
 
