@@ -13,7 +13,15 @@ body {
   color: white;
 }
 
-#sync-button {
+#run-button {
+  color: green;
+}
+
+#stop-button {
+  color: red;
+}
+
+.navbar-action-buttons {
   width: 45px;
   height: 38px;
   margin-right: 7px;
