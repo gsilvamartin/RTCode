@@ -54,6 +54,14 @@ socket.on('code-change', (data) => {
 function changeTheme(theme) {
   codeEditor.setOption('theme', theme);
 }
+/**
+ * Change the language.
+ * 
+ * @author Matheus Muriel
+ */
+function changeLanguage(lang) {
+  codeEditor.setOption('mode', lang);
+}
 
 /**
  * Returns the text of editor

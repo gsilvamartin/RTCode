@@ -130,6 +130,26 @@ function login() {
 }
 
 /**
+ * Save options
+ *
+ * @author Matheus Muriel
+ */
+function saveOptions(func) {
+  let codeTheme = $('#editor-theme').val();
+  let codeLang = $('#code-language').val();
+  
+  $.getScript('code-mirror.js', function() {
+    changeTheme(codeTheme);
+    changeLanguage(codeLang);
+  }).done(() => {
+    $('#optionsModal').modal('hide');
+  })
+  .fail(() => {
+    shakeModal();
+  });
+}
+
+/**
  * Shake modal effect
  *
  * @author Creative Tim
