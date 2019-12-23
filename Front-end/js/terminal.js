@@ -19,53 +19,6 @@ function initTerminal() {
 }
 
 /**
- * Handle terminal keyups
- *
- * @author Guilherme da Silva Martin
- */
-$('#terminal').on('keyup', (e) => {});
-
-/**
- * Returns the name of the room sent by parameter
- *
- * @author Guilherme da Silva Martin
- */
-function getRoomName() {
-  let url = window.location.href;
-  let roomName = url.split('/').reverse()[0];
-
-  return roomName;
-}
-
-/**
- * Handle receiving new terminal data
- *
- * @author Guilherme da Silva Martin
- */
-socket.on('term-data', (data) => {
-  localEcho.println('\n' + data);
-  handleUserInput();
-});
-
-/**
- * Handle receiving terminal key input
- *
- * @author Guilherme da Silva Martin
- */
-socket.on('term-enter-data', (data) => {
-  localEcho.print(data + '\n\r');
-});
-
-/**
- * Connects to desired room
- *
- * @author Guilherme da Silva Martin
- */
-function joinRoom() {
-  socket.emit('join-terminal', getRoomName());
-}
-
-/**
  * Handle user key input.
  *
  * @author Guilherme da Silva Martin
@@ -74,8 +27,8 @@ function handleUserInput() {
   localEcho
     .read('~$ ')
     .then((input) => {
-      socket.emit('cmd', [getRoomName(), input]);
-      socket.emit('term-enter', [getRoomName(), input]);
+      socket.emit('cmd', [getRoomName() + '#' + getSelectedNode(), input]);
+      socket.emit('term-enter', [getRoomName() + '#' + getSelectedNode(), input]);
     })
     .catch((error) => console.log(`Error reading: ${error}`));
 }
