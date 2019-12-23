@@ -2,17 +2,32 @@ let selectedLanguage;
 const baseURL = 'http://localhost:5000';
 
 /**
- * Verify if user is logged in.
+ * Start vue.js on code.html page.
  *
- * @author Guilherme da Silva Martin
+ * @author Matheus Muriel
  */
-function verifyUserLogin() {}
+const vueApp = new Vue({
+  el: '#principal',
+  data: {
+    inExecution: false,
+    display: 'redbox'
+  },
+  methods: {
+    runCode() {
+      this.inExecution = true;
+    },
+    stopCode() {
+      this.inExecution = false;
+    }
+  }
+});
 
 /**
  * Returns file size.
  *
  * @author Guilherme da Silva Martin
  */
+
 function getFileSize() {
   let text = codeEditor.getValue();
 

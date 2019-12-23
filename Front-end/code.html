@@ -54,33 +54,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
   <!--END JSTREE IMPORT-->
 
-  <!--VUE IMPORT-->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vuex"></script>
-  <!--END VUE IMPORT-->
-
   <body>
     <div id="principal">
-
       <nav class="navbar" id="rtcode-nav">
         <a href="#" class="navbar-brand">
           <img src="/img/rt-code-logo.png" height="30" />
         </a>
         <div class="btn-nav">
-          <button v-if="inExecution" type="button" class="btn btn-dark navbar-action-buttons" id="stop-button" @click="stopCode" title="Stop execution">
+          <button
+            v-if="inExecution"
+            type="button"
+            class="btn btn-dark navbar-action-buttons"
+            id="stop-button"
+            @click="stopCode"
+            title="Stop execution"
+          >
             <i class="fas fa-stop"></i>
           </button>
-          <button v-else type="button" class="btn btn-dark navbar-action-buttons" id="run-button" @click="runCode" title="Run code">
+          <button
+            v-else
+            type="button"
+            class="btn btn-dark navbar-action-buttons"
+            id="run-button"
+            @click="runCode"
+            title="Run code"
+          >
             <i class="fas fa-play"></i>
           </button>
-          <button type="button" class="btn btn-dark navbar-action-buttons" id="sync-button" onclick="updateCodeFileContent()" title="Sync">
+          <button
+            type="button"
+            class="btn btn-dark navbar-action-buttons"
+            id="sync-button"
+            onclick="updateCodeFileContent()"
+            title="Sync"
+          >
             <i class="fas fa-sync"></i>
           </button>
-          
+
           <button type="button" class="btn btn-dark" id="options-button" onclick="openOptionsModal()" title="Options">
             Options
           </button>
-          <button type="button" class="btn btn-dark" id="register-button" onclick="openRegisterModal()" title="Register">
+          <button
+            type="button"
+            class="btn btn-dark"
+            id="register-button"
+            onclick="openRegisterModal()"
+            title="Register"
+          >
             Register
           </button>
           <button type="button" class="btn btn-dark" id="login-button" onclick="openLoginModal()" title="Login">
@@ -304,25 +324,12 @@
         </div>
       </div>
     </div>
-
-    <script>
-      const vueApp = new Vue({
-        el: '#principal',
-        data: {
-          inExecution: false,
-          display: 'redbox' 
-        },
-        methods: {
-          runCode() {
-            this.inExecution = true
-          },
-          stopCode() {
-            this.inExecution = false
-          }
-        }
-      })
-    </script>
   </body>
+
+  <!--VUE IMPORT-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex"></script>
+  <!--END VUE IMPORT-->
 
   <!--GENERAL IMPORT-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
