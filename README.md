@@ -27,8 +27,6 @@
   * Program in several languages.
   * Great diversity of themes.
   * Share code in real time with your friends.
-  * Fully functional terminal to execute your code.
-  
   
   ⌨️ **Editor Keyboard Shortcuts**:
   
