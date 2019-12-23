@@ -10,6 +10,7 @@ const term = new Terminal();
  */
 function initTerminal() {
   joinRoom();
+  term.setOption('theme', { background: '#2b2b2b' });
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
 
