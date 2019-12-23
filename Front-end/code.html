@@ -120,7 +120,7 @@
             <textarea id="editor" class="col-sm-12 nopadding" id="principal-box-elements"></textarea>
 
             <div class="col-sm-12 nopadding" id="output-box">
-              <div class="console"><b style="color: white;">Code result: </b><br /></div>
+              <div id="terminal"></div>
             </div>
           </div>
         </div>
@@ -360,6 +360,11 @@
   <script src="/js/import/codemirror/anyword-hint.js"></script>
   <script src="/js/code-mirror.js"></script>
   <!--END CODEMIRROR IMPORT-->
+
+  <!--TERMINAL IMPORT-->
+  <script src="/xterm/lib/xterm.js"></script>
+  <script type="module" src="/js/terminal.js"></script>
+  <!--END TERMINAL IMPORT-->
 
   <!--JSTREE IMPORT-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
