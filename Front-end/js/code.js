@@ -107,7 +107,7 @@ function login() {
   })
     .done(() => {
       $('#loginModal').modal('hide');
-      toastr.success('Success to login!');
+      location.reload();
     })
     .fail(() => {
       shakeModal();
