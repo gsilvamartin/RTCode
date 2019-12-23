@@ -17,6 +17,10 @@ body {
   color: green;
 }
 
+#stop-button {
+  color: red;
+}
+
 .navbar-action-buttons {
   width: 45px;
   height: 38px;
