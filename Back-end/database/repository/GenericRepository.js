@@ -14,12 +14,23 @@ module.exports = class GenericRepository {
   }
 
   /**
-   * Find a register
+   * Returns all records found in the desired model based on the parameters sent.
    *
    * @author Guilherme da Silva Martin
    */
   static async find(model, params) {
     return await model.find(params);
+  }
+
+  /**
+   * Searches for the parameters in the desired model and returns the first record found.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} model
+   * @param {*} params
+   */
+  static async findOne(model, params) {
+    return await model.findOne(model, params);
   }
 
   /**
