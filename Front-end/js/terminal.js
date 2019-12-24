@@ -9,7 +9,6 @@ const term = new Terminal();
  * @author Guilherme da Silva Martin
  */
 function initTerminal() {
-  joinRoom();
   term.setOption('theme', { background: '#2b2b2b' });
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
@@ -19,16 +18,25 @@ function initTerminal() {
 }
 
 /**
+ * Handle terminal socket response.
+ *
+ * @author Guilherme da Silva Martin
+ */
+socket.on('term-response', (result) => {
+  term.write(result + '\r\n');
+});
+
+/**
  * Handle user key input.
  *
  * @author Guilherme da Silva Martin
  */
 function handleUserInput() {
   localEcho
-    .read('~$ ')
+    .read('~$ ', '> ')
     .then((input) => {
-      socket.emit('cmd', [getRoomName() + '#' + getSelectedNode(), input]);
-      socket.emit('term-enter', [getRoomName() + '#' + getSelectedNode(), input]);
+      socket.emit('term-cmd', input);
+      handleUserInput();
     })
     .catch((error) => console.log(`Error reading: ${error}`));
 }
