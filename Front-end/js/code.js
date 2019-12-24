@@ -137,16 +137,17 @@ function login() {
 function saveOptions(func) {
   let codeTheme = $('#editor-theme').val();
   let codeLang = $('#code-language').val();
-  
-  $.getScript('code-mirror.js', function() {
+
+  $.getScript('code-mirror.js', () => {
     changeTheme(codeTheme);
     changeLanguage(codeLang);
-  }).done(() => {
-    $('#optionsModal').modal('hide');
   })
-  .fail(() => {
-    shakeModal();
-  });
+    .done(() => {
+      $('#optionsModal').modal('hide');
+    })
+    .fail(() => {
+      shakeModal();
+    });
 }
 
 /**

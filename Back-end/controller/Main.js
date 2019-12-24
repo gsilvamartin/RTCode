@@ -1,4 +1,5 @@
 require('dotenv').config();
+let terminalSession = null;
 const fs = require('fs');
 const http = require('http');
 const repl = require('repl');
@@ -8,7 +9,7 @@ const path = require('path');
 const users = require('./User');
 const code = require('./Code');
 const UtilClass = require('../util/Util');
-const spawn = require('child_process').spawn;
+const { spawn } = require('child_process');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -74,38 +75,36 @@ socketCode.on('connection', (socket) => {
     socket.join(room);
   });
 
-  socket.on('term-cmd', (evt) => {
-    let inProcess = false;
-
-    if (!inProcess) {
-      inProcess = true;
-      const cmd = spawn('node', ['-i']);
-
-      cmd.stdin.write(evt + '\n');
-      cmd.stdout.setEncoding('utf8');
-
-      cmd.stdout.on('data', (data) => {
-        socket.emit('term-response', data);
-      });
-
-      cmd.stderr.on('data', (data) => {
-        socket.emit('term-response', data);
-      });
-
-      cmd.on('error', (error) => {
-        socket.emit('term-response', error.message);
-        inProcess = false;
-      });
-
-      cmd.on('close', (codeNum) => {
-        socket.emit('term-response', `child process exited with code ${codeNum}`);
-        inProcess = false;
-      });
-    }
-  });
-
   socket.on('code-change', (evt) => {
     socket.to(evt[0]).emit('code-change', evt[1]);
+  });
+
+  socket.on('term-cmd', (evt) => {
+    if (terminalSession === null) {
+      return (terminalSession = spawn(evt, ['-i']));
+    }
+
+    terminalSession.stdin.setEncoding('utf8');
+    terminalSession.stdout.setEncoding('utf8');
+    terminalSession.stderr.setEncoding('utf8');
+
+    terminalSession.stdin.write(evt + '\n');
+
+    terminalSession.stdout.on('data', (data) => {
+      socket.emit('term-response', data);
+    });
+
+    terminalSession.stderr.on('data', (data) => {
+      socket.emit('term-response', data);
+    });
+
+    terminalSession.on('error', (error) => {
+      socket.emit('term-response', error.message);
+    });
+
+    terminalSession.on('close', (codeNum) => {
+      socket.emit('term-response', `child process exited with code ${codeNum}`);
+    });
   });
 });
 

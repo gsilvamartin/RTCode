@@ -15,6 +15,7 @@ function initTerminal() {
 
   term.write('Welcome to RTCode \r\n');
   term.write('\r\n');
+  socket.emit('term-cmd', getLanguageCommand());
 }
 
 /**
@@ -33,12 +34,21 @@ socket.on('term-response', (result) => {
  */
 function handleUserInput() {
   localEcho
-    .read('~$ ', '> ')
+    .read('')
     .then((input) => {
       socket.emit('term-cmd', input);
       handleUserInput();
     })
     .catch((error) => console.log(`Error reading: ${error}`));
+}
+
+/**
+ * Returns the command to init REPL.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getLanguageCommand() {
+  return 'python';
 }
 
 /**
