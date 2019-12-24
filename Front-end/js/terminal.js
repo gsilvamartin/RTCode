@@ -27,6 +27,15 @@ socket.on('term-response', (result) => {
 });
 
 /**
+ * Handle terminal process end.
+ *
+ * @author Guilherme da Silva Martin
+ */
+socket.on('process-end', (result) => {
+  vueApp.inExecution = false;
+});
+
+/**
  * Handle user key input.
  *
  * @author Guilherme da Silva Martin

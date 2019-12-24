@@ -1,0 +1,45 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle rt-code@1.0.1~prestart: rt-code@1.0.1
+6 silly lifecycle rt-code@1.0.1~prestart: no script for prestart, continuing
+7 info lifecycle rt-code@1.0.1~start: rt-code@1.0.1
+8 verbose lifecycle rt-code@1.0.1~start: unsafe-perm in lifecycle true
+9 verbose lifecycle rt-code@1.0.1~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/guilherme/Área de Trabalho/rtcode/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle rt-code@1.0.1~start: CWD: /home/guilherme/Área de Trabalho/rtcode
+11 silly lifecycle rt-code@1.0.1~start: Args: [ '-c', 'node ./Back-end/controller/Main.js' ]
+12 silly lifecycle rt-code@1.0.1~start: Returned: code: 1  signal: null
+13 info lifecycle rt-code@1.0.1~start: Failed to exec start script
+14 verbose stack Error: rt-code@1.0.1 start: `node ./Back-end/controller/Main.js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/usr/share/npm/lib/utils/lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:126:13)
+14 verbose stack     at EventEmitter.emit (events.js:214:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/share/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:126:13)
+14 verbose stack     at ChildProcess.emit (events.js:214:7)
+14 verbose stack     at maybeClose (internal/child_process.js:925:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+15 verbose pkgid rt-code@1.0.1
+16 verbose cwd /home/guilherme/Área de Trabalho/rtcode
+17 error Linux 5.0.0-37-generic
+18 error argv "/usr/bin/node" "/usr/bin/npm" "start"
+19 error node v8.10.0
+20 error npm  v3.5.2
+21 error code ELIFECYCLE
+22 error rt-code@1.0.1 start: `node ./Back-end/controller/Main.js`
+22 error Exit status 1
+23 error Failed at the rt-code@1.0.1 start script 'node ./Back-end/controller/Main.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the rt-code package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node ./Back-end/controller/Main.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs rt-code
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls rt-code
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

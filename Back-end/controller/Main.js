@@ -80,11 +80,7 @@ socketCode.on('connection', (socket) => {
   });
 
   socket.on('file-stop', (evt) => {
-    if (terminalSession !== null) {
-      terminalSession.kill();
-      terminalSession = null;
-      socket.emit('term-response', 'process exited with code 0');
-    }
+    killTerminalSession();
   });
 
   socket.on('file-execute', (evt) => {
@@ -105,15 +101,25 @@ socketCode.on('connection', (socket) => {
     });
 
     terminalSession.stderr.on('data', (data) => {
+      killTerminalSession();
+      socket.emit('process-end');
       socket.emit('term-response', data);
     });
 
     terminalSession.on('error', (error) => {
+      killTerminalSession();
+      socket.emit('process-end');
       socket.emit('term-response', error.message);
     });
 
     terminalSession.on('close', (codeNum) => {
+      killTerminalSession();
+      socket.emit('process-end');
       socket.emit('term-response', `child process exited with code ${codeNum}`);
+    });
+
+    terminalSession.stdin.on('error', (data) => {
+      return;
     });
   });
 
@@ -121,6 +127,18 @@ socketCode.on('connection', (socket) => {
     terminalSession.stdin.write(evt + '\n');
   });
 });
+
+/**
+ * Kills the terminal session.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function killTerminalSession() {
+  if (terminalSession !== null) {
+    terminalSession.kill();
+    terminalSession = null;
+  }
+}
 
 /**
  * Server port listener.
