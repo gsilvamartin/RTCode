@@ -55,8 +55,19 @@ function getCodeFiles() {
 
       buildTree(jsonTree);
     })
-    .fail(() => {
-      toastr.error('Error to load code files.');
+    .fail((jqXHR, status, thrown) => {
+      const statusCode = jqXHR.status;
+      console.log(jqXHR);
+      switch(statusCode) {
+        case 401:
+          $('#loginModal').modal('show');
+          break;
+        case 501:
+          toastr.error('You don\'t have permission for access this code.');
+          break;
+        default:
+          toastr.error('Error to load code files. \n' + jqXHR.message);
+      }
     });
 }
 
@@ -69,17 +80,21 @@ function buildTreeJson(codeName, files) {
   let jsonTree = [];
   let childrenElements = [];
 
-  files.forEach((element) => {
-    let elementPattern = element.split('.');
-
-    if (elementPattern.length > 1) {
-      childrenElements.push({ text: element, type: 'file', icon: getFileIcon(elementPattern[1]) });
-    }
-  });
-
-  jsonTree.push({ text: codeName, state: { opened: true }, children: childrenElements });
-
-  return jsonTree;
+  console.log(files);
+  
+  if (files) {
+    files.forEach((element) => {
+      let elementPattern = element.split('.');
+  
+      if (elementPattern.length > 1) {
+        childrenElements.push({ text: element, type: 'file', icon: getFileIcon(elementPattern[1]) });
+      }
+    });
+  
+    jsonTree.push({ text: codeName, state: { opened: true }, children: childrenElements });
+  
+    return jsonTree;
+  }
 }
 
 /**

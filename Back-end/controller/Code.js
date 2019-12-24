@@ -132,7 +132,7 @@ router.delete(
  */
 router.get(
   '/code/tree/:id',
-  authentication.verifyJWT,
+  (req, res, next) => verififyTokenJWT(req, res, next),
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const codeFiles = await service.getCodeFileTree(req.params.id, req.userId);
@@ -160,5 +160,15 @@ router.delete(
     res.status(200).json(new SuccessResponse(200, 'Success to delete code folder.', deletedCode));
   })
 );
+
+function verififyTokenJWT(req, res, next) {
+  try {
+    authentication.verifyJWT(req, res, next);
+  } catch (ex) {
+    console.log(ex);
+    const statusCode = ex.statusCode
+    res.status(statusCode).send(ex.message);
+  }
+}
 
 module.exports = router;
