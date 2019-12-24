@@ -52,7 +52,7 @@ function executeFile() {
  * @author Guilherme da Silva Martin
  */
 function getLanguageCommand() {
-  return 'python';
+  return codeLanguage;
 }
 
 /**
@@ -169,11 +169,9 @@ function login() {
  */
 function saveOptions(func) {
   let codeTheme = $('#editor-theme').val();
-  let codeLang = $('#code-language').val();
 
-  $.getScript('./js/code-mirror.js', () => {
+  $.getScript('code-mirror.js', () => {
     changeTheme(codeTheme);
-    changeLanguage(codeLang);
   })
     .done(() => {
       $('#optionsModal').modal('hide');
@@ -270,6 +268,7 @@ function deleteFile($node) {
   })
     .done(() => {
       let tree = $('#file-tree');
+
       tree.jstree().delete_node($node);
       toastr.success('Success to delete file!');
     })
@@ -321,33 +320,32 @@ function getFileContent(fileName) {
     });
 }
 
-function openNewFileModal()  {
+function openNewFileModal() {
   $('#newFileModal').modal('show');
 }
 
 /**
- * Open the new Code Modal. 
- * 
+ * Open the new Code Modal.
+ *
  * @author Matheus Muriel
  */
-function openNewCodeModal()  {
+function openNewCodeModal() {
   $('#newCodeModal').modal('show');
 }
 
 /**
  * Save a new code.
- * 
+ *
  * @author Matheus Muriel
  */
 function saveCode() {
   let codeName = $('#new-code-name').val();
-  
+
   $.ajax({
     url: baseURL + '/code/' + codeName,
     contentType: 'application/json',
     type: 'POST',
-    data: JSON.stringify({
-    })
+    data: JSON.stringify({})
   })
     .done(() => {
       $('#newCodeModal').modal('hide');
