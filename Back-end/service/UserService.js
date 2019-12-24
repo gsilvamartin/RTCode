@@ -8,9 +8,12 @@ module.exports = class UserService {
    * @author Guilherme da Silva Martin
    */
   static async init() {
-    this.repository = await GenericRepository.init();
-
-    return this;
+    try {
+      this.repository = await GenericRepository.init();
+      return this;
+    } catch (ex) {
+      throw ex
+    }
   }
 
   /**

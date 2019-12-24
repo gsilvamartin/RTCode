@@ -10,8 +10,7 @@ const baseURL = 'http://localhost:5000';
 const vueApp = new Vue({
   el: '#principal',
   data: {
-    inExecution: false,
-    display: 'redbox'
+    inExecution: false
   },
   methods: {
     runCode() {
@@ -171,8 +170,8 @@ function login() {
 function saveOptions(func) {
   let codeTheme = $('#editor-theme').val();
   let codeLang = $('#code-language').val();
-
-  $.getScript('code-mirror.js', () => {
+  
+  $.getScript('js/code-mirror.js', function() {
     changeTheme(codeTheme);
     changeLanguage(codeLang);
   })
