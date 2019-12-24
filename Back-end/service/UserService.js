@@ -12,7 +12,7 @@ module.exports = class UserService {
       this.repository = await GenericRepository.init();
       return this;
     } catch (ex) {
-      throw ex
+      throw ex;
     }
   }
 

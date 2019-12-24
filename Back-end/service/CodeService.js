@@ -33,6 +33,7 @@ module.exports = class CodeService {
         };
 
         const fileService = await FileService.init();
+
         fileService.createCodeFolder(codeName);
 
         return await this.repository.create(CodeModel, code);
