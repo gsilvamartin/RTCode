@@ -10,7 +10,7 @@
     <a href="https://github.com/gsilvamartin/rtcode/graphs/contributors">contributors</a>
   </sub>
 </p>
-[![Run on Repl.it](https://repl.it/badge/github/gsilvamartin/RTCode)](https://repl.it/github/gsilvamartin/RTCode)
+<a href="https://repl.it/github/gsilvamartin/RTCode"><img src="https://repl.it/badge/github/gsilvamartin/RTCode"></a>
 
 ## About RTCode
 
