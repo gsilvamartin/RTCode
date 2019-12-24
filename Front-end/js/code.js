@@ -170,8 +170,8 @@ function login() {
 function saveOptions(func) {
   let codeTheme = $('#editor-theme').val();
   let codeLang = $('#code-language').val();
-  
-  $.getScript('js/code-mirror.js', function() {
+
+  $.getScript('js/code-mirror.js', () => {
     changeTheme(codeTheme);
     changeLanguage(codeLang);
   })
