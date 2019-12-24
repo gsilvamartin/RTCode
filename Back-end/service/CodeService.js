@@ -42,6 +42,22 @@ module.exports = class CodeService {
   }
 
   /**
+   * Returns the language of code.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   */
+  static async getCodeLanguage(codeName) {
+    try {
+      const code = await this.repository.findOne(CodeModel, { CodeName: codeName });
+
+      return code.CodeLanguage;
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
    * Get file tree of specific code.
    *
    * @author Guilherme da Silva Martin
