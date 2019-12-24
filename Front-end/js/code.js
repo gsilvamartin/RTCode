@@ -1,3 +1,4 @@
+let codeLanguage;
 let selectedLanguage;
 const baseURL = 'http://localhost:5000';
 
@@ -13,13 +14,46 @@ const vueApp = new Vue({
   },
   methods: {
     runCode() {
+      executeFile();
       this.inExecution = true;
     },
     stopCode() {
+      stopFile();
       this.inExecution = false;
     }
   }
 });
+
+/**
+ * Stop of running file.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function stopFile() {
+  socket.emit('file-stop');
+}
+
+/**
+ * Execute selected file
+ *
+ * @author Guilherme da Silva Martin
+ */
+function executeFile() {
+  const language = getLanguageCommand();
+  const fileName = getSelectedNode();
+  const codeName = getRoomName();
+
+  socket.emit('file-execute', [language, codeName, fileName]);
+}
+
+/**
+ * Returns the command to init REPL.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getLanguageCommand() {
+  return 'python';
+}
 
 /**
  * Returns file size.
@@ -140,12 +174,13 @@ function saveOptions(func) {
   $.getScript('js/code-mirror.js', function() {
     changeTheme(codeTheme);
     changeLanguage(codeLang);
-  }).done(() => {
-    $('#optionsModal').modal('hide');
   })
-  .fail(() => {
-    shakeModal();
-  });
+    .done(() => {
+      $('#optionsModal').modal('hide');
+    })
+    .fail(() => {
+      shakeModal();
+    });
 }
 
 /**
@@ -171,6 +206,25 @@ function shakeModal() {
  */
 function openOptionsModal() {
   $('#optionsModal').modal('show');
+}
+
+/**
+ * Get language of code.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getCodeLanguage() {
+  $.ajax({
+    url: baseURL + '/code/language/' + getRoomName(),
+    contentType: 'application/json',
+    type: 'GET'
+  })
+    .done((result) => {
+      codeLanguage = result.data.CodeLanguage;
+    })
+    .fail((err) => {
+      toastr.error(err.responseJSON.message, 'Error to get code language!');
+    });
 }
 
 /**
@@ -334,4 +388,5 @@ function registerNewUser() {
  */
 $(document).ready(() => {
   setToastrOptions();
+  getCodeLanguage();
 });

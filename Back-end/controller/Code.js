@@ -52,7 +52,23 @@ router.post(
     const service = await codeService.init();
     const newCode = await service.createNewCodeFile(req.params.id, req.body.FileName, req.userId);
 
-    res.status(201).json(new SuccessResponse(200, 'Success to create code file!', newCode));
+    res.status(201).json(new SuccessResponse(201, 'Success to create code file!', newCode));
+  })
+);
+
+/**
+ * Returns the language of code.
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.get(
+  '/code/language/:id',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const service = await codeService.init();
+    const codeLanguage = await service.getCodeLanguage(req.params.id);
+
+    res.status(200).json(new SuccessResponse(200, 'Success to get code language', { CodeLanguage: codeLanguage }));
   })
 );
 

@@ -1,12 +1,16 @@
 require('dotenv').config();
+let terminalSession = null;
 const fs = require('fs');
 const http = require('http');
+const repl = require('repl');
 const express = require('express');
 const server = express();
 const path = require('path');
 const users = require('./User');
 const code = require('./Code');
 const UtilClass = require('../util/Util');
+const { spawn } = require('child_process');
+const REPLService = require('../service/REPLService');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -75,7 +79,69 @@ socketCode.on('connection', (socket) => {
   socket.on('code-change', (evt) => {
     socket.to(evt[0]).emit('code-change', evt[1]);
   });
+
+  socket.on('file-stop', (evt) => {
+    killTerminalSession();
+  });
+
+  socket.on('file-execute', (evt) => {
+    if (terminalSession === null) {
+      const replService = REPLService.init();
+
+      terminalSession = replService.getTerminalSession(evt[0], evt[1], evt[2]);
+
+      socket.emit('term-response', evt[0] + ' ' + process.env.CODE_LOCATION + evt[1] + '/' + evt[2], '-i');
+    }
+
+    terminalSession.stdin.setEncoding('utf8');
+    terminalSession.stdout.setEncoding('utf8');
+    terminalSession.stderr.setEncoding('utf8');
+
+    terminalSession.stdin.write(evt + '\n');
+
+    terminalSession.stdout.on('data', (data) => {
+      socket.emit('term-response', data);
+    });
+
+    terminalSession.stderr.on('data', (data) => {
+      killTerminalSession();
+      socket.emit('process-end');
+      socket.emit('term-response', data);
+    });
+
+    terminalSession.on('error', (error) => {
+      killTerminalSession();
+      socket.emit('process-end');
+      socket.emit('term-response', error.message);
+    });
+
+    terminalSession.on('close', (codeNum) => {
+      killTerminalSession();
+      socket.emit('process-end');
+      socket.emit('term-response', `child process exited with code ${codeNum}`);
+    });
+
+    terminalSession.stdin.on('error', (data) => {
+      return;
+    });
+  });
+
+  socket.on('term-cmd', (evt) => {
+    terminalSession.stdin.write(evt + '\n');
+  });
 });
+
+/**
+ * Kills the terminal session.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function killTerminalSession() {
+  if (terminalSession !== null) {
+    terminalSession.kill();
+    terminalSession = null;
+  }
+}
 
 /**
  * Server port listener.

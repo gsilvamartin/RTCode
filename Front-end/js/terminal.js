@@ -9,7 +9,7 @@ const term = new Terminal();
  * @author Guilherme da Silva Martin
  */
 function initTerminal() {
-  joinRoom();
+  term.setOption('theme', { background: '#2b2b2b' });
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
 
@@ -18,51 +18,22 @@ function initTerminal() {
 }
 
 /**
- * Handle terminal keyups
+ * Handle terminal socket response.
  *
  * @author Guilherme da Silva Martin
  */
-$('#terminal').on('keyup', (e) => {});
-
-/**
- * Returns the name of the room sent by parameter
- *
- * @author Guilherme da Silva Martin
- */
-function getRoomName() {
-  let url = window.location.href;
-  let roomName = url.split('/').reverse()[0];
-
-  return roomName;
-}
-
-/**
- * Handle receiving new terminal data
- *
- * @author Guilherme da Silva Martin
- */
-socket.on('term-data', (data) => {
-  localEcho.println('\n' + data);
-  handleUserInput();
+socket.on('term-response', (result) => {
+  term.write(result + '\r\n');
 });
 
 /**
- * Handle receiving terminal key input
+ * Handle terminal process end.
  *
  * @author Guilherme da Silva Martin
  */
-socket.on('term-enter-data', (data) => {
-  localEcho.print(data + '\n\r');
+socket.on('process-end', (result) => {
+  vueApp.inExecution = false;
 });
-
-/**
- * Connects to desired room
- *
- * @author Guilherme da Silva Martin
- */
-function joinRoom() {
-  socket.emit('join-terminal', getRoomName());
-}
 
 /**
  * Handle user key input.
@@ -71,10 +42,10 @@ function joinRoom() {
  */
 function handleUserInput() {
   localEcho
-    .read('~$ ')
+    .read('')
     .then((input) => {
-      socket.emit('cmd', [getRoomName(), input]);
-      socket.emit('term-enter', [getRoomName(), input]);
+      socket.emit('term-cmd', input);
+      handleUserInput();
     })
     .catch((error) => console.log(`Error reading: ${error}`));
 }

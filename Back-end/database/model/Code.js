@@ -4,6 +4,9 @@ let codeSchema = mongoose.Schema({
   CodeName: {
     type: 'String'
   },
+  CodeLanguage: {
+    type: 'String'
+  },
   IsActive: {
     type: 'Boolean'
   },
