@@ -79,9 +79,19 @@ socketCode.on('connection', (socket) => {
     socket.to(evt[0]).emit('code-change', evt[1]);
   });
 
-  socket.on('term-cmd', (evt) => {
+  socket.on('file-stop', (evt) => {
+    if (terminalSession !== null) {
+      terminalSession.kill();
+      terminalSession = null;
+      socket.emit('term-response', 'process exited with code 0');
+    }
+  });
+
+  socket.on('file-execute', (evt) => {
     if (terminalSession === null) {
-      return (terminalSession = spawn(evt, ['-i']));
+      terminalSession = spawn(evt[0], [process.env.CODE_LOCATION + evt[1] + '/' + evt[2], '-i']);
+
+      socket.emit('term-response', evt[0] + ' ' + process.env.CODE_LOCATION + evt[1] + '/' + evt[2], '-i');
     }
 
     terminalSession.stdin.setEncoding('utf8');
@@ -105,6 +115,10 @@ socketCode.on('connection', (socket) => {
     terminalSession.on('close', (codeNum) => {
       socket.emit('term-response', `child process exited with code ${codeNum}`);
     });
+  });
+
+  socket.on('term-cmd', (evt) => {
+    terminalSession.stdin.write(evt + '\n');
   });
 });
 

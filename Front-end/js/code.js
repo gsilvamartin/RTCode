@@ -14,13 +14,46 @@ const vueApp = new Vue({
   },
   methods: {
     runCode() {
+      executeFile();
       this.inExecution = true;
     },
     stopCode() {
+      stopFile();
       this.inExecution = false;
     }
   }
 });
+
+/**
+ * Stop of running file.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function stopFile() {
+  socket.emit('file-stop');
+}
+
+/**
+ * Execute selected file
+ *
+ * @author Guilherme da Silva Martin
+ */
+function executeFile() {
+  const language = getLanguageCommand();
+  const fileName = getSelectedNode();
+  const codeName = getRoomName();
+
+  socket.emit('file-execute', [language, codeName, fileName]);
+}
+
+/**
+ * Returns the command to init REPL.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getLanguageCommand() {
+  return 'python';
+}
 
 /**
  * Returns file size.
