@@ -10,6 +10,7 @@ const users = require('./User');
 const code = require('./Code');
 const UtilClass = require('../util/Util');
 const { spawn } = require('child_process');
+const REPLService = require('../service/REPLService');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -85,7 +86,9 @@ socketCode.on('connection', (socket) => {
 
   socket.on('file-execute', (evt) => {
     if (terminalSession === null) {
-      terminalSession = spawn(evt[0], [process.env.CODE_LOCATION + evt[1] + '/' + evt[2], '-i']);
+      const replService = REPLService.init();
+
+      terminalSession = replService.getTerminalSession(evt[0], evt[1], evt[2]);
 
       socket.emit('term-response', evt[0] + ' ' + process.env.CODE_LOCATION + evt[1] + '/' + evt[2], '-i');
     }

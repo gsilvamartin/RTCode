@@ -1,3 +1,4 @@
+let codeLanguage;
 let selectedLanguage;
 const baseURL = 'http://localhost:5000';
 
@@ -209,6 +210,25 @@ function openOptionsModal() {
 }
 
 /**
+ * Get language of code.
+ *
+ * @author Guilherme da Silva Martin
+ */
+function getCodeLanguage() {
+  $.ajax({
+    url: baseURL + '/code/language/' + getRoomName(),
+    contentType: 'application/json',
+    type: 'GET'
+  })
+    .done((result) => {
+      codeLanguage = result.data.CodeLanguage;
+    })
+    .fail((err) => {
+      toastr.error(err.responseJSON.message, 'Error to get code language!');
+    });
+}
+
+/**
  * Save file into the system.
  *
  * @param {*} params node tree params
@@ -369,4 +389,5 @@ function registerNewUser() {
  */
 $(document).ready(() => {
   setToastrOptions();
+  getCodeLanguage();
 });
