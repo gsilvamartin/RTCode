@@ -171,7 +171,7 @@ function saveOptions(func) {
   let codeTheme = $('#editor-theme').val();
   let codeLang = $('#code-language').val();
 
-  $.getScript('js/code-mirror.js', () => {
+  $.getScript('./js/code-mirror.js', () => {
     changeTheme(codeTheme);
     changeLanguage(codeLang);
   })
@@ -233,7 +233,7 @@ function getCodeLanguage() {
  * @param {*} params node tree params
  */
 function saveFile($node) {
-  let fileName = $('#file-name').val();
+  let fileName = $('#new-file-name').val();
 
   $.ajax({
     url: baseURL + '/code/file/' + getRoomName(),
@@ -269,6 +269,7 @@ function deleteFile($node) {
     })
   })
     .done(() => {
+      let tree = $('#file-tree');
       tree.jstree().delete_node($node);
       toastr.success('Success to delete file!');
     })
@@ -320,6 +321,43 @@ function getFileContent(fileName) {
     });
 }
 
+function openNewFileModal()  {
+  $('#newFileModal').modal('show');
+}
+
+/**
+ * Open the new Code Modal. 
+ * 
+ * @author Matheus Muriel
+ */
+function openNewCodeModal()  {
+  $('#newCodeModal').modal('show');
+}
+
+/**
+ * Save a new code.
+ * 
+ * @author Matheus Muriel
+ */
+function saveCode() {
+  let codeName = $('#new-code-name').val();
+  
+  $.ajax({
+    url: baseURL + '/code/' + codeName,
+    contentType: 'application/json',
+    type: 'POST',
+    data: JSON.stringify({
+    })
+  })
+    .done(() => {
+      $('#newCodeModal').modal('hide');
+    })
+    .fail((err) => {
+      $('#newCodeModal').modal('hide');
+      toastr.error(err.responseJSON.message, 'Error to create code!');
+    });
+}
+
 /**
  * Insert a new file on tree.
  *
@@ -327,6 +365,7 @@ function getFileContent(fileName) {
  */
 function insertNewFileTree($node, fileName) {
   let fileNameSplit = fileName.split('.');
+  let tree = $('#file-tree');
 
   $node = tree.jstree().create_node($node, { text: fileName, type: 'file', icon: getFileIcon(fileNameSplit[1]) });
   tree.jstree().deselect_all();

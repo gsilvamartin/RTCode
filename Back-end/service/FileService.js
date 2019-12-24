@@ -156,4 +156,24 @@ module.exports = class FileService {
       throw ex;
     }
   }
+
+  /**
+   * Create a new code folder.
+   *
+   * @author Matheus Muriel
+   * @param {*} codeName
+   */
+  static async createCodeFolder(codeName) {
+    try {
+      const fullPath = process.env.CODE_LOCATION + codeName;
+
+      if (!fs.existsSync(fullPath)) {
+        return fs.mkdirSync(fullPath);
+      } else {
+        throw new ErrorResponse(401, 'Code folder already exists.', null);
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
 };

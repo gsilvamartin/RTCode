@@ -32,6 +32,9 @@ module.exports = class CodeService {
           UserId: new mongoose.Types.ObjectId(userId)
         };
 
+        const fileService = await FileService.init();
+        fileService.createCodeFolder(codeName);
+
         return await this.repository.create(CodeModel, code);
       } else {
         throw new ErrorResponse(401, 'Code already exists', null);
