@@ -95,10 +95,6 @@
             <i class="fas fa-save"></i>
           </button>
           
-          <button type="button" class="btn btn-dark" onclick="openNewFileModal()" title="New File">
-            New File
-          </button>
-
           <button type="button" class="btn btn-dark" id="options-button" onclick="openOptionsModal()" title="Options">
             Options
           </button>
@@ -130,24 +126,38 @@
         </div>
       </nav>
 
-      <div class="container-fluid">
-        <div class="row" id="content-body">
-          <div class="col-sm-2 nopadding lateral-menu" id="lateral-menu">
-            <div class="row">
-              <div id="file-tree"></div>
+      <div class="editor-container">
+
+        <div class="lateral-menu" id="lateral-menu">
+          <div class="file-tree-top-bar">
+            <p>File tree</p>
+            <div class="icons">
+              <a onclick="openNewFileModal()" title="New File"><i class="far fa-plus-square fa-lg"></i></a>
+              <a title="New Folder"><i class="fas fa-folder-plus fa-lg"></i></a>
             </div>
           </div>
-          <div class="col-sm-10 nopadding">
-            <textarea id="editor" class="col-sm-12 nopadding" id="principal-box-elements"></textarea>
 
-            <div class="col-sm-12 nopadding" id="output-box">
-              <div id="terminal"></div>
-            </div>
+          <div class="file-tree" id="file-tree"></div>
+        </div>
+
+        <div class="editor-block">
+          <textarea id="editor" id="principal-box-elements"></textarea>
+
+          <div class="" id="output-box">
+            <div id="terminal"></div>
           </div>
         </div>
 
-        <div class="row" id="content-footer"></div>
       </div>
+
+      <!-- <div class="container-fluid">
+        <div class="row" id="content-body">
+
+          
+        </div>
+
+        <div class="row" id="content-footer"></div>
+      </div> -->
 
       <div class="modal fade login" id="loginModal">
         <div class="modal-dialog login animated">

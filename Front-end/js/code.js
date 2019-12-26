@@ -12,7 +12,8 @@ const vueApp = new Vue({
   data: {
     inExecution: false,
     isLoged: false,
-    userName: 'Teste Guy'
+    userName: 'Teste Guy',
+    codeName: 'Codex'
   },
   beforeMount() {
     this.loadInformations();
