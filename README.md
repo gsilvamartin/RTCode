@@ -45,29 +45,11 @@
 ## Installation 🖥
 
 1. Clone the project and navigate to the project root folder.
-
-```bash
-cd RTCode
-```
-
-2. Install the necessary dependencies for the project execution.
-
-```bash
-npm install
-```
-
-3. Run the following command to start the application.
-
-```bash
-npm start
-```
-
-4. Create a file named `.env` on root folder based on `.env.example` file.
-
-5. In your previously created .env file, enter your secret information such as MongoDB connection string, code contents folder, etc...
-
+2. Install the necessary dependencies for the project execution by running `npm install`.
+3. Create a file named `.env` on root folder based on `.env.example` file.
+4. In your previously created .env file, enter your secret information such as MongoDB connection string, code contents folder, etc...
+5. Start the application by running `npm start`
 6. Open browser in `http://localhost:5000/code/` and create a new code.
-
 7. After you have done all the steps enter the code that you created previously. ex: `http://localhost:5000/code/mynewcode`
 
 ## Contribution 🥰
