@@ -198,6 +198,19 @@ body {
 
 .editor-block {
   flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.editor-block .editor {
+  flex: 1;
+  min-height: 70%;
+
+}
+
+.editor-block .terminal-box {
+  max-height: 35%;
 }
 
 #title-header {
