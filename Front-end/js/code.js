@@ -21,8 +21,8 @@ const vueApp = new Vue({
   methods: {
     loadInformations() {
       let _isLoged = sessionStorage.getItem('isLoged');
-      console.log(sessionStorage)
-      this.isLoged = !!_isLoged
+
+      this.isLoged = !!_isLoged;
     },
     runCode() {
       executeFile();
