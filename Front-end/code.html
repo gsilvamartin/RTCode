@@ -105,18 +105,21 @@
           <button type="button" class="btn btn-dark" id="options-button" onclick="openOptionsModal()" title="Options">
             Options
           </button>
-          <button
-            type="button"
-            class="btn btn-dark"
-            id="register-button"
-            onclick="openRegisterModal()"
-            title="Register"
-          >
+
+          <button v-if="!isLoged" type="button" class="btn btn-dark"
+              id="register-button" onclick="openRegisterModal()" title="Register">
             Register
           </button>
-          <button type="button" class="btn btn-dark" id="login-button" onclick="openLoginModal()" title="Login">
+          <button v-if="!isLoged" type="button" class="btn btn-dark" 
+              id="login-button" onclick="openLoginModal()" title="Login">
             Login
           </button>
+          
+          <button v-if="isLoged" type="button" class="btn btn-dark" 
+              id="user-button" onclick="openUserModal()" title="Account">
+              <i class="far fa-user"></i> {{userName}}
+          </button>
+
         </div>
       </nav>
 

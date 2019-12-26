@@ -10,7 +10,9 @@ const baseURL = 'http://localhost:5000';
 const vueApp = new Vue({
   el: '#principal',
   data: {
-    inExecution: false
+    inExecution: false,
+    isLoged: false,
+    userName: 'Teste Guy'
   },
   methods: {
     runCode() {
@@ -155,7 +157,8 @@ function login() {
   })
     .done(() => {
       $('#loginModal').modal('hide');
-      location.reload();
+      vueApp.$data.isLoged = true;
+      // location.reload(); // Verificando se pode remover (Muriel)
     })
     .fail(() => {
       shakeModal();
