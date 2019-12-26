@@ -84,6 +84,7 @@
           >
             <i class="fas fa-play"></i>
           </button>
+
           <button
             type="button"
             class="btn btn-dark navbar-action-buttons"
@@ -93,9 +94,9 @@
           >
             <i class="fas fa-save"></i>
           </button>
-
-          <button type="button" class="btn btn-dark" id="newCode-button" onclick="openNewCodeModal()" title="New Code">
-            New Code
+          
+          <button type="button" class="btn btn-dark" onclick="openNewFileModal()" title="New File">
+            New File
           </button>
 
           <button type="button" class="btn btn-dark" id="options-button" onclick="openOptionsModal()" title="Options">
@@ -112,7 +113,7 @@
             Login
           </button>
 
-          <div class="btn-nav dropdown dropdown-user" v-if="!isLoged">
+          <div class="btn-nav dropdown dropdown-user" v-if="isLoged"> <!-- está como !isLoged apenas para desenvolvimento -->
             <a class="btn btn-dark dropdown-toggle" href="#" role="button" 
               id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-user"></i> {{userName}}
@@ -120,9 +121,9 @@
           
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="#">User</a>
-              <a class="dropdown-item" href="#" onclick="openNewFileModal()">New File</a>
+              <a class="dropdown-item" href="#" onclick="openNewCodeModal()">New Code</a>
               <a class="dropdown-item" href="#">Codes</a>
-              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
             </div>
           </div>
 

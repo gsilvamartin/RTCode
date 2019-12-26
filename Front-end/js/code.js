@@ -14,7 +14,15 @@ const vueApp = new Vue({
     isLoged: false,
     userName: 'Teste Guy'
   },
+  beforeMount() {
+    this.loadInformations();
+  },
   methods: {
+    loadInformations() {
+      let _isLoged = sessionStorage.getItem('isLoged');
+      console.log(sessionStorage)
+      this.isLoged = !!_isLoged
+    },
     runCode() {
       executeFile();
       this.inExecution = true;
@@ -158,10 +166,30 @@ function login() {
     .done(() => {
       $('#loginModal').modal('hide');
       vueApp.$data.isLoged = true;
-      // location.reload(); // Verificando se pode remover (Muriel)
+      sessionStorage.setItem('isLoged', 'true');
     })
     .fail(() => {
       shakeModal();
+    });
+}
+
+/**
+ * Logout user.
+ *
+ * @author Matheus Muriel
+ */
+function logout() {
+  $.ajax({
+    url: baseURL + '/users/logout/',
+    contentType: 'application/json',
+    type: 'DELETE'
+  })
+    .done(() => {
+      vueApp.$data.isLoged = false;
+      sessionStorage.setItem('isLoged', '');
+    })
+    .fail(() => {
+      toastr.error('Error on logout!');
     });
 }
 
