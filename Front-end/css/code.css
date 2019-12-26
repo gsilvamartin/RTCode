@@ -136,6 +136,22 @@ body {
   background-color: #2b2b2b;
 }
 
+.options-navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.dropdown-user > .dropdown-menu {
+  left: -20%;
+}
+
+.dropdown-user > .dropdown-menu > .dropdown-item:hover{
+  color:#fff;
+  background-color:#23272b;
+  border-color:#1d2124
+}
+
 #title-header {
   font-size: 25px;
   margin-left: 1%;

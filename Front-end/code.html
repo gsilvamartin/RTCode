@@ -63,7 +63,7 @@
         <a href="#" class="navbar-brand">
           <img src="/img/rt-code-logo.png" height="30" />
         </a>
-        <div class="btn-nav">
+        <div class="options-navbar">
           <button
             v-if="inExecution"
             type="button"
@@ -98,10 +98,6 @@
             New Code
           </button>
 
-          <button type="button" class="btn btn-dark" id="newFile-button" onclick="openNewFileModal()" title="New file">
-            New File
-          </button>
-
           <button type="button" class="btn btn-dark" id="options-button" onclick="openOptionsModal()" title="Options">
             Options
           </button>
@@ -110,15 +106,25 @@
               id="register-button" onclick="openRegisterModal()" title="Register">
             Register
           </button>
+
           <button v-if="!isLoged" type="button" class="btn btn-dark" 
               id="login-button" onclick="openLoginModal()" title="Login">
             Login
           </button>
-          
-          <button v-if="isLoged" type="button" class="btn btn-dark" 
-              id="user-button" onclick="openUserModal()" title="Account">
+
+          <div class="btn-nav dropdown dropdown-user" v-if="!isLoged">
+            <a class="btn btn-dark dropdown-toggle" href="#" role="button" 
+              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-user"></i> {{userName}}
-          </button>
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">User</a>
+              <a class="dropdown-item" href="#" onclick="openNewFileModal()">New File</a>
+              <a class="dropdown-item" href="#">Codes</a>
+              <a class="dropdown-item" href="#">Logout</a>
+            </div>
+          </div>
 
         </div>
       </nav>
