@@ -62,11 +62,13 @@ npm install
 npm start
 ```
 
-4. Open browser in 
+4. Create a file named `.env` on root folder based on `.env.example` file.
 
-```bash
-http://localhost:5000/code/
-```
+5. In your previously created .env file, enter your secret information such as MongoDB connection string, code contents folder, etc...
+
+6. Open browser in `http://localhost:5000/code/` and create a new code.
+
+7. After you have done all the steps enter the code that you created previously. ex: `http://localhost:5000/code/mynewcode`
 
 ## Contribution 🥰
 The system is under development and has bugs and improvements to be implemented, so pull requests are welcome.
