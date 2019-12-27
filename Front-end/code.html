@@ -122,7 +122,6 @@
           </button>
 
           <div class="btn-nav dropdown dropdown-user" v-if="isLoged">
-            <!-- está como !isLoged apenas para desenvolvimento -->
             <a
               class="btn btn-dark dropdown-toggle"
               href="#"
@@ -167,15 +166,6 @@
         </div>
       </div>
 
-      <!-- <div class="container-fluid">
-        <div class="row" id="content-body">
-
-          
-        </div>
-
-        <div class="row" id="content-footer"></div>
-      </div> -->
-
       <!-- MODALS -->
       <div class="modal fade login" id="loginModal">
         <div class="modal-dialog login animated">
@@ -213,6 +203,7 @@
                         type="password"
                         placeholder="Password"
                         name="password"
+                        v-on:keyup.enter="this.login()"
                       />
                       <input class="btn btn-default btn-login" type="button" value="Login" onclick="login()" />
                     </form>
@@ -374,15 +365,31 @@
                       </div>
                       <div class="form-group">
                         <label for="code-language">Code language</label>
-                        <select class="form-control" id="code-language">
-                          <option value="javascript">Javascript</option>
-                          <option value="python">Python</option>
-                          <option value="java">Java</option>
-                          <option value="nodejs">NodeJS</option>
-                          <option value="c">C</option>
-                          <option value="c++">C++</option>
-                          <option value="c#">C#</option>
-                        </select>
+                        <div class="dropdown">
+                          <a
+                            class="btn dropdown-toggle lang-dropdown-btn"
+                            href="#"
+                            role="button"
+                            id="dropdownMenuLink"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <img :src="selectedLanguage.img" class="img-lang" />
+                            {{selectedLanguage.name}}
+                          </a>
+
+                          <div class="dropdown-menu lang-dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a
+                              v-for="lang in languages"
+                              class="dropdown-item lang-dropdown-item"
+                              @click="changeLangSelected(lang)"
+                            >
+                              <img :src="lang.img" class="img-lang" />
+                              {{lang.name}}
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -406,6 +413,11 @@
 
   <!--GENERAL IMPORT-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
   <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
