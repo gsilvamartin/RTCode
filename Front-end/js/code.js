@@ -13,7 +13,16 @@ const vueApp = new Vue({
     inExecution: false,
     isLoged: false,
     userName: 'Teste Guy',
-    codeName: 'Codex'
+    languages: [
+      {name: 'Python', value: 'python', img:'/img/python.svg'},
+      {name: 'Javascript', value: 'javascript', img:'/img/javascript.svg'},
+      {name: 'Java', value: 'java', img:'/img/java.svg'},
+      {name: 'NodeJS', value: 'nodejs', img:'/img/nodejs.svg'},
+      {name: 'C', value: 'c', img:'/img/c.svg'},
+      {name: 'C++', value: 'cpp', img:'/img/cpp.svg'},
+      {name: 'C#', value: 'csharp', img:'/img/csharp.svg'}
+    ],
+    selectedLanguage: {name: 'Python', value: 'python', isActive: true, img:'/img/python.svg'}
   },
   beforeMount() {
     this.loadInformations();
@@ -23,6 +32,9 @@ const vueApp = new Vue({
       let _isLoged = sessionStorage.getItem('isLoged');
 
       this.isLoged = !!_isLoged;
+    },
+    changeLangSelected(lang) {
+      this.selectedLanguage = lang;
     },
     runCode() {
       executeFile();
