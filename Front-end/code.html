@@ -167,15 +167,6 @@
         </div>
       </div>
 
-      <!-- <div class="container-fluid">
-        <div class="row" id="content-body">
-
-          
-        </div>
-
-        <div class="row" id="content-footer"></div>
-      </div> -->
-
       <!-- MODALS -->
       <div class="modal fade login" id="loginModal">
         <div class="modal-dialog login animated">
@@ -213,6 +204,7 @@
                         type="password"
                         placeholder="Password"
                         name="password"
+                        v-on:keyup.enter="this.login()"
                       />
                       <input class="btn btn-default btn-login" type="button" value="Login" onclick="login()" />
                     </form>
