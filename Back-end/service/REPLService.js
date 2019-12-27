@@ -32,7 +32,7 @@ module.exports = class REPLService {
       case 'javascript':
         return spawn('node', [process.env.CODE_LOCATION + codeName + '/' + fileName, '-i']);
       default:
-        return spawn('Error to execute file');
+        return spawn('Error to execute file.');
     }
   }
 };
