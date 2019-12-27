@@ -22,14 +22,16 @@ module.exports = class CodeService {
    * @author Guilherme da Silva Martin
    * @param {*} codeName name of the code
    * @param {*} userId user id of owner
+   * @param {*} language language of code
    */
-  static async createCode(codeName, userId) {
+  static async createCode(codeName, userId, language) {
     try {
       if ((await this.repository.count(CodeModel, { CodeName: codeName })) === 0) {
         const code = {
           CodeName: codeName,
           IsActive: true,
-          UserId: new mongoose.Types.ObjectId(userId)
+          UserId: new mongoose.Types.ObjectId(userId),
+          CodeLanguage: language
         };
 
         const fileService = await FileService.init();
@@ -53,9 +55,9 @@ module.exports = class CodeService {
    */
   static async getCodeLanguage(codeName) {
     try {
-      const code = await this.repository.findOne(CodeModel, { CodeName: codeName });
+      const code = await this.repository.find(CodeModel, { CodeName: codeName });
 
-      return code.CodeLanguage;
+      return code[0].CodeLanguage;
     } catch (ex) {
       throw ex;
     }

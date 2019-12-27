@@ -266,10 +266,11 @@ function saveFile($node) {
   let fileName = $('#new-file-name').val();
 
   $.ajax({
-    url: baseURL + '/code/file/' + getRoomName(),
+    url: baseURL + '/code/file/',
     contentType: 'application/json',
     type: 'POST',
     data: JSON.stringify({
+      CodeName: getRoomName(),
       FileName: fileName
     })
   })
@@ -372,15 +373,16 @@ function openNewCodeModal() {
  */
 function saveCode() {
   let codeName = $('#new-code-name').val();
+  let newCodeLanguage = $('#code-language').val();
 
   $.ajax({
-    url: baseURL + '/code/' + codeName,
+    url: baseURL + '/code/' + codeName + '/' + newCodeLanguage,
     contentType: 'application/json',
-    type: 'POST',
-    data: JSON.stringify({})
+    type: 'POST'
   })
     .done(() => {
       $('#newCodeModal').modal('hide');
+      toastr.success('Success to create code!');
     })
     .fail((err) => {
       $('#newCodeModal').modal('hide');

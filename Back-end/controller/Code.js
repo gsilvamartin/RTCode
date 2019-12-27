@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const codeService = require('../service/CodeService');
 const authentication = require('../service/AuthenticationService');
 const SuccessResponse = require('../model/response/SuccessResponse');
+const asyncMiddleware = require('../util/AsyncMiddleware');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -30,11 +31,11 @@ router.get(
  * @author Guilherme da Silva Martin
  */
 router.post(
-  '/code/:id',
+  '/code/:id/:language',
   (req, res, next) => verifyTokenJWT(req, res, next),
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
-    const newCode = await service.createCode(req.params.id, req.userId);
+    const newCode = await service.createCode(req.params.id, req.userId, req.params.language);
 
     res.status(201).json(new SuccessResponse(200, 'Success to create code!', newCode));
   })
@@ -46,11 +47,11 @@ router.post(
  * @author Guilherme da Silva Martin
  */
 router.post(
-  '/code/file/:id',
+  '/code/file/',
   (req, res, next) => verifyTokenJWT(req, res, next),
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
-    const newCode = await service.createNewCodeFile(req.params.id, req.body.FileName, req.userId);
+    const newCode = await service.createNewCodeFile(req.body.CodeName, req.body.FileName, req.userId);
 
     res.status(201).json(new SuccessResponse(201, 'Success to create code file!', newCode));
   })

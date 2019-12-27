@@ -1,4 +1,5 @@
-const { spawn } = require('child_process');
+const { spawn, exec } = require('child_process');
+const ErrorResponse = require('../model/response/ErrorResponse');
 
 module.exports = class REPLService {
   /**
@@ -17,6 +18,13 @@ module.exports = class REPLService {
    */
   static getTerminalSession(language, codeName, fileName) {
     switch (language) {
+      case 'c':
+        exec('gcc' + process.env.CODE_LOCATION + codeName + '/' + fileName);
+        return spawn('./a.out');
+      case 'java':
+        exec('cd ' + process.env.CODE_LOCATION + codeName);
+        exec('javac *.java');
+        return spawn('java', [process.env.CODE_LOCATION + codeName + '/' + fileName]);
       case 'node':
         return spawn('node', [process.env.CODE_LOCATION + codeName + '/' + fileName, '-i']);
       case 'python':
@@ -24,7 +32,7 @@ module.exports = class REPLService {
       case 'javascript':
         return spawn('node', [process.env.CODE_LOCATION + codeName + '/' + fileName, '-i']);
       default:
-        break;
+        return spawn('Error to execute file');
     }
   }
 };

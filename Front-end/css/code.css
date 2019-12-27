@@ -173,6 +173,7 @@ body {
   color: white;
   flex-flow: row nowrap;
   align-items: center;
+  min-height: 24;
 }
 
 .file-tree-top-bar p {
