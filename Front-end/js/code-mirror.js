@@ -10,6 +10,9 @@ let codeEditor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   autoCloseBrackets: true,
   scrollbarStyle: 'null',
   extraKeys: {
+    'Ctrl-Enter': function(instance) {
+      vueApp.runCode();
+    },
     'Ctrl-S': function(instance) {
       updateCodeFileContent();
       indentAllLines();
@@ -56,7 +59,7 @@ function changeTheme(theme) {
 }
 /**
  * Change the language.
- * 
+ *
  * @author Matheus Muriel
  */
 function changeLanguage(lang) {
