@@ -393,6 +393,7 @@ function saveCode() {
   })
     .done(() => {
       $('#newCodeModal').modal('hide');
+      window.location.href = baseURL + '/code/' + codeName;
     })
     .fail((err) => {
       $('#newCodeModal').modal('hide');
