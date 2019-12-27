@@ -21,6 +21,16 @@
   * Diverging programming SDK Versions.
   * Code version divergence.
   * Difficulty in code collaboration between users.
+  
+## Installation 🖥
+
+1. Clone the project and navigate to the project root folder;
+2. Install the necessary dependencies for the project execution by running `npm install`;
+3. Create a file named `.env` on root folder based on `.env.example` file;
+4. In your previously created .env file, enter your secret information;
+5. Start the application by running `npm start`;
+6. Open browser in `http://localhost:5000/code/` and create a new code;
+7. Enter the code that you created previously. `http://localhost:5000/code/mynewcode`.
 
 ## Features 💡
 
@@ -42,16 +52,6 @@
   * [CodeMirror](https://github.com/codemirror/CodeMirror) - code text editor
   * [xTermJS](https://github.com/xtermjs/xterm.js/) - javascript terminal
   * [Socket.IO](https://github.com/socketio/socket.io) - for real time communication
-
-## Installation 🖥
-
-1. Clone the project and navigate to the project root folder;
-2. Install the necessary dependencies for the project execution by running `npm install`;
-3. Create a file named `.env` on root folder based on `.env.example` file;
-4. In your previously created .env file, enter your secret information;
-5. Start the application by running `npm start`;
-6. Open browser in `http://localhost:5000/code/` and create a new code;
-7. Enter the code that you created previously. `http://localhost:5000/code/mynewcode`.
 
 ## Contribution 🥰
 The system is under development and has bugs and improvements to be implemented, so pull requests are welcome.
