@@ -33,6 +33,7 @@
   
    - Indent all lines <kbd>Ctrl</kbd> + <kbd>S</kbd>  or  <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>
    - Code auto complete <kbd>Ctrl</kbd> + <kbd>Space</kbd>
+   - File execute <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
       
 ## Built with 🔧
 
