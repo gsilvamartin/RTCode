@@ -21,9 +21,9 @@ module.exports = class UserCodeService {
   static async verifyUserPermission(codeName, userId) {
     try {
       const codeDetail = await this.repository.findOne(UserCodeModel, { CodeName: codeName });
-      const codeExists = await this.repository.count(UserCodeModel, { CodeId: codeDetail._id, UserId: userId });
+      const userPermission = await this.repository.count(UserCodeModel, { CodeId: codeDetail._id, UserId: userId });
 
-      return !!codeExists;
+      return !!userPermission;
     } catch (ex) {
       throw ex;
     }

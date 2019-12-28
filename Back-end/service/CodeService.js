@@ -77,6 +77,8 @@ module.exports = class CodeService {
         const files = await fileService.listContentOfCodeFolder(codeName);
 
         return files;
+      } else {
+        throw new ErrorResponse(401, "You don't have permisson to access this code", null);
       }
     } catch (ex) {
       throw ex;
@@ -98,6 +100,8 @@ module.exports = class CodeService {
         const file = await fileService.getFileContent(codeName, fileName);
 
         return file;
+      } else {
+        throw new ErrorResponse(401, "You don't have permisson to change this code", null);
       }
     } catch (ex) {
       throw ex;
@@ -114,10 +118,14 @@ module.exports = class CodeService {
    */
   static async updateCodeFileContent(codeName, fileName, fileContent) {
     try {
-      const fileService = await FileService.init();
-      const file = await fileService.updateCodeFileContent(codeName, fileName, fileContent);
+      if (await this.verifyUserCodePermission(codeName, userId)) {
+        const fileService = await FileService.init();
+        const file = await fileService.updateCodeFileContent(codeName, fileName, fileContent);
 
-      return file;
+        return file;
+      } else {
+        throw new ErrorResponse(401, "You don't have permisson to change this code", null);
+      }
     } catch (ex) {
       throw ex;
     }
@@ -136,6 +144,8 @@ module.exports = class CodeService {
         const fileService = await FileService.init();
 
         return await fileService.createNewCodeFile(codeName, fileName);
+      } else {
+        throw new ErrorResponse(401, "You don't have permisson to change this code", null);
       }
     } catch (ex) {
       throw ex;
@@ -156,6 +166,8 @@ module.exports = class CodeService {
         const fileService = await FileService.init();
 
         return await fileService.deleteCodeFile(codeName, codeFile);
+      } else {
+        throw new ErrorResponse(401, "You don't have permisson to change this code.", null);
       }
     } catch (ex) {
       throw ex;
@@ -176,6 +188,40 @@ module.exports = class CodeService {
         const fileService = await FileService.init();
 
         return await fileService.updateCodeFileName(codeName, oldCodeFile, newCodeFile);
+      } else {
+        throw new ErrorResponse(401, "You don't have permisson to change this code.", null);
+      }
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
+   * Delete code by name.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} userId
+   */
+  static async deleteCode(codeName, userId) {
+    try {
+      if (await this.verifyUserCodePermission(codeName, userId)) {
+        const fileService = await FileService.init();
+        const code = {
+          CodeName: codeName,
+          UserId: new mongoose.Types.ObjectId(userId)
+        };
+
+        const deleteDB = await this.repository.delete(CodeModel, code);
+        const deleteFS = await fileService.deleteCodeFolder(codeName);
+
+        if (deleteDB && deleteFS) {
+          return true;
+        } else {
+          throw new ErrorResponse(500, 'Error to delete code folder.', null);
+        }
+      } else {
+        throw new ErrorResponse(401, "You don't have permisson to change this code.", null);
       }
     } catch (ex) {
       throw ex;
@@ -197,34 +243,6 @@ module.exports = class CodeService {
       };
 
       return !!((await this.repository.count(CodeModel, code)) > 0);
-    } catch (ex) {
-      throw ex;
-    }
-  }
-
-  /**
-   * Delete code by name.
-   *
-   * @author Guilherme da Silva Martin
-   * @param {*} codeName
-   * @param {*} userId
-   */
-  static async deleteCode(codeName, userId) {
-    try {
-      const fileService = await FileService.init();
-      const code = {
-        CodeName: codeName,
-        UserId: new mongoose.Types.ObjectId(userId)
-      };
-
-      const deleteDB = await this.repository.delete(CodeModel, code);
-      const deleteFS = await fileService.deleteCodeFolder(codeName);
-
-      if (deleteDB && deleteFS) {
-        return true;
-      } else {
-        throw new ErrorResponse(500, 'Error to delete code folder.', null);
-      }
     } catch (ex) {
       throw ex;
     }
