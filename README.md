@@ -41,6 +41,16 @@
   * Great diversity of themes.
   * Share code in real time with your friends.
   
+  ✍ **Programming Languages**:
+   
+   - C
+   - C#
+   - C++
+   - Python
+   - Java
+   - Javascript
+   - NodeJS
+  
   ⌨️ **Editor Keyboard Shortcuts**:
   
    - Indent all lines <kbd>Ctrl</kbd> + <kbd>S</kbd>  or  <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>
