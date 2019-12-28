@@ -29,8 +29,10 @@
 3. Create a file named `.env` on root folder based on `.env.example` file;
 4. In your previously created .env file, enter your secret information;
 5. Start the application by running `npm start`;
-6. Open browser in `http://localhost:5000/code/` and create a new code;
-7. Enter the code that you created previously. `http://localhost:5000/code/mynewcode`.
+6. Open browser in `http://localhost:5000/code/` and register;
+7. Log in to your previously created user;
+8. Create a new code clicking on your username;
+9. Enter the code that you created. `http://localhost:5000/code/yournewcodename`.
 
 ## Features 💡
 
@@ -38,6 +40,16 @@
   * Program in several languages.
   * Great diversity of themes.
   * Share code in real time with your friends.
+  
+  ✍ **Programming Languages**:
+   
+   - C
+   - C#
+   - C++
+   - Python
+   - Java
+   - Javascript
+   - NodeJS
   
   ⌨️ **Editor Keyboard Shortcuts**:
   
