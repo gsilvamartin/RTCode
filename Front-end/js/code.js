@@ -177,6 +177,7 @@ function login() {
     })
   })
     .done(() => {
+      getCodeFiles();
       $('#loginModal').modal('hide');
       vueApp.$data.isLoged = true;
       sessionStorage.setItem('isLoged', 'true');
@@ -365,6 +366,11 @@ function getFileContent(fileName) {
     });
 }
 
+/**
+ * Open new file modal
+ *
+ * @author Guilherme da Silva Martin
+ */
 function openNewFileModal() {
   $('#newFileModal').modal('show');
 }

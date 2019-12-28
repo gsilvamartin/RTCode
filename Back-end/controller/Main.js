@@ -97,8 +97,6 @@ socketCode.on('connection', (socket) => {
     terminalSession.stdout.setEncoding('utf8');
     terminalSession.stderr.setEncoding('utf8');
 
-    terminalSession.stdin.write(evt + '\n');
-
     terminalSession.stdout.on('data', (data) => {
       socket.emit('term-response', data);
     });
