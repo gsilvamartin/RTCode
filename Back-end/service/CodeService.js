@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const FileService = require('../service/FileService');
 const CodeModel = require('../database/model/Code');
+const UserCodeService = require('../service/UserCodeService');
 const ErrorResponse = require('../model/response/ErrorResponse');
 const GenericRepository = require('../database/repository/GenericRepository');
 
@@ -237,12 +238,21 @@ module.exports = class CodeService {
    */
   static async verifyUserCodePermission(codeName, userId) {
     try {
+      const userCodeService = UserCodeService.init();
+
       const code = {
         CodeName: codeName,
         UserId: new mongoose.Types.ObjectId(userId)
       };
 
-      return !!((await this.repository.count(CodeModel, code)) > 0);
+      if (
+        (await this.repository.count(CodeModel, code)) > 0 ||
+        (await userCodeService.verifyUserPermission(code, userId))
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (ex) {
       throw ex;
     }
