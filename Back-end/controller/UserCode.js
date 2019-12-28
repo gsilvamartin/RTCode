@@ -26,3 +26,25 @@ router.get(
       .json(new SuccessResponse(200, 'Information retrieved successfully!', { hasPermission: userPermission }));
   })
 );
+
+/**
+ * Adds read/write permission in the code to the user sent by id.
+ *
+ * @author Guilherme da Silva Martin
+ */
+router.post(
+  '/usercode/permission/',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const userCodeService = await userCode.init();
+    const newUserPermission = await userCodeService.addUserPermission(
+      req.body.CodeName,
+      req.body.UserId,
+      req.body.permissionUserId
+    );
+
+    res
+      .status(200)
+      .json(new SuccessResponse(200), 'Success to give user permission', { permission: newUserPermission });
+  })
+);

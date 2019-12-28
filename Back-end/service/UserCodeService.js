@@ -1,5 +1,8 @@
 const GenericRepository = require('../database/repository/GenericRepository');
-const UserCodeModel = require('../database/model/User');
+const ErrorResponse = require('../model/response/ErrorResponse');
+const UserCodeModel = require('../database/model/UserCode');
+const UserModel = require('../database/model/User');
+const CodeModel = require('../database/model/Code');
 
 module.exports = class UserCodeService {
   /**
@@ -20,10 +23,35 @@ module.exports = class UserCodeService {
    */
   static async verifyUserPermission(codeName, userId) {
     try {
-      const codeDetail = await this.repository.findOne(UserCodeModel, { CodeName: codeName });
+      const codeDetail = await this.repository.findOne(CodeModel, { CodeName: codeName });
       const userPermission = await this.repository.count(UserCodeModel, { CodeId: codeDetail._id, UserId: userId });
 
       return !!userPermission;
+    } catch (ex) {
+      throw ex;
+    }
+  }
+
+  /**
+   * Adds read/write permission in the code to the user sent by id.
+   *
+   * @author Guilherme da Silva Martin
+   * @param {*} codeName
+   * @param {*} userId
+   * @param {*} permissionUserId
+   */
+  static async addUserPermission(codeName, userId, permissionUserId) {
+    try {
+      const isUserCodeOwner = await this.repository.count(UserModel, { CodeName: codeName, UserId: userId });
+
+      if (isUserCodeOwner > 0) {
+        const userPermission = { UserId: userId, CodeId: permissionUserId };
+        const newPermission = await this.repository.create(UserCodeModel, userPermission);
+
+        return newPermission;
+      } else {
+        throw new ErrorResponse(401, 'You need to be owner of the code to add collaborators.', null);
+      }
     } catch (ex) {
       throw ex;
     }
