@@ -125,7 +125,9 @@ socketCode.on('connection', (socket) => {
   });
 
   socket.on('term-cmd', (evt) => {
-    terminalSession.stdin.write(evt + '\n');
+    if (terminalSession !== null) {
+      terminalSession.stdin.write(evt + '\n');
+    }
   });
 });
 
