@@ -31,7 +31,7 @@
 5. Start the application by running `npm start`;
 6. Open browser in `http://localhost:5000/code/` and register;
 7. Log in to your previously created user;
-8. Create a new code clicking on your username.
+8. Create a new code clicking on your username;
 9. Enter the code that you created. `http://localhost:5000/code/yournewcodename`.
 
 ## Features 💡
