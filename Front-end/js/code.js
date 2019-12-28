@@ -392,7 +392,7 @@ function openNewCodeModal() {
  */
 function saveCode() {
   let codeName = $('#new-code-name').val();
-  let newCodeLanguage = $('#code-language').val();
+  let newCodeLanguage = vueApp.$data.selectedLanguage.value;
 
   $.ajax({
     url: baseURL + '/code/' + codeName + '/' + newCodeLanguage,
