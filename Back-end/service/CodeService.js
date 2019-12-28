@@ -238,7 +238,7 @@ module.exports = class CodeService {
    */
   static async verifyUserCodePermission(codeName, userId) {
     try {
-      const userCodeService = UserCodeService.init();
+      const userCodeService = await UserCodeService.init();
 
       const code = {
         CodeName: codeName,

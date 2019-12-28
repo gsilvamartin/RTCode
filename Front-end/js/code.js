@@ -263,6 +263,7 @@ function getCodeLanguage() {
     type: 'GET'
   })
     .done((result) => {
+      changeLanguage(result.data.CodeLanguage);
       codeLanguage = result.data.CodeLanguage;
     })
     .fail((err) => {
