@@ -127,6 +127,8 @@ socketCode.on('connection', (socket) => {
   socket.on('term-cmd', (evt) => {
     if (terminalSession !== null) {
       terminalSession.stdin.write(evt + '\n');
+    } else {
+      socket.emit('term-response', 'Please, run a file to send input.');
     }
   });
 });
