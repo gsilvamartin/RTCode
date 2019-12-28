@@ -120,7 +120,12 @@ router.put(
   (req, res, next) => verifyTokenJWT(req, res, next),
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
-    const updatedFile = await service.updateCodeFileContent(req.params.id, req.body.FileName, req.body.FileContent);
+    const updatedFile = await service.updateCodeFileContent(
+      req.params.id,
+      req.body.FileName,
+      req.body.FileContent,
+      req.userId
+    );
 
     res.status(200).json(new SuccessResponse(200, 'Success to update file content!', updatedFile));
   })

@@ -117,7 +117,7 @@ module.exports = class CodeService {
    * @param {*} fileName
    * @param {*} fileContent
    */
-  static async updateCodeFileContent(codeName, fileName, fileContent) {
+  static async updateCodeFileContent(codeName, fileName, fileContent, userId) {
     try {
       if (await this.verifyUserCodePermission(codeName, userId)) {
         const fileService = await FileService.init();
