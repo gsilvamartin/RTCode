@@ -42,19 +42,6 @@ router.delete(
 );
 
 /**
- * TESTE, print de cookies
- */
-router.get(
-  '/users/status',
-  asyncMiddleware(async (req, res, next) => {
-    console.log(req.cookies);
-    // res.cookie('access_token', {expires: Date.now()});
-    // res.status(200).json(new SuccessResponse(200, 'Logout success!', null));
-    next();
-  })
-);
-
-/**
  * Returns a user by their id.
  *
  * @author Guilherme da Silva Martin

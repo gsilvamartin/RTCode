@@ -16,7 +16,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
  */
 router.get(
   '/code/file/:id/:file',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const file = await service.getFileContent(req.params.id, req.params.file, req.userId);
@@ -32,7 +32,7 @@ router.get(
  */
 router.post(
   '/code/:id/:language',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const newCode = await service.createCode(req.params.id, req.userId, req.params.language);
@@ -48,7 +48,7 @@ router.post(
  */
 router.post(
   '/code/file/',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const newCode = await service.createNewCodeFile(req.body.CodeName, req.body.FileName, req.userId);
@@ -64,7 +64,7 @@ router.post(
  */
 router.get(
   '/code/language/:id',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const codeLanguage = await service.getCodeLanguage(req.params.id);
@@ -80,7 +80,7 @@ router.get(
  */
 router.delete(
   '/code/file/:id',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const deletedFile = await service.deleteCodeFile(req.params.id, req.body.FileName, req.userId);
@@ -96,7 +96,7 @@ router.delete(
  */
 router.put(
   '/code/file/rename/:id',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const updatedFile = await service.updateCodeFileName(
@@ -117,7 +117,7 @@ router.put(
  */
 router.put(
   '/code/file/:id',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const updatedFile = await service.updateCodeFileContent(
@@ -138,7 +138,7 @@ router.put(
  */
 router.delete(
   '/code/:id',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const deletedCode = await service.deleteCode(req.params.id, req.userId);
@@ -154,7 +154,7 @@ router.delete(
  */
 router.get(
   '/code/tree/:id',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const codeFiles = await service.getCodeFileTree(req.params.id, req.userId);
@@ -174,7 +174,7 @@ router.get(
  */
 router.delete(
   '/code/:id',
-  (req, res, next) => verifyTokenJWT(req, res, next),
+  authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
     const deletedCode = await service.deleteCode(req.params.id, req.userId);
@@ -182,15 +182,5 @@ router.delete(
     res.status(200).json(new SuccessResponse(200, 'Success to delete code folder.', deletedCode));
   })
 );
-
-function verifyTokenJWT(req, res, next) {
-  try {
-    authentication.verifyJWT(req, res, next);
-  } catch (ex) {
-    const statusCode = ex.statusCode;
-
-    res.status(statusCode).send(ex.message);
-  }
-}
 
 module.exports = router;
