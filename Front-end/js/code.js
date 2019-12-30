@@ -22,7 +22,8 @@ const vueApp = new Vue({
       { name: 'C++', value: 'cpp', img: '/img/cpp.svg' },
       { name: 'C#', value: 'csharp', img: '/img/csharp.svg' }
     ],
-    selectedLanguage: { name: 'Python', value: 'python', isActive: true, img: '/img/python.svg' }
+    selectedLanguage: { name: 'Python', value: 'python', isActive: true, img: '/img/python.svg' },
+    codeOpened: false
   },
   beforeMount() {
     this.loadInformations();
@@ -369,6 +370,7 @@ function getFileContent(fileName) {
     type: 'GET'
   })
     .done((result) => {
+      vueApp.$data.codeOpened = true;
       codeEditor.setValue(result.data.fileContent);
     })
     .fail((err) => {
