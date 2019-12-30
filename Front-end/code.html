@@ -158,7 +158,17 @@
         </div>
 
         <div class="editor-block">
-          <textarea id="editor" id="principal-box-elements"></textarea>
+          <div class="editor-box">
+            <div class="nocode-screen" v-if="!codeOpened">
+              <img src="/img/rt-code-logo.png"/>
+              <p>A open source platform to share code in real time.</p>
+            </div>
+            <div class="editor-div" v-show="codeOpened">
+              <textarea id="editor"></textarea>
+            </div>
+            
+          </div>
+          
 
           <div class="terminal-box">
             <div id="terminal"></div>
