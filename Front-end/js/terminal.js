@@ -13,6 +13,8 @@ function initTerminal() {
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
 
+  term.resize(100, 9) //columns, rows
+
   term.write('Welcome to RTCode \r\n');
   term.write('\r\n');
 }
