@@ -19,10 +19,13 @@ router.post(
   '/users/login',
   asyncMiddleware(async (req, res, next) => {
     const authenticationService = await authentication.init();
-    const token = await authenticationService.authenticateUser(req.body.Email, req.body.Password);
+    const userData = await authenticationService.login(req.body.Email, req.body.Password);
+    const token = await authenticationService.authenticateUser(userData);
 
     res.cookie('access_token', token, { expires: new Date(Date.now() + 8 * 3600000), httpOnly: true });
-    res.status(200).json(new SuccessResponse(200, 'Login success!', null));
+    res
+      .status(200)
+      .json(new SuccessResponse(200, 'Login success!', { Email: userData[0].Email, Nickname: userData[0].Nickname }));
     next();
   })
 );

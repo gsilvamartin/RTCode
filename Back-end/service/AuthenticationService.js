@@ -50,10 +50,8 @@ module.exports = class AuthenticationService {
    * @param {*} email
    * @param {*} password
    */
-  static async authenticateUser(email, password) {
+  static async authenticateUser(userData) {
     try {
-      let userData = await this.login(email, password);
-
       if (!this.util.isNullOrEmpty(userData)) {
         const token = await jwt.sign(
           { id: userData[0]._id, nickname: userData[0].Nickname, email: userData[0].Email },

@@ -12,7 +12,7 @@ const vueApp = new Vue({
   data: {
     inExecution: false,
     isLoged: false,
-    userName: 'Teste Guy',
+    userName: 'Username',
     languages: [
       { name: 'Python', value: 'python', img: '/img/python.svg' },
       { name: 'Javascript', value: 'javascript', img: '/img/javascript.svg' },
@@ -30,8 +30,13 @@ const vueApp = new Vue({
   methods: {
     loadInformations() {
       let _isLoged = sessionStorage.getItem('isLoged');
+      let nickname = sessionStorage.getItem('nickname');
 
       this.isLoged = !!_isLoged;
+
+      if (nickname !== null) {
+        this.userName = nickname;
+      }
     },
     changeLangSelected(lang) {
       this.selectedLanguage = lang;
@@ -176,11 +181,14 @@ function login() {
       Password: $('#passwordLogin').val()
     })
   })
-    .done(() => {
+    .done((result) => {
       getCodeFiles();
       $('#loginModal').modal('hide');
       vueApp.$data.isLoged = true;
       sessionStorage.setItem('isLoged', 'true');
+      sessionStorage.setItem('nickname', result.data.Nickname);
+      sessionStorage.setItem('email', result.data.Email);
+      vueApp.loadInformations();
     })
     .fail(() => {
       shakeModal();
@@ -200,7 +208,8 @@ function logout() {
   })
     .done(() => {
       vueApp.$data.isLoged = false;
-      sessionStorage.setItem('isLoged', '');
+      sessionStorage.clear();
+      window.location.reload(false);
     })
     .fail(() => {
       toastr.error('Error on logout!');
@@ -435,9 +444,9 @@ function insertNewFileTree($node, fileName) {
 function getFileIcon(pattern) {
   switch (pattern) {
     case 'js':
-      return 'fab fa-js-square';
+      return '/img/javascript.svg';
     case 'py':
-      return 'fab fa-python';
+      return '/img/python.svg';
     case 'html':
       return 'fab fa-html5';
     default:
