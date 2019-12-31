@@ -9,9 +9,6 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
   <!--END GENERAL CSS IMPORT-->
 
-  <!--JQUERY UI IMPORT-->
-  <!--END JQUERY UI IMPORT-->
-
   <!--BOOTSTRAP IMPORT-->
   <link
     rel="stylesheet"
@@ -147,9 +144,7 @@
               <img src="/img/rt-code-logo.png" />
               <p>A open source platform to share code in real time.</p>
             </div>
-            <div class="editor-div" v-show="codeOpened">
-              <textarea id="editor"></textarea>
-            </div>
+            <div class="editor-div" v-show="codeOpened"></div>
           </div>
 
           <div class="terminal-box">
@@ -402,6 +397,11 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuex"></script>
   <!--END VUE IMPORT-->
+
+  <!--MONACO EDITOR IMPORT-->
+  <script src="/monaco-editor/min/vs/loader.js"></script>
+  <script src="/js/monaco-editor.js"></script>
+  <!--END MONACO EDITOR IMPORT-->
 
   <!--GENERAL IMPORT-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
