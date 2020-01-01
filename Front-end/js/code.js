@@ -370,6 +370,7 @@ function getFileContent(fileName) {
   })
     .done((result) => {
       vueApp.$data.codeOpened = true;
+      setEditorText(result.data.fileContent);
     })
     .fail((err) => {
       toastr.error(err.responseJSON.message, 'Error to get file content!');
@@ -488,5 +489,6 @@ function registerNewUser() {
  */
 $(document).ready(() => {
   setToastrOptions();
+  initEditor();
   getCodeLanguage();
 });

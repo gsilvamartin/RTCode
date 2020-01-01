@@ -151,11 +151,11 @@
 
         <div class="editor-block">
           <div class="editor-box">
-            <div class="nocode-screen" v-if="!codeOpened">
+            <!-- <div class="nocode-screen" v-if="!codeOpened">
               <img src="/img/rt-code-logo.png" />
               <p>A open source platform to share code in real time.</p>
-            </div>
-            <div class="editor-div" id="code-editor" v-show="codeOpened"></div>
+            </div> -->
+            <div class="editor-div" id="code-editor"></div>
           </div>
 
           <div class="terminal-box">
@@ -447,28 +447,6 @@
   <!--MONACO EDITOR-->
   <script src="/monaco-editor/min/vs/loader.js"></script>
 
-  <script>
-    require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs' } });
-
-    window.MonacoEnvironment = {
-      getWorkerUrl: function(workerId, label) {
-        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
-                self.MonacoEnvironment = {
-                    baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/'
-                };
-                importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs/base/worker/workerMain.js');`)}`;
-      }
-    };
-
-    require(['vs/editor/editor.main'], function() {
-      let editor = monaco.editor.create(document.getElementById('code-editor'), {
-        language: 'javascript'
-      });
-
-      window.onresize = function() {
-        editor.layout();
-      };
-    });
-  </script>
+  <script src="/js/monaco-editor.js"></script>
   <!--END MONACO EDITOR-->
 </html>
