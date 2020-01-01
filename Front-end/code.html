@@ -9,8 +9,12 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
   <!--END GENERAL CSS IMPORT-->
 
-  <!--JQUERY UI IMPORT-->
-  <!--END JQUERY UI IMPORT-->
+  <!--MONACO EDITOR IMPORT-->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs/editor/editor.main.css"
+    rel="stylesheet"
+  />
+  <!--END MONACO EDITOR IMPORT-->
 
   <!--BOOTSTRAP IMPORT-->
   <link
@@ -29,21 +33,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <!--END GOOGLE FONTS IMPORT-->
 
-  <!--CODE MIRROR CSS IMPORT-->
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/codemirror.css" />
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/show-hint.css" />
+  <!--CODE IMPORT-->
   <link rel="stylesheet" type="text/css" href="/css/code.css" />
-  <!--END CODEMIRROR CSS IMPORT-->
-
-  <!--CODEMIRROR THEMES IMPORT-->
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/darcula.css" />
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/ambiance.css" />
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/base16-dark.css" />
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/base16-light.css" />
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/eclipse.css" />
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/monokai.css" />
-  <link rel="stylesheet" type="text/css" href="/css/import/codemirror/themes/moxer.css" />
-  <!--END THEME IMPORT-->
+  <!--END CODE IMPORT-->
 
   <!--TERMINAL IMPORT-->
   <link rel="stylesheet" href="/xterm/css/xterm.css" />
@@ -160,14 +152,12 @@
         <div class="editor-block">
           <div class="editor-box">
             <div class="nocode-screen" v-if="!codeOpened">
-              <img src="/img/rt-code-logo.png"/>
+              <img src="/img/rt-code-logo.png" />
               <p>A open source platform to share code in real time.</p>
             </div>
-            <div class="editor-div" v-show="codeOpened">
-              <textarea id="editor"></textarea>
-            </div>
+            <div class="editor-div" id="code-editor" v-show="codeOpened"></div>
           </div>
-          
+
           <div class="terminal-box">
             <div id="terminal"></div>
           </div>
@@ -441,19 +431,6 @@
   <script src="/js/code-client.js"></script>
   <!--END SOCKET IMPORT-->
 
-  <!--CODEMIRROR IMPORT-->
-  <script src="/js/import/codemirror/codemirror.js"></script>
-  <script src="/js/import/codemirror/languages/javascript.js"></script>
-  <script src="/js/import/codemirror/languages/python.js"></script>
-  <script src="/js/import/codemirror/languages/clike.js"></script>
-  <script src="/js/import/codemirror/closebrackets.js"></script>
-  <script src="/js/import/codemirror/show-hint.js"></script>
-  <script src="/js/import/codemirror/css-hint.js"></script>
-  <script src="/js/import/codemirror/javascript-hint.js"></script>
-  <script src="/js/import/codemirror/anyword-hint.js"></script>
-  <script src="/js/code-mirror.js"></script>
-  <!--END CODEMIRROR IMPORT-->
-
   <!--TERMINAL IMPORT-->
   <script src="/xterm/lib/xterm.js"></script>
   <script type="module" src="/js/terminal.js"></script>
@@ -466,4 +443,32 @@
   <!--FILE TREE IMPORT-->
   <script src="/js/file-tree.js"></script>
   <!--END FILE TREE IMPORT-->
+
+  <!--MONACO EDITOR-->
+  <script src="/monaco-editor/min/vs/loader.js"></script>
+
+  <script>
+    require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs' } });
+
+    window.MonacoEnvironment = {
+      getWorkerUrl: function(workerId, label) {
+        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+                self.MonacoEnvironment = {
+                    baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/'
+                };
+                importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs/base/worker/workerMain.js');`)}`;
+      }
+    };
+
+    require(['vs/editor/editor.main'], function() {
+      let editor = monaco.editor.create(document.getElementById('code-editor'), {
+        language: 'javascript'
+      });
+
+      window.onresize = function() {
+        editor.layout();
+      };
+    });
+  </script>
+  <!--END MONACO EDITOR-->
 </html>
