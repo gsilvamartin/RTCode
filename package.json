@@ -28,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "local-echo": "github:wavesoft/local-echo",
     "mocha": "^6.2.2",
+    "monaco-editor": "^0.19.0",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.9",
     "open": "^7.0.0",
