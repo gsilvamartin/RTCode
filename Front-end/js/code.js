@@ -288,6 +288,11 @@ function getCodeLanguage() {
 function saveFile($node) {
   let fileName = $('#new-file-name').val();
 
+  if (fileName.split('.').length < 2) {
+    toastr.error('Your file need to include pattern - e.g: .js, .py');
+    return;
+  }
+
   $.ajax({
     url: baseURL + '/code/file/',
     contentType: 'application/json',
