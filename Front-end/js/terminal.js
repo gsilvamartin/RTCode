@@ -1,7 +1,12 @@
 import LocalEchoController from '../js/import/local-echo/local-echo.js';
 
 let localEcho;
-const term = new Terminal();
+const term = new Terminal({
+  fontFamily: "'Roboto Mono', monospace",
+  cols: 100,
+  rows: 8,
+  cursorBlink: true
+});
 
 /**
  * Initialize terminal.
@@ -9,12 +14,11 @@ const term = new Terminal();
  * @author Guilherme da Silva Martin
  */
 function initTerminal() {
-  term.setOption('theme', { background: '#1e1e1e' });
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
-
   term.write('Welcome to RTCode \r\n');
   term.write('\r\n');
+  console.log(term)
 }
 
 /**
@@ -23,7 +27,8 @@ function initTerminal() {
  * @author Guilherme da Silva Martin
  */
 socket.on('term-response', (result) => {
-  term.write(result + '\r\n');
+  localEcho.println(result);
+  handleUserInput();
 });
 
 /**
@@ -42,10 +47,9 @@ socket.on('process-end', (result) => {
  */
 function handleUserInput() {
   localEcho
-    .read('')
+    .read('$ ')
     .then((input) => {
       socket.emit('term-cmd', input);
-      handleUserInput();
     })
     .catch((error) => console.log(`Error reading: ${error}`));
 }
