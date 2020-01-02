@@ -459,7 +459,7 @@ function getFileIcon(pattern) {
     case 'c':
       return '/img/c.svg';
     case 'html':
-      return 'fab fa-html5';
+      return '/img/html.svg';
     default:
       break;
   }
