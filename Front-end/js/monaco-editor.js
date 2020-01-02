@@ -21,6 +21,7 @@ function initEditor() {
   require(['vs/editor/editor.main'], () => {
     codeEditor = monaco.editor.create(document.getElementById('code-editor'), {
       language: codeLanguage,
+      automaticLayout: true,
       theme: 'vs-dark'
     });
 
