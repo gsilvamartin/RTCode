@@ -4,7 +4,7 @@ let localEcho;
 const term = new Terminal({
   fontFamily: "'Roboto Mono', monospace",
   cols: 100,
-  rows: 10,
+  rows: 8,
   cursorBlink: true
 });
 
