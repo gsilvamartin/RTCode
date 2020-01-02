@@ -6,15 +6,15 @@ let codeEditor;
  * @author Guilherme da Silva Martin
  */
 function initEditor() {
-  require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs' } });
+  require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.18.1/min/vs' } });
 
   window.MonacoEnvironment = {
     getWorkerUrl: function(workerId, label) {
       return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
               self.MonacoEnvironment = {
-                  baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/'
+                  baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.18.1/min/'
               };
-              importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs/base/worker/workerMain.js');`)}`;
+              importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.18.1/min/vs/base/worker/workerMain.js');`)}`;
     }
   };
 
