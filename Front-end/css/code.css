@@ -211,10 +211,10 @@ body {
 .editor-block .terminal-box {
   height: 35%;
   border-top: 2px solid #ffffff0a;
+  margin: 2px;
 }
 
 .editor-block .editor-box {
-  flex: 1;
   height: 70%;
   border-bottom: 1.019px solid #ffffff0a;
   display: flex;
