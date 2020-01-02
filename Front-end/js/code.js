@@ -448,6 +448,16 @@ function getFileIcon(pattern) {
       return '/img/javascript.svg';
     case 'py':
       return '/img/python.svg';
+    case 'java':
+      return '/img/java.svg';
+    case 'c++':
+      return '/img/cpp.svg';
+    case 'c#':
+      return '/img/csharp.svg';
+    case 'nodejs':
+      return '/img/nodejs.svg';
+    case 'c':
+      return '/img/c.svg';
     case 'html':
       return 'fab fa-html5';
     default:
