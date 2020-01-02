@@ -30,15 +30,6 @@ function joinCodeRoom(fileName) {
 }
 
 /**
- * Handle receiving new messages
- *
- * @author Guilherme da Silva Martin
- */
-socket.on('code-change', (data) => {
-  editor.value = data;
-});
-
-/**
  * Function performed as soon as page is fully loaded
  *
  * @author Guilherme da Silva Martin

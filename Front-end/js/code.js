@@ -30,13 +30,15 @@ const vueApp = new Vue({
   },
   methods: {
     loadInformations() {
-      let _isLoged = sessionStorage.getItem('isLoged');
-      let nickname = sessionStorage.getItem('nickname');
+      if (doesHttpOnlyCookieExist('access_token')) {
+        let _isLoged = localStorage.getItem('isLoged');
+        let nickname = localStorage.getItem('nickname');
 
-      this.isLoged = !!_isLoged;
+        this.isLoged = !!_isLoged;
 
-      if (nickname !== null) {
-        this.userName = nickname;
+        if (nickname !== null) {
+          this.userName = nickname;
+        }
       }
     },
     changeLangSelected(lang) {
@@ -186,9 +188,9 @@ function login() {
       getCodeFiles();
       $('#loginModal').modal('hide');
       vueApp.$data.isLoged = true;
-      sessionStorage.setItem('isLoged', 'true');
-      sessionStorage.setItem('nickname', result.data.Nickname);
-      sessionStorage.setItem('email', result.data.Email);
+      localStorage.setItem('isLoged', 'true');
+      localStorage.setItem('nickname', result.data.Nickname);
+      localStorage.setItem('email', result.data.Email);
       vueApp.loadInformations();
     })
     .fail(() => {
@@ -209,7 +211,7 @@ function logout() {
   })
     .done(() => {
       vueApp.$data.isLoged = false;
-      sessionStorage.clear();
+      localStorage.clear();
       window.location.reload(false);
     })
     .fail(() => {
@@ -273,7 +275,6 @@ function getCodeLanguage() {
     type: 'GET'
   })
     .done((result) => {
-      changeLanguage(result.data.CodeLanguage);
       codeLanguage = result.data.CodeLanguage;
     })
     .fail((err) => {
@@ -288,6 +289,11 @@ function getCodeLanguage() {
  */
 function saveFile($node) {
   let fileName = $('#new-file-name').val();
+
+  if (fileName.split('.').length < 2) {
+    toastr.error('Your file need to include pattern - e.g: .js, .py');
+    return;
+  }
 
   $.ajax({
     url: baseURL + '/code/file/',
@@ -371,7 +377,7 @@ function getFileContent(fileName) {
   })
     .done((result) => {
       vueApp.$data.codeOpened = true;
-      codeEditor.setValue(result.data.fileContent);
+      setEditorText(result.data.fileContent);
     })
     .fail((err) => {
       toastr.error(err.responseJSON.message, 'Error to get file content!');
@@ -449,8 +455,18 @@ function getFileIcon(pattern) {
       return '/img/javascript.svg';
     case 'py':
       return '/img/python.svg';
+    case 'java':
+      return '/img/java.svg';
+    case 'c++':
+      return '/img/cpp.svg';
+    case 'c#':
+      return '/img/csharp.svg';
+    case 'nodejs':
+      return '/img/nodejs.svg';
+    case 'c':
+      return '/img/c.svg';
     case 'html':
-      return 'fab fa-html5';
+      return '/img/html.svg';
     default:
       break;
   }
@@ -490,5 +506,6 @@ function registerNewUser() {
  */
 $(document).ready(() => {
   setToastrOptions();
+  initEditor();
   getCodeLanguage();
 });

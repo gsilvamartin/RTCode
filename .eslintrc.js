@@ -107,7 +107,7 @@ module.exports = {
     // "no-unused-vars": 2,
     // "no-use-before-define": 2,
 
-    'global-require': 2,
+    // 'global-require': 2,
     'handle-callback-err': 1,
     'no-new-require': 2,
 
@@ -127,7 +127,7 @@ module.exports = {
     'new-parens': 2,
     'newline-after-var': [2, 'always'],
     'no-array-constructor': 2,
-    'no-bitwise': 2,
+    // 'no-bitwise': 2,
     'no-continue': 2,
     'no-lonely-if': 2,
     'no-mixed-spaces-and-tabs': 2,
