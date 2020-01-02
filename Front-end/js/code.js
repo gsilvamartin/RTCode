@@ -273,7 +273,6 @@ function getCodeLanguage() {
     type: 'GET'
   })
     .done((result) => {
-      changeLanguage(result.data.CodeLanguage);
       codeLanguage = result.data.CodeLanguage;
     })
     .fail((err) => {
@@ -371,7 +370,7 @@ function getFileContent(fileName) {
   })
     .done((result) => {
       vueApp.$data.codeOpened = true;
-      codeEditor.setValue(result.data.fileContent);
+      setEditorText(result.data.fileContent);
     })
     .fail((err) => {
       toastr.error(err.responseJSON.message, 'Error to get file content!');
@@ -490,5 +489,6 @@ function registerNewUser() {
  */
 $(document).ready(() => {
   setToastrOptions();
+  initEditor();
   getCodeLanguage();
 });
