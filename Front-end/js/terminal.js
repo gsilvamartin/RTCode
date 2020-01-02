@@ -9,7 +9,7 @@ const term = new Terminal();
  * @author Guilherme da Silva Martin
  */
 function initTerminal() {
-  term.setOption('theme', { background: '#2b2b2b' });
+  term.setOption('theme', { background: '#1e1e1e' });
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
 

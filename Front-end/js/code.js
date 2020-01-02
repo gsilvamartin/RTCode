@@ -30,13 +30,15 @@ const vueApp = new Vue({
   },
   methods: {
     loadInformations() {
-      let _isLoged = sessionStorage.getItem('isLoged');
-      let nickname = sessionStorage.getItem('nickname');
+      if (doesHttpOnlyCookieExist('access_token')) {
+        let _isLoged = localStorage.getItem('isLoged');
+        let nickname = localStorage.getItem('nickname');
 
-      this.isLoged = !!_isLoged;
+        this.isLoged = !!_isLoged;
 
-      if (nickname !== null) {
-        this.userName = nickname;
+        if (nickname !== null) {
+          this.userName = nickname;
+        }
       }
     },
     changeLangSelected(lang) {
@@ -186,9 +188,9 @@ function login() {
       getCodeFiles();
       $('#loginModal').modal('hide');
       vueApp.$data.isLoged = true;
-      sessionStorage.setItem('isLoged', 'true');
-      sessionStorage.setItem('nickname', result.data.Nickname);
-      sessionStorage.setItem('email', result.data.Email);
+      localStorage.setItem('isLoged', 'true');
+      localStorage.setItem('nickname', result.data.Nickname);
+      localStorage.setItem('email', result.data.Email);
       vueApp.loadInformations();
     })
     .fail(() => {
@@ -209,7 +211,7 @@ function logout() {
   })
     .done(() => {
       vueApp.$data.isLoged = false;
-      sessionStorage.clear();
+      localStorage.clear();
       window.location.reload(false);
     })
     .fail(() => {
