@@ -9,11 +9,11 @@ const term = new Terminal();
  * @author Guilherme da Silva Martin
  */
 function initTerminal() {
-  term.setOption('theme', { background: '#2b2b2b' });
+  term.setOption('cursorBlink', true);
   term.open(document.getElementById('terminal'));
   localEcho = new LocalEchoController(term);
 
-  term.resize(100, 9) //columns, rows
+  term.resize(100, 13) //columns, rows
 
   term.write('Welcome to RTCode \r\n');
   term.write('\r\n');
@@ -25,7 +25,8 @@ function initTerminal() {
  * @author Guilherme da Silva Martin
  */
 socket.on('term-response', (result) => {
-  term.write(result + '\r\n');
+  localEcho.println(result);
+  handleUserInput();
 });
 
 /**
@@ -44,10 +45,9 @@ socket.on('process-end', (result) => {
  */
 function handleUserInput() {
   localEcho
-    .read('')
+    .read('$ ')
     .then((input) => {
       socket.emit('term-cmd', input);
-      handleUserInput();
     })
     .catch((error) => console.log(`Error reading: ${error}`));
 }
