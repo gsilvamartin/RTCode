@@ -381,7 +381,7 @@ function getFileContent(fileName) {
         setEditorText(result.data.fileContent);  
       } else {
         vueApp.$data.codeOpened = true;
-        initEditor();
+        initEditor(result.data.fileContent);
       }
     })
     .fail((err) => {

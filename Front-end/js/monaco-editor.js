@@ -5,7 +5,7 @@ let codeEditor;
  *
  * @author Guilherme da Silva Martin
  */
-function initEditor() {
+function initEditor(text) {
   require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.18.1/min/vs' } });
 
   window.MonacoEnvironment = {
@@ -38,6 +38,7 @@ function initEditor() {
     window.onresize = function() {
       codeEditor.layout();
     };
+    codeEditor.setValue(text);
   });
 }
 
