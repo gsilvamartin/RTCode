@@ -151,11 +151,11 @@
 
         <div class="editor-block">
           <div class="editor-box">
-            <!-- <div class="nocode-screen" v-if="!codeOpened">
+            <div class="nocode-screen" v-show="!codeOpened">
               <img src="/img/rt-code-logo.png" />
               <p>A open source platform to share code in real time.</p>
-            </div> -->
-            <div class="editor-div" id="code-editor"></div>
+            </div>
+            <div class="editor-div" id="code-editor" v-show="codeOpened"></div>
           </div>
 
           <div class="terminal-box">
