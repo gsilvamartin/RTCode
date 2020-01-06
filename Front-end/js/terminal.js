@@ -18,7 +18,6 @@ function initTerminal() {
   localEcho = new LocalEchoController(term);
   term.write('Welcome to RTCode \r\n');
   term.write('\r\n');
-  console.log(term)
 }
 
 /**
