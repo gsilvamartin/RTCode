@@ -115,8 +115,8 @@ socketCode.on('connection', (socket) => {
 
     terminalSession.on('close', (codeNum) => {
       killTerminalSession();
-      socket.emit('process-end');
       socket.emit('term-response', `child process exited with code ${codeNum}`);
+      socket.emit('process-end');
     });
 
     terminalSession.stdin.on('error', (data) => {

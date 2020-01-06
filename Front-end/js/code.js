@@ -46,7 +46,6 @@ const vueApp = new Vue({
     },
     runCode() {
       executeFile();
-      this.inExecution = true;
     },
     stopCode() {
       stopFile();
@@ -70,6 +69,8 @@ function stopFile() {
  * @author Guilherme da Silva Martin
  */
 function executeFile() {
+  vueApp.inExecution = true;
+
   const language = getLanguageCommand();
   const fileName = getSelectedNode();
   const codeName = getRoomName();

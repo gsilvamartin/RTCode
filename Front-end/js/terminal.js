@@ -27,7 +27,8 @@ function initTerminal() {
  */
 socket.on('term-response', (result) => {
   localEcho.println(result);
-  handleUserInput();
+
+  if(!vueApp.inExecution) handleUserInput();
 });
 
 /**
@@ -35,8 +36,9 @@ socket.on('term-response', (result) => {
  *
  * @author Guilherme da Silva Martin
  */
-socket.on('process-end', (result) => {
+socket.on('process-end', () => {
   vueApp.inExecution = false;
+  handleUserInput();
 });
 
 /**
