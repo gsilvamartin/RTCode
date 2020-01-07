@@ -82,7 +82,7 @@
             class="btn btn-dark navbar-action-buttons"
             id="sync-button"
             onclick="updateCodeFileContent()"
-            title="Sync"
+            title="Save"
           >
             <i class="fas fa-save"></i>
           </button>
@@ -129,7 +129,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="#">User</a>
               <a class="dropdown-item" href="#" onclick="openNewCodeModal()">New Code</a>
-              <a class="dropdown-item" href="#">Codes</a>
+              <a class="dropdown-item" href="#" onclick="openListCodesModal()">Codes</a>
               <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
             </div>
           </div>
@@ -396,6 +396,21 @@
             </div>
             <div class="modal-footer">
               <input class="btn btn-default btn-login" type="button" value="save" onclick="saveCode()" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade options" id="ListCodeModal">
+        <div class="modal-dialog options animated">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="box">
+                <div class="content">
+                  <div class="list-group">
+                    <a class="list-group-item list-group-item-action" v-for="code in userCodes">{{code.codeName}}</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

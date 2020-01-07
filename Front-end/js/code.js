@@ -23,7 +23,13 @@ const vueApp = new Vue({
       { name: 'C#', value: 'csharp', img: '/img/csharp.svg' }
     ],
     selectedLanguage: { name: 'Python', value: 'python', isActive: true, img: '/img/python.svg' },
-    codeOpened: false
+    codeOpened: false,
+    userCodes: [
+      {codeName: 'A'},
+      {codeName: 'A'},
+      {codeName: 'A'},
+      {codeName: 'A'}
+    ]
   },
   beforeMount() {
     this.loadInformations();
@@ -408,6 +414,15 @@ function openNewCodeModal() {
 }
 
 /**
+ * Open the list Code Modal.
+ *
+ * @author Matheus Muriel
+ */
+function openListCodesModal() {
+  $('#ListCodeModal').modal('show');
+}
+
+/**
  * Save a new code.
  *
  * @author Matheus Muriel
@@ -512,4 +527,5 @@ function registerNewUser() {
 $(document).ready(() => {
   setToastrOptions();
   getCodeLanguage();
+  openListCodesModal();
 });
