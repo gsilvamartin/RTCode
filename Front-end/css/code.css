@@ -243,6 +243,18 @@ body {
   height: 100%;
 }
 
+.gutter-vertical {
+  width: 5px;
+  cursor: col-resize;
+  background: #2d333b;
+}
+
+.gutter-horizontal {
+  height: 5px;
+  cursor: row-resize;
+  background: #2d333b;
+}
+
 .lang-dropdown-menu {
   width: 100%;
 }

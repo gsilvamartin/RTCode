@@ -25,11 +25,45 @@ const vueApp = new Vue({
     selectedLanguage: { name: 'Python', value: 'python', isActive: true, img: '/img/python.svg' },
     codeOpened: false,
     userCodes: [
-      {codeName: 'A'},
-      {codeName: 'A'},
-      {codeName: 'A'},
-      {codeName: 'A'}
-    ]
+      { codeName: 'A' },
+      { codeName: 'B' },
+      { codeName: 'C' },
+      { codeName: 'D' }
+    ],
+    redimencionando: {
+      terminal: false,
+      lateral: false
+    },
+    heightTerminal: 450, // TODO mudar nome variavel
+    widthLateral: 200
+  },
+  mounted() {
+    let gerl = document.getElementById('principal');
+    let gutH = document.getElementById('gutterHorizontal');
+    let gutV = document.getElementById('gutterVertical');
+
+    gutH.addEventListener('mousedown', (e) => {
+      this.redimencionando.terminal = true;
+    });
+
+    gutV.addEventListener('mousedown', (e) => {
+      this.redimencionando.lateral = true;
+    });
+
+    gerl.addEventListener('mouseup', (e) => {
+      this.redimencionando.terminal = false;
+      this.redimencionando.lateral = false;
+    });
+
+    gerl.addEventListener('mousemove', (e) => {
+      if (this.redimencionando.terminal) {
+        this.heightTerminal = e.pageY;
+      }
+
+      if (this.redimencionando.lateral) {
+        this.widthLateral = e.pageX;
+      }
+    });
   },
   beforeMount() {
     this.loadInformations();
