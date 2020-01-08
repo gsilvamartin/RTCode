@@ -42,15 +42,15 @@ const vueApp = new Vue({
     let gutH = document.getElementById('gutterHorizontal');
     let gutV = document.getElementById('gutterVertical');
 
-    gutH.addEventListener('mousedown', (e) => {
+    gutH.addEventListener('mousedown', () => {
       this.redimencionando.terminal = true;
     });
 
-    gutV.addEventListener('mousedown', (e) => {
+    gutV.addEventListener('mousedown', () => {
       this.redimencionando.lateral = true;
     });
 
-    gerl.addEventListener('mouseup', (e) => {
+    gerl.addEventListener('mouseup', () => {
       this.redimencionando.terminal = false;
       this.redimencionando.lateral = false;
     });
@@ -561,5 +561,4 @@ function registerNewUser() {
 $(document).ready(() => {
   setToastrOptions();
   getCodeLanguage();
-  openListCodesModal();
 });

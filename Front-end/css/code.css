@@ -339,6 +339,7 @@ body {
 #lateral-menu {
   border-right: 1.019px solid #ffffff0a;
   background-color: #2b2b2b !important;
+  min-width: 10% !important;
 }
 
 .vakata-context {
