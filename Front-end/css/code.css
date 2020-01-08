@@ -214,12 +214,12 @@ body {
   margin: 2px;
 }
 
-.editor-block .editor-box {
-  height: 70%;
+.editor-block .editor-box {  
   border-bottom: 1.019px solid #ffffff0a;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
 }
 
 .CodeMirror-sizer {
