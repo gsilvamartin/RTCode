@@ -209,7 +209,7 @@ body {
 }
 
 .editor-block .terminal-box {
-  height: 35%;
+  flex-shrink: 0;
   border-top: 2px solid #ffffff0a;
   margin: 2px;
 }

@@ -150,16 +150,16 @@
         </div>
         <div class="gutter-vertical" id="gutterVertical"></div>
 
-        <div class="editor-block">
-          <div class="editor-box" :style="{height: heightTerminal+'px'}">
+        <div class="editor-block" id="editorBlock">
+          <div class="editor-box">
             <div class="nocode-screen" v-show="!codeOpened">
-              <img src="/img/rt-code-logo.png" />
-              <p>A open source platform to share code in real time.</p>
+              <!-- <img src="/img/rt-code-logo.png" />
+              <p>A open source platform to share code in real time.</p> -->
             </div>
             <div class="editor-div" id="code-editor" v-show="codeOpened"></div>
           </div>
           <div class="gutter-horizontal" id="gutterHorizontal"></div>
-          <div class="terminal-box">
+          <div class="terminal-box" :style="{height: heightTerminal+'px'}">
             <div id="terminal"></div>
           </div>
         </div>

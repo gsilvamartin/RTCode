@@ -30,20 +30,28 @@ const vueApp = new Vue({
       { codeName: 'C' },
       { codeName: 'D' }
     ],
+    terminalObject: undefined,
     redimencionando: {
-      terminal: false,
+      terminal: {
+        status: false,
+        coordAux: 0
+      },
       lateral: false
     },
-    heightTerminal: 450, // TODO mudar nome variavel
-    widthLateral: 200
+    heightTerminal: 370,
+    widthLateral: 200,
+    pixies: { //  _/,,/
+      terminalRowHeightPx: undefined
+    }
   },
   mounted() {
     let gerl = document.getElementById('principal');
     let gutH = document.getElementById('gutterHorizontal');
     let gutV = document.getElementById('gutterVertical');
 
-    gutH.addEventListener('mousedown', () => {
-      this.redimencionando.terminal = true;
+    gutH.addEventListener('mousedown', (e) => {
+      this.redimencionando.terminal.status = true;
+      this.redimencionando.terminal.coordAux = e.pageY;
     });
 
     gutV.addEventListener('mousedown', () => {
@@ -51,21 +59,36 @@ const vueApp = new Vue({
     });
 
     gerl.addEventListener('mouseup', () => {
-      this.redimencionando.terminal = false;
+      this.redimencionando.terminal.status = false;
       this.redimencionando.lateral = false;
     });
 
     gerl.addEventListener('mousemove', (e) => {
-      if (this.redimencionando.terminal) {
-        this.heightTerminal = e.pageY;
+      if (this.redimencionando.terminal.status) {
+        let blockEdidor = document.getElementById('editorBlock');
+
+        let cartesianCoordY = window.screen.height - e.pageY;
+        
+        this.heightTerminal = cartesianCoordY - blockEdidor.offsetTop;
+        
+        /** if (this.pixies.terminalRowHeightPx) {
+          let numberOfPosibleRows = Math.floor(this.heightTerminal / this.pixies.terminalRowHeightPx);
+          
+          console.log(`AAAAAAAAAA: ${this.heightTerminal} / ${this.pixies.terminalRowHeightPx}`)
+          if (numberOfPosibleRows !== this.terminalObject.rows) {
+            this.terminalObject.resize(this.terminalObject.cols, numberOfPosibleRows);
+
+            console.log(`Redimensionado: Linhas ${numberOfPosibleRows}`)
+          }
+        } else {
+          console.log('Não calculado a propriedade');
+        } */
       }
 
       if (this.redimencionando.lateral) {
         this.widthLateral = e.pageX;
       }
     });
-  },
-  beforeMount() {
     this.loadInformations();
   },
   methods: {
@@ -90,6 +113,19 @@ const vueApp = new Vue({
     stopCode() {
       stopFile();
       this.inExecution = false;
+    },
+    calculetePixels() {
+      // Calcule proportions of terminal size in pixels.
+      let terminalScreen = document.getElementsByClassName('xterm-screen')[0];
+
+      if (terminalScreen) {
+        let numberOfRows = this.terminalObject.rows;
+        let heightOfTerminalInPixels = parseInt(terminalScreen.style.height);
+
+        this.pixies.terminalRowHeightPx = Math.ceil(heightOfTerminalInPixels / numberOfRows);
+      } else {
+        console.log('Terminal ainda não carregado.');
+      }
     }
   }
 });
