@@ -38,7 +38,7 @@ const vueApp = new Vue({
       },
       lateral: false
     },
-    heightTerminal: 370,
+    heightTerminal: 200,
     widthLateral: 200,
     pixies: { //  _/,,/
       terminalRowHeightPx: undefined
@@ -71,18 +71,13 @@ const vueApp = new Vue({
         
         this.heightTerminal = cartesianCoordY - blockEdidor.offsetTop;
         
-        /** if (this.pixies.terminalRowHeightPx) {
-          let numberOfPosibleRows = Math.floor(this.heightTerminal / this.pixies.terminalRowHeightPx);
-          
-          console.log(`AAAAAAAAAA: ${this.heightTerminal} / ${this.pixies.terminalRowHeightPx}`)
+        if (this.pixies.terminalRowHeightPx) {
+          let numberOfPosibleRows = Math.ceil(this.heightTerminal / this.pixies.terminalRowHeightPx);
+
           if (numberOfPosibleRows !== this.terminalObject.rows) {
             this.terminalObject.resize(this.terminalObject.cols, numberOfPosibleRows);
-
-            console.log(`Redimensionado: Linhas ${numberOfPosibleRows}`)
           }
-        } else {
-          console.log('Não calculado a propriedade');
-        } */
+        }
       }
 
       if (this.redimencionando.lateral) {
@@ -120,7 +115,7 @@ const vueApp = new Vue({
 
       if (terminalScreen) {
         let numberOfRows = this.terminalObject.rows;
-        let heightOfTerminalInPixels = parseInt(terminalScreen.style.height);
+        let heightOfTerminalInPixels = parseInt(this.heightTerminal);
 
         this.pixies.terminalRowHeightPx = Math.ceil(heightOfTerminalInPixels / numberOfRows);
       } else {
