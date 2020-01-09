@@ -124,12 +124,14 @@ const vueApp = new Vue({
         type: 'GET'
       })
         .done((result) => {
-          console.log(result);
           this.userCodes = result.data;
         })
         .fail((err) => {
           toastr.error(err.message, 'Error on list codes!');
         });
+    },
+    getImgLang(codeLang) {
+      return this.languages.find((x) => x.value === codeLang).img;
     }
   }
 });
