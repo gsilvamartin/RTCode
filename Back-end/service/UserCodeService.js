@@ -33,6 +33,15 @@ module.exports = class UserCodeService {
   }
 
   /**
+   * List all codes of the user have permission
+   *
+   * @author Matheus Muriel
+   */
+  static async listCodes(userId) {
+    return await this.repository.find(CodeModel, { UserId: userId });
+  }
+
+  /**
    * Adds read/write permission in the code to the user sent by id.
    *
    * @author Guilherme da Silva Martin

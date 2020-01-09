@@ -8,6 +8,7 @@ const server = express();
 const path = require('path');
 const users = require('./User');
 const code = require('./Code');
+const userCode = require('./UserCode');
 const UtilClass = require('../util/Util');
 const { spawn } = require('child_process');
 const REPLService = require('../service/REPLService');
@@ -29,6 +30,7 @@ server.use(express.static(path.resolve(__dirname + '/../../Front-end/')));
 server.use(express.static(path.resolve(__dirname + '/../../node_modules/')));
 server.use(users);
 server.use(code);
+server.use(userCode);
 
 /**
  * CORS Control

@@ -28,6 +28,24 @@ router.get(
 );
 
 /**
+ * List all codes of the user have permission
+ *
+ * @author Matheus Muriel
+ */
+router.get(
+  '/usercode/codes/',
+  authentication.verifyJWT,
+  asyncMiddleware(async (req, res) => {
+    const userCodeService = await userCode.init();
+    const codeList = await userCodeService.listCodes(req.userId);
+
+    res
+      .status(200)
+      .json(new SuccessResponse(200, 'Information retrieved successfully!', codeList));
+  })
+);
+
+/**
  * Adds read/write permission in the code to the user sent by id.
  *
  * @author Guilherme da Silva Martin
@@ -48,3 +66,5 @@ router.post(
       .json(new SuccessResponse(200), 'Success to give user permission', { permission: newUserPermission });
   })
 );
+
+module.exports = router;

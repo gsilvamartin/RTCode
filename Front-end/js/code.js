@@ -116,6 +116,20 @@ const vueApp = new Vue({
       } else {
         console.log('Terminal not yet loaded.');
       }
+    },
+    loadListOfCodes() {
+      $.ajax({
+        url: baseURL + '/usercode/codes/',
+        contentType: 'application/json',
+        type: 'GET'
+      })
+        .done((result) => {
+          console.log(result);
+          this.userCodes = result.data;
+        })
+        .fail((err) => {
+          toastr.error(err.message, 'Error on list codes!');
+        });
     }
   }
 });
@@ -480,6 +494,7 @@ function openNewCodeModal() {
  * @author Matheus Muriel
  */
 function openListCodesModal() {
+  vueApp.loadListOfCodes();
   $('#ListCodeModal').modal('show');
 }
 
