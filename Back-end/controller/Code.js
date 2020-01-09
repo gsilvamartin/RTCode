@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const codeService = require('../service/CodeService');
 const authentication = require('../service/AuthenticationService');
 const SuccessResponse = require('../model/response/SuccessResponse');
+const ErrorResponse = require('../model/response/ErrorResponse');
 const asyncMiddleware = require('../util/AsyncMiddleware');
 
 router.use(bodyParser.json());
@@ -157,13 +158,21 @@ router.get(
   authentication.verifyJWT,
   asyncMiddleware(async (req, res) => {
     const service = await codeService.init();
-    const codeFiles = await service.getCodeFileTree(req.params.id, req.userId);
+    
+    if (await service.verifyCodeExist(req.params.id)) {
+      const codeFiles = await service.getCodeFileTree(req.params.id, req.userId);
 
-    res
-      .status(200)
-      .json(
-        new SuccessResponse(200, 'Success to get folder content.', { CodeName: req.params.id, CodeFiles: codeFiles })
-      );
+      res
+        .status(200)
+        .json(
+          new SuccessResponse(200, 'Success to get folder content.', {
+            CodeName: req.params.id,
+            CodeFiles: codeFiles
+          })
+        );
+    } else {
+      throw new ErrorResponse(404, 'This code not exist.', null);
+    }
   })
 );
 

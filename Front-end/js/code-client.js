@@ -16,7 +16,7 @@ function init() {}
 function getRoomName() {
   let url = window.location.href;
 
-  url = url.slice(-1) === '/' ? url.slice(0, -1) : url
+  url = url.slice(-1) === '/' ? url.slice(0, -1) : url;
 
   let roomName = url.split('/').reverse()[0];
   

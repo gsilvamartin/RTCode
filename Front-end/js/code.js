@@ -217,7 +217,8 @@ function setLanguage(language) {
  */
 function setToastrOptions() {
   toastr.options = {
-    progressBar: true
+    progressBar: true,
+    closeButton: true
   };
 }
 
@@ -591,5 +592,4 @@ function registerNewUser() {
  */
 $(document).ready(() => {
   setToastrOptions();
-  getCodeLanguage();
 });
