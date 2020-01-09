@@ -132,6 +132,9 @@ const vueApp = new Vue({
     },
     getImgLang(codeLang) {
       return this.languages.find((x) => x.value === codeLang).img;
+    },
+    goToCode(codeName) {
+      window.location.href = `${baseURL}/code/${codeName}`;
     }
   }
 });

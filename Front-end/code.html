@@ -409,8 +409,9 @@
               <div class="box">
                 <div class="content">
                   <div class="list-group">
-                    <a class="list-group-item list-group-item-action" v-for="code in userCodes">
-                      <img :src='getImgLang(code.CodeLanguage)' class="img-lang" />
+                    <a class="list-group-item list-group-item-action" v-for="code in userCodes" 
+                    @click="goToCode(code.CodeName)">
+                      <img :src='getImgLang(code.CodeLanguage)' class="img-lang"/>
                       {{code.CodeName}}
                     </a>
                   </div>
