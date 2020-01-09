@@ -21,7 +21,8 @@ function initEditor(text) {
   require(['vs/editor/editor.main'], () => {
     codeEditor = monaco.editor.create(document.getElementById('code-editor'), {
       language: codeLanguage,
-      theme: 'vs-dark'
+      theme: 'vs-dark',
+      automaticLayout: true
     });
 
     codeEditor.addCommand([monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S], () => {

@@ -53,11 +53,12 @@ function getCodeFiles() {
     .done((result) => {
       const jsonTree = buildTreeJson(result.data.CodeName, result.data.CodeFiles);
 
+      getCodeLanguage();
       buildTree(jsonTree);
     })
-    .fail((jqXHR, status, thrown) => {
-      const statusCode = jqXHR.status;
-
+    .fail((err) => {
+      const statusCode = err.status;
+      
       switch (statusCode) {
         case 401:
           $('#loginModal').modal('show');
@@ -65,8 +66,11 @@ function getCodeFiles() {
         case 501:
           toastr.error("You don't have permission for access this code.");
           break;
+        case 404:
+          toastr.error(err.responseJSON.message, 'Error load code!');
+          break;
         default:
-          toastr.error('Error to load code files. \n' + jqXHR.message);
+          toastr.error('Error to load code files. \n' + err.message);
       }
     });
 }

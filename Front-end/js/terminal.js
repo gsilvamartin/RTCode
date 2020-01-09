@@ -18,6 +18,9 @@ function initTerminal() {
   localEcho = new LocalEchoController(term);
   term.write('Welcome to RTCode \r\n');
   term.write('\r\n');
+  vueApp.$data.terminalObject = term;
+  // console.log(vueApp)
+  vueApp.calculetePixels();
 }
 
 /**
@@ -28,7 +31,7 @@ function initTerminal() {
 socket.on('term-response', (result) => {
   localEcho.println(result);
 
-  if(!vueApp.inExecution) handleUserInput();
+  if (!vueApp.inExecution) handleUserInput();
 });
 
 /**

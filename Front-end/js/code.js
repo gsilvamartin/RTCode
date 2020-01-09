@@ -25,13 +25,65 @@ const vueApp = new Vue({
     selectedLanguage: { name: 'Python', value: 'python', isActive: true, img: '/img/python.svg' },
     codeOpened: false,
     userCodes: [
-      {codeName: 'A'},
-      {codeName: 'A'},
-      {codeName: 'A'},
-      {codeName: 'A'}
-    ]
+      { codeName: 'A' },
+      { codeName: 'B' },
+      { codeName: 'C' },
+      { codeName: 'D' }
+    ],
+    terminalObject: undefined,
+    redimencionando: {
+      terminal: {
+        status: false,
+        coordAux: 0
+      },
+      lateral: false
+    },
+    heightTerminal: 200,
+    widthLateral: 200,
+    pixies: { //  _/,,/
+      terminalRowHeightPx: undefined
+    }
   },
-  beforeMount() {
+  mounted() {
+    let gerl = document.getElementById('principal');
+    let gutH = document.getElementById('gutterHorizontal');
+    let gutV = document.getElementById('gutterVertical');
+
+    gutH.addEventListener('mousedown', (e) => {
+      this.redimencionando.terminal.status = true;
+      this.redimencionando.terminal.coordAux = e.pageY;
+    });
+
+    gutV.addEventListener('mousedown', () => {
+      this.redimencionando.lateral = true;
+    });
+
+    gerl.addEventListener('mouseup', () => {
+      this.redimencionando.terminal.status = false;
+      this.redimencionando.lateral = false;
+    });
+
+    gerl.addEventListener('mousemove', (e) => {
+      if (this.redimencionando.terminal.status) {
+        let blockEdidor = document.getElementById('editorBlock');
+
+        let cartesianCoordY = window.screen.height - e.pageY;
+        
+        this.heightTerminal = cartesianCoordY - blockEdidor.offsetTop;
+        
+        if (this.pixies.terminalRowHeightPx) {
+          let numberOfPosibleRows = Math.ceil(this.heightTerminal / this.pixies.terminalRowHeightPx);
+
+          if (numberOfPosibleRows !== this.terminalObject.rows) {
+            this.terminalObject.resize(this.terminalObject.cols, numberOfPosibleRows);
+          }
+        }
+      }
+
+      if (this.redimencionando.lateral) {
+        this.widthLateral = e.pageX;
+      }
+    });
     this.loadInformations();
   },
   methods: {
@@ -56,6 +108,19 @@ const vueApp = new Vue({
     stopCode() {
       stopFile();
       this.inExecution = false;
+    },
+    calculetePixels() {
+      // Calcule proportions of terminal size in pixels.
+      let terminalScreen = document.getElementsByClassName('xterm-screen')[0];
+
+      if (terminalScreen) {
+        let numberOfRows = this.terminalObject.rows;
+        let heightOfTerminalInPixels = parseInt(this.heightTerminal);
+
+        this.pixies.terminalRowHeightPx = Math.ceil(heightOfTerminalInPixels / numberOfRows);
+      } else {
+        console.log('Terminal ainda não carregado.');
+      }
     }
   }
 });
@@ -152,7 +217,8 @@ function setLanguage(language) {
  */
 function setToastrOptions() {
   toastr.options = {
-    progressBar: true
+    progressBar: true,
+    closeButton: true
   };
 }
 
@@ -526,6 +592,4 @@ function registerNewUser() {
  */
 $(document).ready(() => {
   setToastrOptions();
-  getCodeLanguage();
-  openListCodesModal();
 });

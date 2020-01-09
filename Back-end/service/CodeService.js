@@ -49,6 +49,16 @@ module.exports = class CodeService {
   }
 
   /**
+   * Verify if the code exists
+   *
+   * @author Matheus Muriel
+   * @param {*} codeName
+   */
+  static async verifyCodeExist(codeName) {
+    return await this.repository.count(CodeModel, { CodeName: codeName }) > 0;
+  }
+
+  /**
    * Returns the language of code.
    *
    * @author Guilherme da Silva Martin

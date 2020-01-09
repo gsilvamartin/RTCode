@@ -137,7 +137,7 @@
       </nav>
 
       <div class="editor-container">
-        <div class="lateral-menu" id="lateral-menu">
+        <div class="lateral-menu" id="lateral-menu" :style="{width: widthLateral+'px'}">
           <div class="file-tree-top-bar">
             <p>Files</p>
             <div class="icons">
@@ -148,8 +148,9 @@
 
           <div class="file-tree" id="file-tree"></div>
         </div>
+        <div class="gutter-vertical" id="gutterVertical"></div>
 
-        <div class="editor-block">
+        <div class="editor-block" id="editorBlock">
           <div class="editor-box">
             <div class="nocode-screen" v-show="!codeOpened">
               <img src="/img/rt-code-logo.png" />
@@ -157,8 +158,8 @@
             </div>
             <div class="editor-div" id="code-editor" v-show="codeOpened"></div>
           </div>
-
-          <div class="terminal-box">
+          <div class="gutter-horizontal" id="gutterHorizontal"></div>
+          <div class="terminal-box" :style="{height: heightTerminal+'px'}">
             <div id="terminal"></div>
           </div>
         </div>
@@ -409,6 +410,7 @@
                 <div class="content">
                   <div class="list-group">
                     <a class="list-group-item list-group-item-action" v-for="code in userCodes">{{code.codeName}}</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -421,7 +423,7 @@
 
   <!--VUE IMPORT-->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vuex"></script>
+  <!-- <script src="https://unpkg.com/vuex"></script> -->
   <!--END VUE IMPORT-->
 
   <!--GENERAL IMPORT-->
