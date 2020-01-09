@@ -239,8 +239,19 @@ body {
 }
 
 .editor-block .editor-box .editor-div {
+  display: flex;
   width: 100%;
   height: 100%;
+}
+
+.monaco-editor {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.overflow-guard {
+  height: 100% !important;
+  width: 100% !important;
 }
 
 .gutter-vertical {
@@ -254,6 +265,9 @@ body {
   cursor: row-resize;
   background: #2d333b;
 }
+
+
+
 
 .lang-dropdown-menu {
   width: 100%;
