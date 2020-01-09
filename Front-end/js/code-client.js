@@ -14,11 +14,11 @@ function init() {}
  * @author Guilherme da Silva Martin
  */
 function getRoomName() {
-  let url = window.location.href;
+  let regexUrl = /([a-z]+:\/\/){1}([a-z]+(:[0-9]+|(\.[a-z]+)+)\/(code){1}\/)/;
 
-  url = url.slice(-1) === '/' ? url.slice(0, -1) : url;
+  let url = window.location.href.replace(regexUrl, '');
 
-  let roomName = url.split('/').reverse()[0];
+  let roomName = url.split('/')[0];
   
   return roomName;
 }

@@ -24,7 +24,7 @@ const vueApp = new Vue({
     ],
     selectedLanguage: { name: 'Python', value: 'python', isActive: true, img: '/img/python.svg' },
     codeOpened: false,
-    userCodes: [{ codeName: 'A' }, { codeName: 'B' }, { codeName: 'C' }, { codeName: 'D' }],
+    userCodes: [],
     terminalObject: undefined,
     resizing: {
       terminal: {
