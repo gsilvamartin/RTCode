@@ -24,14 +24,9 @@ const vueApp = new Vue({
     ],
     selectedLanguage: { name: 'Python', value: 'python', isActive: true, img: '/img/python.svg' },
     codeOpened: false,
-    userCodes: [
-      { codeName: 'A' },
-      { codeName: 'B' },
-      { codeName: 'C' },
-      { codeName: 'D' }
-    ],
+    userCodes: [{ codeName: 'A' }, { codeName: 'B' }, { codeName: 'C' }, { codeName: 'D' }],
     terminalObject: undefined,
-    redimencionando: {
+    resizing: {
       terminal: {
         status: false,
         coordAux: 0
@@ -39,8 +34,8 @@ const vueApp = new Vue({
       lateral: false
     },
     heightTerminal: 200,
-    widthLateral: 200,
-    pixies: { //  _/,,/
+    widthLateral: 300,
+    pixies: {
       terminalRowHeightPx: undefined
     }
   },
@@ -50,27 +45,27 @@ const vueApp = new Vue({
     let gutV = document.getElementById('gutterVertical');
 
     gutH.addEventListener('mousedown', (e) => {
-      this.redimencionando.terminal.status = true;
-      this.redimencionando.terminal.coordAux = e.pageY;
+      this.resizing.terminal.status = true;
+      this.resizing.terminal.coordAux = e.pageY;
     });
 
     gutV.addEventListener('mousedown', () => {
-      this.redimencionando.lateral = true;
+      this.resizing.lateral = true;
     });
 
     gerl.addEventListener('mouseup', () => {
-      this.redimencionando.terminal.status = false;
-      this.redimencionando.lateral = false;
+      this.resizing.terminal.status = false;
+      this.resizing.lateral = false;
     });
 
     gerl.addEventListener('mousemove', (e) => {
-      if (this.redimencionando.terminal.status) {
+      if (this.resizing.terminal.status) {
         let blockEdidor = document.getElementById('editorBlock');
 
         let cartesianCoordY = window.screen.height - e.pageY;
-        
+
         this.heightTerminal = cartesianCoordY - blockEdidor.offsetTop;
-        
+
         if (this.pixies.terminalRowHeightPx) {
           let numberOfPosibleRows = Math.ceil(this.heightTerminal / this.pixies.terminalRowHeightPx);
 
@@ -80,7 +75,7 @@ const vueApp = new Vue({
         }
       }
 
-      if (this.redimencionando.lateral) {
+      if (this.resizing.lateral) {
         this.widthLateral = e.pageX;
       }
     });
@@ -109,7 +104,7 @@ const vueApp = new Vue({
       stopFile();
       this.inExecution = false;
     },
-    calculetePixels() {
+    calculatePixels() {
       // Calcule proportions of terminal size in pixels.
       let terminalScreen = document.getElementsByClassName('xterm-screen')[0];
 
@@ -119,7 +114,7 @@ const vueApp = new Vue({
 
         this.pixies.terminalRowHeightPx = Math.ceil(heightOfTerminalInPixels / numberOfRows);
       } else {
-        console.log('Terminal ainda não carregado.');
+        console.log('Terminal not yet loaded.');
       }
     }
   }
@@ -450,7 +445,7 @@ function getFileContent(fileName) {
   })
     .done((result) => {
       if (vueApp.$data.codeOpened) {
-        setEditorText(result.data.fileContent);  
+        setEditorText(result.data.fileContent);
       } else {
         vueApp.$data.codeOpened = true;
         initEditor(result.data.fileContent);

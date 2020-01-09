@@ -20,7 +20,7 @@ function initTerminal() {
   term.write('\r\n');
   vueApp.$data.terminalObject = term;
   // console.log(vueApp)
-  vueApp.calculetePixels();
+  vueApp.calculatePixels();
 }
 
 /**
