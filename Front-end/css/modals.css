@@ -27,6 +27,12 @@
   }
 }
 
+.modal-title {
+  width: 100%;
+  text-align: center;
+  margin-left: 35px;
+  font-size: 25px;
+}
 
 /** ################# Global ################# */
 .social {
