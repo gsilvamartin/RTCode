@@ -7,58 +7,10 @@ body {
   overflow: hidden;
 }
 
-.nav-tabs .nav-link.active {
-  color: #495057;
-  background-color: #2b2b2b !important;
-  border-color: #dee2e6 #dee2e6 #fff;
-  color: white;
-}
-
-#rtcode-nav {
-  border-bottom: 1.019px solid #ffffff0a;
-  background-color: #2b2b2b;
-}
-
-#run-button {
-  color: green;
-}
-
-#stop-button {
-  color: red;
-}
-
-.navbar-action-buttons {
-  width: 45px;
-  height: 38px;
-  margin-right: 7px;
-}
-
-#options-button {
-  margin-right: 7px;
-}
-
-#register-button {
-  margin-right: 7px;
-}
-
-#login-button {
-  margin-right: 7px;
-}
-
 #content-body {
   height: calc(75% - 57px);
   border-bottom: 1.019px solid #ffffff0a;
   background-color: #2b2b2b;
-}
-
-.img-logo {
-  width: 130px;
-  height: 30px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  margin-left: 1%;
 }
 
 .footer {
@@ -79,6 +31,9 @@ body {
   height: 100%;
 }
 
+
+
+
 .jstree-container-ul {
   color: white;
 }
@@ -87,11 +42,12 @@ body {
   background: #528ac8bf !important;
 }
 
-.options-navbar {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+.jstree-hovered {
+  background-color: #cccccc38 !important;
 }
+
+
+
 
 .dropdown-user > .dropdown-menu {
   left: -20%;
@@ -102,6 +58,10 @@ body {
   background-color: #23272b;
   border-color: #1d2124;
 }
+
+
+
+
 
 .lateral-menu {
   display: inline-flex;
@@ -126,6 +86,10 @@ body {
   cursor: row-resize;
   background: #2d333b;
 }
+
+
+
+
 
 .lang-dropdown-menu {
   width: 100%;
@@ -164,6 +128,10 @@ body {
   margin-inline-start: -5%;
 }
 
+
+
+
+
 #title-header {
   font-size: 25px;
   margin-left: 1%;
@@ -178,8 +146,4 @@ body {
 
 .vakata-context {
   z-index: 100;
-}
-
-.jstree-hovered {
-  background-color: #cccccc38 !important;
 }

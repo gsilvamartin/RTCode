@@ -1,0 +1,53 @@
+#rtcode-nav {
+  border-bottom: 1.019px solid #ffffff0a;
+  background-color: #2b2b2b;
+}
+
+.img-logo {
+  width: 130px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-left: 1%;
+}
+
+.options-navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #2b2b2b !important;
+  border-color: #dee2e6 #dee2e6 #fff;
+  color: white;
+}
+
+#run-button {
+  color: green;
+}
+
+#stop-button {
+  color: red;
+}
+
+.navbar-action-buttons {
+  width: 45px;
+  height: 38px;
+  margin-right: 7px;
+}
+
+#options-button {
+  margin-right: 7px;
+}
+
+#register-button {
+  margin-right: 7px;
+}
+
+#login-button {
+  margin-right: 7px;
+}
