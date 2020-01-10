@@ -69,6 +69,45 @@
   padding: 15px 15px 15px;
 }
 
+
+.login .social {
+  float: none;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.login .social .circle {
+  width: 46;
+  background-color: #eeeeee;
+  color: #ffffff;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 0 17px;
+  padding: 15px;
+}
+
+.login .social .facebook {
+  background-color: #455ca8;
+  color: #ffffff;
+}
+  .login .social .facebook:hover {
+    background-color: #6e83cd;
+  }
+
+.login .social .google {
+  background-color: #f74933;
+}
+  .login .social .google:hover {
+    background-color: #ff7566;
+  }
+
+.login .social .github {
+  background-color: #403a3a;
+}
+  .login .social .github:hover {
+    background-color: #4d4d4d;
+  }
+
 .login .division {
   float: none;
   margin: 0 auto 18px;
@@ -96,77 +135,6 @@
 .login .division span {
   color: #424242;
   font-size: 17px;
-}
-
-.login .box .social {
-  float: none;
-  margin: 0 auto 30px;
-  text-align: center;
-}
-
-.login .social .circle {
-  width: 46;
-  background-color: #eeeeee;
-  color: #ffffff;
-  border-radius: 100px;
-  display: inline-block;
-  margin: 0 17px;
-  padding: 15px;
-}
-
-.login .social .circle .fa {
-  font-size: 16px;
-}
-
-.login .social .facebook {
-  background-color: #455ca8;
-  color: #ffffff;
-}
-
-.login .social .google {
-  background-color: #f74933;
-}
-
-.login .social .github {
-  background-color: #403a3a;
-}
-
-.login .facebook:hover {
-  background-color: #6e83cd;
-}
-
-.login .google:hover {
-  background-color: #ff7566;
-}
-
-.login .github:hover {
-  background-color: #4d4d4d;
-}
-
-.login .forgot {
-  color: #797979;
-  margin-left: 0;
-  overflow: hidden;
-  text-align: center;
-  width: 100%;
-}
-
-.login .btn-login,
-.registerBox .btn-register {
-  background-color: #00bbff;
-  border-color: #00bbff;
-  border-width: 0;
-  color: #ffffff;
-  margin: 0 auto;
-  padding: 15px 50px;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.login .btn-login:hover,
-.registerBox .btn-register:hover {
-  background-color: #00a4e4;
-  color: #ffffff;
 }
 
 .login .form-control {
@@ -198,29 +166,37 @@
   width: 100%;
 }
 
+.login .btn-login,
+.registerBox .btn-register {
+  background-color: #00bbff;
+  border-color: #00bbff;
+  border-width: 0;
+  color: #ffffff;
+  margin: 0 auto;
+  padding: 15px 50px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.login .btn-login:hover,
+.registerBox .btn-register:hover {
+  background-color: #00a4e4;
+  color: #ffffff;
+}
+
+
+.login .forgot {
+  color: #797979;
+  margin-left: 0;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+}
+
 @media (max-width: 400px) {
   .login .modal-dialog {
     width: 100%;
   }
-}
-
-.big-login,
-.big-register {
-  background-color: #00bbff;
-  color: #ffffff;
-  border-radius: 7px;
-  border-width: 2px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 200;
-  padding: 16px 60px;
-  text-transform: uppercase;
-  transition: all 0.3s ease 0s;
-}
-
-.big-login:hover {
-  background-color: #00a4e4;
-  color: #ffffff;
 }
 
 /** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
