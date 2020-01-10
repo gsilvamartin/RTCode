@@ -34,6 +34,43 @@
   font-size: 25px;
 }
 
+.new-code .lang-dropdown-menu {
+  width: 100%;
+}
+
+.new-code .lang-dropdown-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.new-code .lang-dropdown-btn img {
+  margin-inline-start: unset;
+}
+
+.new-code .lang-dropdown-item {
+  width: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.new-code .img-lang {
+  width: 30px;
+  margin-inline-end: 10%;
+  margin-inline-start: -5%;
+}
+
 /** ################# Global ################# */
 .social {
   float: none;
