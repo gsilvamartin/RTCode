@@ -1,0 +1,36 @@
+.editor-block .terminal-box {
+  flex-shrink: 0;
+  border-top: 2px solid #ffffff0a;
+  margin: 2px;
+}
+
+.editor-block .editor-box {
+  border-bottom: 1.019px solid #ffffff0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.editor-block .editor-box .nocode-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #eeeeee;
+}
+
+.editor-block .editor-box .nocode-screen img {
+  width: 35%;
+}
+
+.editor-block .editor-box .editor-div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.monaco-editor {
+  height: 100% !important;
+  width: 100% !important;
+}
