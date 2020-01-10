@@ -101,7 +101,6 @@
   border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.09);
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
-  color: #ffffff;
 }
 
 .form .form-control:hover {
@@ -111,7 +110,6 @@
 .form .form-control:focus {
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04) inset;
   background-color: rgba(0, 0, 0, 0.23);
-  color: #ffffff;
 }
 
 .form input[type='text'],

@@ -72,16 +72,6 @@ body {
   margin-left: 1%;
 }
 
-.btn-navbar {
-  background-color: #4c4c4c;
-  margin-left: 0px;
-}
-
-.btn-modal {
-  background-color: #4c4c4c;
-  text-align: center;
-}
-
 .footer {
   position: fixed;
   left: 0;
