@@ -1,17 +1,3 @@
-.editor-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
-}
-
-.editor-block {
-  flex: 1;
-  display: inline-flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-
 .editor-block .terminal-box {
   flex-shrink: 0;
   border-top: 2px solid #ffffff0a;
