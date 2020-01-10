@@ -33,22 +33,6 @@ body {
 
 
 
-
-.jstree-container-ul {
-  color: white;
-}
-
-.jstree-default .jstree-clicked {
-  background: #528ac8bf !important;
-}
-
-.jstree-hovered {
-  background-color: #cccccc38 !important;
-}
-
-
-
-
 .dropdown-user > .dropdown-menu {
   left: -20%;
 }
