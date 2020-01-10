@@ -1,82 +1,41 @@
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::: OPTIONS ::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-
-.options .modal-dialog {
-  width: 350px;
-}
-
-.options .modal-footer {
-  border-top: 0;
-  margin-top: 0px;
-  padding: 10px 20px 20px;
-}
-
-.options .modal-header {
-  border: 0 none;
-  padding: 15px 15px 15px;
-  /*     padding: 11px 15px; */
-}
-
-.options .btn-login,
-.registerBox .btn-register {
-  background-color: #00bbff;
-  border-color: #00bbff;
-  border-width: 0;
-  color: #ffffff;
-  display: block;
-  margin: 0 auto;
-  padding: 15px 50px;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.options .btn-login:hover,
-.registerBox .btn-register:hover {
-  background-color: #00a4e4;
-  color: #ffffff;
-}
-
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::: END OPTIONS ::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-
-
-
-
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::: LOGIN ::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-
+.register .modal-dialog,
+.options .modal-dialog,
 .login .modal-dialog {
   width: 350px;
 }
 
+.register .modal-footer,
+.options .modal-footer,
 .login .modal-footer {
   border-top: 0;
   margin-top: 0px;
   padding: 10px 20px 20px;
 }
 
+.register .modal-header,
+.options .modal-header,
 .login .modal-header {
   border: 0 none;
   padding: 15px 15px 15px;
 }
 
+@media (max-width: 400px) {
+  .register .modal-dialog,
+  .options .modal-dialog,
+  .login .modal-dialog {
+    width: 100%;
+  }
+}
 
-.login .social {
+
+/** ################# Global ################# */
+.social {
   float: none;
   margin: 0 auto 30px;
   text-align: center;
 }
 
-.login .social .circle {
+.social .circle {
   width: 46;
   background-color: #eeeeee;
   color: #ffffff;
@@ -86,29 +45,30 @@
   padding: 15px;
 }
 
-.login .social .facebook {
+.social .facebook {
   background-color: #455ca8;
   color: #ffffff;
 }
-  .login .social .facebook:hover {
+ .social .facebook:hover {
     background-color: #6e83cd;
   }
 
-.login .social .google {
+.social .google {
   background-color: #f74933;
 }
-  .login .social .google:hover {
+  .social .google:hover {
     background-color: #ff7566;
   }
 
-.login .social .github {
+.social .github {
   background-color: #403a3a;
 }
-  .login .social .github:hover {
+  .social .github:hover {
     background-color: #4d4d4d;
   }
 
-.login .division {
+
+.division {
   float: none;
   margin: 0 auto 18px;
   overflow: hidden;
@@ -117,45 +77,46 @@
   width: 100%;
 }
 
-.login .division .line {
+.division .line {
   border-top: 1px solid #dfdfdf;
   position: absolute;
   top: 10px;
   width: 34%;
 }
 
-.login .division .line.l {
+.division .line.l {
   left: 0;
 }
 
-.login .division .line.r {
+.division .line.r {
   right: 0;
 }
 
-.login .division span {
+.division span {
   color: #424242;
   font-size: 17px;
 }
 
-.login .form-control {
+.form .form-control {
   border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.09);
   box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
   color: #ffffff;
 }
 
-.login .form-control:hover {
+.form .form-control:hover {
   background-color: rgba(0, 0, 0, 0.16);
 }
 
-.login .form-control:focus {
+.form .form-control:focus {
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04) inset;
   background-color: rgba(0, 0, 0, 0.23);
   color: #ffffff;
 }
 
-.login .box .form input[type='text'],
-.login .box .form input[type='password'] {
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'] {
   border-radius: 3px;
   border: none;
   color: #333333;
@@ -166,8 +127,7 @@
   width: 100%;
 }
 
-.login .btn-login,
-.registerBox .btn-register {
+.modal .btn {
   background-color: #00bbff;
   border-color: #00bbff;
   border-width: 0;
@@ -178,29 +138,15 @@
   width: 100%;
 }
 
-.login .btn-login:hover,
-.registerBox .btn-register:hover {
+.modal .btn:hover {
   background-color: #00a4e4;
   color: #ffffff;
 }
 
-
-.login .forgot {
+.modal-footer .sub-text {
   color: #797979;
   margin-left: 0;
   overflow: hidden;
   text-align: center;
   width: 100%;
 }
-
-@media (max-width: 400px) {
-  .login .modal-dialog {
-    width: 100%;
-  }
-}
-
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::: END LOGIN ::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/** ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */

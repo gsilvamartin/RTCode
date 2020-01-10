@@ -342,28 +342,3 @@ body {
   -o-animation-name: shake;
   animation-name: shake;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.big-register {
-  background-color: rgba(0, 0, 0, 0);
-  color: #00bbff;
-  border-color: #00bbff;
-}
-
-.big-register:hover {
-  border-color: #00a4e4;
-  color: #00a4e4;
-}
