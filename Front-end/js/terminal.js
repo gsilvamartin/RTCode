@@ -31,7 +31,7 @@ function initTerminal() {
 socket.on('term-response', (result) => {
   localEcho.println(result);
 
-  if (!vueApp.inExecution) handleUserInput();
+  handleUserInput();
 });
 
 /**
