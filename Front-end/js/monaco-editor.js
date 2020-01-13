@@ -30,15 +30,16 @@ function initEditor(text) {
     });
 
     codeEditor.onKeyUp(() => {
-      const text = codeEditor.getValue();
+      const codeText = codeEditor.getValue();
       const room = getRoomName() + '#' + getSelectedNode();
 
-      socket.emit('code-change', [room, text]);
+      socket.emit('code-change', [room, codeText]);
     });
 
     window.onresize = function() {
       codeEditor.layout();
     };
+
     codeEditor.setValue(text);
   });
 }
