@@ -61,7 +61,7 @@
 
   * [Javascript](https://developer.mozilla.org/en/JavaScript) - for scripts
   * [NodeJS](https://nodejs.org/en/) - for backend coding
-  * [CodeMirror](https://github.com/codemirror/CodeMirror) - code text editor
+  * [MonacoEditor](https://github.com/microsoft/monaco-editor) - vscode text editor
   * [xTermJS](https://github.com/xtermjs/xterm.js/) - javascript terminal
   * [Socket.IO](https://github.com/socketio/socket.io) - for real time communication
 
