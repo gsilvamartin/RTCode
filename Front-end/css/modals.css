@@ -65,9 +65,13 @@
   align-items: center;
 }
 
+.list-code .img-lang,
 .new-code .img-lang {
   width: 30px;
   margin-inline-end: 10%;
+}
+
+.new-code .img-lang {
   margin-inline-start: -5%;
 }
 
