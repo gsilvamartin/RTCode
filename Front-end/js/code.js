@@ -35,6 +35,8 @@ const vueApp = new Vue({
     },
     heightTerminal: 200,
     widthLateral: 300,
+    screenWidth: window.screen.width,
+    screenHeight: window.screen.height,
     pixies: {
       terminalRowHeightPx: undefined
     }

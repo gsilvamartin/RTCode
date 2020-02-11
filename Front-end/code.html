@@ -155,7 +155,7 @@
         <div class="gutter-vertical" id="gutterVertical"></div>
 
         <div class="editor-block" id="editorBlock">
-          <div class="editor-box">
+          <div class="editor-box" :style="{width:(screenWidth - widthLateral)+'px' , height: (screenHeight - heightTerminal)+'px'}">
             <div class="nocode-screen" v-show="!codeOpened">
               <img src="/img/rt-code-logo.png" />
               <p>A open source platform to share code in real time.</p>

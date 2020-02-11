@@ -75,6 +75,10 @@
   margin-inline-start: -5%;
 }
 
+.list-code .list-group-item {
+  cursor: pointer;
+}
+
 /** ################# Global ################# */
 .social {
   float: none;
