@@ -1,28 +1,29 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './App'
-import io from 'socket.io-client'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import App from './App';
+import io from 'socket.io-client';
 
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-Vue.use(Vuex)
+import '@fortawesome/fontawesome-free/css/all.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 
-window.$ = require('jquery')
-window.JQuery = require('jquery')
+Vue.use(Vuex);
 
-Vue.config.productionTip = false
+window.$ = require('jquery');
+window.JQuery = require('jquery');
+
+Vue.config.productionTip = false;
 
 const store = new Vuex.Store({
   state: {
     socket: io('http://localhost:5000')
   },
-  mutations: {
-  	
-  }
-})
+  mutations: {}
+});
 
 /* eslint-disable no-new */
 new Vue({
@@ -30,4 +31,4 @@ new Vue({
   store,
   components: { App },
   template: '<App/>'
-})
+});

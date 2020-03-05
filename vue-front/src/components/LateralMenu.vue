@@ -1,14 +1,14 @@
 <template>
-    <div class="lateral-menu" id="lateral-menu" :style="{width: widthLateral+'px'}">
-      <div class="file-tree-top-bar">
-        <p>Files</p>
-        <div class="icons">
-          <a onclick="openNewFileModal()" title="New File"><i class="far fa-plus-square fa-lg"></i></a>
-          <a title="New Folder"><i class="fas fa-folder-plus fa-lg"></i></a>
-        </div>
+  <div class="lateral-menu" id="lateral-menu" :style="{ width: widthLateral + 'px' }">
+    <div class="file-tree-top-bar">
+      <p>Files</p>
+      <div class="icons">
+        <a onclick="openNewFileModal()" title="New File"><i class="far fa-plus-square fa-lg"></i></a>
+        <a title="New Folder"><i class="fas fa-folder-plus fa-lg"></i></a>
       </div>
-      <div class="file-tree" id="file-tree"></div>
     </div>
+    <div class="file-tree" id="file-tree"></div>
+  </div>
 </template>
 
 <script>
@@ -16,9 +16,9 @@ export default {
   data: function() {
     return {
       widthLateral: 250
-    }
+    };
   }
-}
+};
 </script>
 
 <style>
@@ -46,8 +46,11 @@ export default {
 }
 
 .file-tree-top-bar .icons i {
-  padding-left: 3px;
-  padding-right: 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.file-tree-top-bar .icons a {
   cursor: pointer;
 }
 
