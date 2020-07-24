@@ -7,6 +7,10 @@ body {
   overflow: hidden;
 }
 
+.editor-box{
+  height: 85% !important;
+}
+
 .footer {
   position: fixed;
   left: 0;
