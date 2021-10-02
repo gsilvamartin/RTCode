@@ -1,0 +1,76 @@
+<html style="height: 100%;">
+<title>RTCode - share code in real time</title>
+
+<!--FAVICON-->
+<link rel="icon" href="/img/rt-code-icon.ico" />
+<!--END FAVICON-->
+
+<!--GENERAL CSS IMPORT-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+<!--END GENERAL CSS IMPORT-->
+
+<!--MONACO EDITOR IMPORT-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.16.2/min/vs/editor/editor.main.css" rel="stylesheet" />
+<!--END MONACO EDITOR IMPORT-->
+
+<!--BOOTSTRAP IMPORT-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+<!--END BOOTSTRAP IMPORT-->
+
+<!--FONT AWESOME IMPORTS-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+<!--END FONT AWESOME IMPORTS-->
+
+<!--GOOGLE FONTS-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<!--END GOOGLE FONTS IMPORT-->
+
+<!--CODE IMPORT-->
+<link rel="stylesheet" type="text/css" href="/css/index.css" />
+<link rel="stylesheet" type="text/css" href="/css/editor.css" />
+<link rel="stylesheet" type="text/css" href="/css/xterm.css" />
+<link rel="stylesheet" type="text/css" href="/css/file-tree.css" />
+<link rel="stylesheet" type="text/css" href="/css/modals.css" />
+<link rel="stylesheet" type="text/css" href="/css/animations.css" />
+<link rel="stylesheet" type="text/css" href="/css/navbar-index.css" />
+<!--END CODE IMPORT-->
+
+<body>
+    <div id="principal">
+        <nav class="navbar">
+            <a href="" class="navbar-brand">
+                <img src="/img/rt-code-logo.png" class="img-logo" />
+            </a>
+
+            <div id="nav-buttons">
+                <button type="button" class="btn btn-navbar btn-sm" id="register-button" onclick="openRegisterModal()" title="Register">
+                    Register
+                </button>
+                <button type="button" class="btn btn-navbar btn-sm" id="login-button" onclick="openLoginModal()" title="Login">
+                    Login
+                </button>
+            </div>
+        </nav>
+
+        <div class="container" id="main-container">
+            <div class="row">
+                <div class="col-md-7" id="box-1">
+                    <h1 id="main-text">Share your code in realtime</h1>
+                    <h4 id="sub-text">Share codes in real time with your friends without having to worry about IDEs or settings.</h4>
+                    <div class="input-group mb-3" id="input-group-register">
+                        <input type="text" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="button">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <img src="/img/isometric-image.png" id="main-img" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

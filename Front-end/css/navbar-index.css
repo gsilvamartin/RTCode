@@ -1,0 +1,48 @@
+.navbar {
+    border-bottom: 1.019px solid #ffffff0a;
+    background-color: #0C0E1B;
+    padding: 0px 130px;
+}
+
+.navbar .img-logo {
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    top: 5;
+    bottom: 0;
+    margin: auto;
+    margin-left: 1%;
+}
+
+.navbar .options-navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.navbar .options-navbar .btn {
+    margin-right: 7px;
+}
+
+.navbar .options-navbar .action-button {
+    width: 45px;
+    height: 38px;
+}
+
+.action-button.run {
+    color: green;
+}
+
+.action-button.stop {
+    color: red;
+}
+
+.dropdown-user>.dropdown-menu {
+    left: -20%;
+}
+
+.dropdown-user>.dropdown-menu>.dropdown-item:hover {
+    color: #fff;
+    background-color: #23272b;
+    border-color: #1d2124;
+}
