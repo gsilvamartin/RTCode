@@ -68,6 +68,15 @@ server.get('/code/:codeid?', (req, res) => {
 });
 
 /**
+ * Redirect to index
+ * 
+ * @author Guilherme da Silva Martin
+ */
+server.get('/index', (req, res) => {
+  res.sendFile(path.resolve(__dirname + '/../../Front-end/index.html'));
+});
+
+/**
  * Function performed when there is a new socket connection.
  *
  * @author Guilherme da Silva Martin
