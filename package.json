@@ -24,7 +24,7 @@
     "chai": "^4.2.0",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "local-echo": "github:wavesoft/local-echo",
     "mocha": "^6.2.2",
